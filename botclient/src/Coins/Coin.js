@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 class Coin {
   constructor(symbol, exchange = "binance") {
@@ -8,16 +8,10 @@ class Coin {
   }
   async getPrice() {
     if (this.exchange === "binance") {
-      let respond = await axios.get(
+      let response = await axios.get(
         "https://api.binance.com/api/v3/ticker/price?symbol=" + this.symbol
       );
-      return parseFloat(respond.data.price);
-    } else if (this.exchange === "gateio") {
-      let respond = await axios.get(
-        "https://api.gateio.ws/api/v4/spot/tickers/?currency_pair=" +
-          this.symbol
-      );
-      return parseFloat(respond.data[0]["last"]);
+      return parseFloat(response.data.price);
     } else {
       return "no price data for this coin yet";
     }
@@ -33,4 +27,4 @@ class Coin {
   }
 }
 
-module.exports = Coin;
+export default Coin;
