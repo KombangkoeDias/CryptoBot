@@ -9,8 +9,13 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/test", cors(), async function (req, res, next) {
-  const value = await CryptoBot.getPortValues();
+  const value = await CryptoBot.getCoinPrice("ADAUSDT");
   res.send({ port: value });
+});
+
+router.get("/all", cors(), async function (req, res, next) {
+  const value = await CryptoBot.getAllCoinPrices();
+  res.send(value);
 });
 
 module.exports = router;

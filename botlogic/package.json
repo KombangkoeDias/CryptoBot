@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "logic": "node ./LogicFiles/index.js"
+    "logic": "node ./LogicFiles/index.js",
+    "test": "node ./LogicFiles/ListOfCoins.js"
   },
   "dependencies": {
     "axios": "^0.21.1",

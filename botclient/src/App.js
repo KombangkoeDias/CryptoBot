@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import PortValue from "./Values/PortValues";
+import AllCoinsPrices from "./Values/AllCoinsPrices";
 
 function App() {
   return (

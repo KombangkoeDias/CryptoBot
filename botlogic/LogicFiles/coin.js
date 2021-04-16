@@ -12,6 +12,8 @@ class Coin {
         "https://api.binance.com/api/v3/ticker/price?symbol=" + this.symbol
       );
       return parseFloat(response.data.price);
+    } else {
+      return "no price data for this coin yet";
     }
   }
 
