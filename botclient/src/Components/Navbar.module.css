@@ -1,0 +1,8 @@
+.linkItem {
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.linkItem:hover {
+  border: 1px solid grey;
+}

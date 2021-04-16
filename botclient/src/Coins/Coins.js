@@ -32,7 +32,7 @@ const symbolList = {
   WANUSDT: "binance",
   XTZUSDT: "binance",
   ZILUSDT: "binance",
-  SAFEMOONUSDT: "bitmart",
+  SAFEMOON_USDT: "bitmart",
 };
 
 const CoinList = [];
