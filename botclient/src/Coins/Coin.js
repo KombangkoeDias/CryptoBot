@@ -1,10 +1,10 @@
 import axios from "axios";
 
 class Coin {
-  constructor(symbol, exchange = "binance") {
+  constructor(symbol, exchange = "binance", amount = 0) {
     this.symbol = symbol;
     this.exchange = exchange;
-    this.amount = 0;
+    this.amount = amount;
   }
   // async getPrice() {
   //   if (this.exchange === "binance") {

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import serverURL from "../configs/serverURL";
+import CoinValues from "./CoinValues";
 
 class CoinPrice extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class CoinPrice extends React.Component {
       symbol: props.symbol,
       price: 0,
       up: null,
-      abbr: null,
+      abbr: "",
     };
   }
 
@@ -69,12 +70,13 @@ class CoinPrice extends React.Component {
           height: "100%",
           padding: "10px",
           borderRadius: "10px",
-          backgroundColor:
-            this.state.up == null
+          backgroundColor: this.props.showbg
+            ? this.state.up == null
               ? "white"
               : this.state.up
               ? "lightgreen"
-              : "red",
+              : "red"
+            : "white",
           border: "1px solid gold",
           boxShadow:
             "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
@@ -93,16 +95,16 @@ class CoinPrice extends React.Component {
           className="mr-1"
           alt={this.state.symbol}
         ></img>
-        {this.state.symbol} : {this.state.price}{" "}
-        {this.state.up !== null ? (
-          this.state.up ? (
-            <i className="fa fa-caret-up" style={{ color: "green" }}></i>
-          ) : (
-            <i className="fa fa-caret-down" style={{ color: "white" }}></i>
-          )
-        ) : (
-          <></>
-        )}
+        <CoinValues
+          showname={this.props.showname}
+          symbol={this.state.symbol}
+          up={this.state.up}
+          price={this.state.price}
+          showbg={this.props.showbg}
+          mode={this.props.mode}
+          amount={this.props.amount}
+          abbr={this.state.abbr.toUpperCase()}
+        />
       </div>
     );
   }
