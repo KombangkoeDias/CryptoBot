@@ -1,0 +1,24 @@
+{
+  "name": "cryptobot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"yarn client\" \"yarn logic\"",
+    "client": "cd botclient && yarn start",
+    "logic": "cd botlogic && yarn start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KombangkoeDias/CryptoBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KombangkoeDias/CryptoBot/issues"
+  },
+  "homepage": "https://github.com/KombangkoeDias/CryptoBot#readme",
+  "dependencies": {
+    "concurrently": "^6.0.2"
+  }
+}

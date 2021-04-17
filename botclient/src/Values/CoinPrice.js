@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import serverURL from "../configs/serverURL";
 import CoinValues from "./CoinValues";
+import Modal from "./Modal/CoinInfoModal";
 
 class CoinPrice extends React.Component {
   constructor(props) {
@@ -62,9 +63,27 @@ class CoinPrice extends React.Component {
     this.getAbbreviationName();
   }
 
+  CoinValues() {
+    return (
+      <CoinValues
+        showname={this.props.showname}
+        symbol={this.state.symbol}
+        up={this.state.up}
+        price={this.state.price}
+        showbg={this.props.showbg}
+        mode={this.props.mode}
+        amount={this.props.amount}
+        abbr={this.state.abbr.toUpperCase()}
+      />
+    );
+  }
+
   render() {
     return (
       <div
+        type="button"
+        data-toggle="modal"
+        data-target={"#" + this.state.symbol + "modal"}
         style={{
           width: "100%",
           height: "100%",
@@ -95,16 +114,21 @@ class CoinPrice extends React.Component {
           className="mr-1"
           alt={this.state.symbol}
         ></img>
-        <CoinValues
-          showname={this.props.showname}
-          symbol={this.state.symbol}
-          up={this.state.up}
-          price={this.state.price}
-          showbg={this.props.showbg}
-          mode={this.props.mode}
-          amount={this.props.amount}
-          abbr={this.state.abbr.toUpperCase()}
-        />
+        {this.CoinValues()}
+        <div
+          class="modal fade"
+          id={this.state.symbol + "modal"}
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true"
+        >
+          <Modal
+            symbol={this.props.symbol}
+            abbr={this.state.abbr}
+            CoinValues={() => this.CoinValues()}
+          />
+        </div>
       </div>
     );
   }
