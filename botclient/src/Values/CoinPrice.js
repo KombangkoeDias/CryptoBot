@@ -3,6 +3,7 @@ import axios from "axios";
 import serverURL from "../configs/serverURL";
 import CoinValues from "./CoinTextValues";
 import Modal from "./Modal/CoinInfoModal";
+import Mode from "./CoinValueMode";
 
 class CoinPrice extends React.Component {
   constructor(props) {
@@ -87,7 +88,7 @@ class CoinPrice extends React.Component {
     this.getAbbreviationName(() => this.getBasePrice());
   }
 
-  CoinValues() {
+  CoinValues(Modal = false) {
     return (
       <CoinValues
         showname={this.props.showname}
@@ -95,9 +96,11 @@ class CoinPrice extends React.Component {
         up={this.state.up}
         price={this.state.price}
         showbg={this.props.showbg}
-        mode={this.props.mode}
+        mode={Modal === false ? this.props.mode : Mode.MODAL}
         amount={this.props.amount}
         abbr={this.state.abbr.toUpperCase()}
+        side={this.calculatePercentage()["side"]}
+        percentage={this.calculatePercentage()["percentage"]}
       />
     );
   }
@@ -138,31 +141,34 @@ class CoinPrice extends React.Component {
           className="mr-1"
           alt={this.state.symbol}
         ></img>
-        {this.calculatePercentage()["percentage"] !== 0 && (
-          <div
-            style={{
-              position: "absolute",
-              top: "-10px",
-              left: "0px",
-              width: "50px",
-              height: "30px",
-              border: "1px solid gold",
-              backgroundColor:
-                this.calculatePercentage()["side"] === "up"
-                  ? "lightgreen"
-                  : "red",
-              borderRadius: "50%",
-              fontSize: "13px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              color:
-                this.calculatePercentage()["side"] === "up" ? "black" : "white",
-            }}
-          >
-            {this.calculatePercentage()["percentage"] + "%"}
-          </div>
-        )}
+        {this.calculatePercentage()["percentage"] !== 0 &&
+          this.props.mode === Mode.NORMAL && (
+            <div
+              style={{
+                position: "absolute",
+                top: "-10px",
+                left: "0px",
+                width: "50px",
+                height: "30px",
+                border: "1px solid gold",
+                backgroundColor:
+                  this.calculatePercentage()["side"] === "up"
+                    ? "lightgreen"
+                    : "red",
+                borderRadius: "50%",
+                fontSize: "13px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                color:
+                  this.calculatePercentage()["side"] === "up"
+                    ? "black"
+                    : "white",
+              }}
+            >
+              {this.calculatePercentage()["percentage"] + "%"}
+            </div>
+          )}
 
         {this.CoinValues()}
         <div
@@ -176,7 +182,7 @@ class CoinPrice extends React.Component {
           <Modal
             symbol={this.props.symbol}
             abbr={this.state.abbr}
-            CoinValues={() => this.CoinValues()}
+            CoinValues={() => this.CoinValues(true)}
           />
         </div>
       </div>

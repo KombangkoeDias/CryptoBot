@@ -3,7 +3,14 @@ import React from "react";
 const Modal = (props) => {
   return (
     <div className="modal-dialog modal-dialog-centered" role="document">
-      <div className="modal-content" style={{ borderRadius: "20px" }}>
+      <div
+        className="modal-content"
+        style={{
+          borderRadius: "20px",
+          backgroundColor: "darkgray",
+          color: "white",
+        }}
+      >
         <div className="modal-header">
           <img
             src={

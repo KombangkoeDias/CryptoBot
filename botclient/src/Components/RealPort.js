@@ -3,15 +3,20 @@ import CoinList from "../Coins/Coins";
 import CoinPrice from "../Values/CoinPrice";
 import Mode from "../Values/CoinValueMode";
 import $ from "jquery";
+import EverydayPrice from "../Services/Everyday/EveryPrices";
 
 const RealPort = () => {
   const [width, setWidth] = useState($(window).width());
   const [height, setHeight] = useState($(window).height());
+  const [Prices, setPrices] = useState([]);
 
   useEffect(() => {
     $(window).on("resize", () => {
       setWidth($(window).width());
       setHeight($(window).height());
+    });
+    EverydayPrice.getPrice().then((value) => {
+      setPrices(value);
     });
   }, []);
 
@@ -28,6 +33,7 @@ const RealPort = () => {
             }}
           >
             <CoinPrice
+              Prices={Prices}
               symbol={coin.symbol}
               exchange={coin.exchange}
               showbg={false}
@@ -50,6 +56,7 @@ const RealPort = () => {
             }}
           >
             <CoinPrice
+              Prices={Prices}
               symbol={coin.symbol}
               exchange={coin.exchange}
               showbg={false}

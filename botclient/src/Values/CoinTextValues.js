@@ -2,11 +2,34 @@ import React from "react";
 import Mode from "./CoinValueMode";
 
 const CoinValues = (props) => {
+  function Caret() {
+    return props.up !== null && props.amount !== 0 ? (
+      props.up ? (
+        <i className="fa fa-caret-up" style={{ color: "green" }}></i>
+      ) : (
+        <i
+          className="fa fa-caret-down"
+          style={{
+            color:
+              props.mode === Mode.MODAL
+                ? "red"
+                : props.showbg
+                ? "white"
+                : "red",
+          }}
+        ></i>
+      )
+    ) : (
+      <></>
+    );
+  }
+
   return (
     <React.Fragment>
       {props.mode === Mode.NORMAL && (
         <React.Fragment>
-          {props.showname && props.symbol} : {props.price}{" "}
+          {props.showname && props.symbol} : {props.price}
+          {"  "}
         </React.Fragment>
       )}
       {props.mode === Mode.HOLDINGS && (
@@ -16,18 +39,15 @@ const CoinValues = (props) => {
           {parseFloat(props.amount * props.price).toFixed(4)}{" "}
         </>
       )}
-      {props.up !== null && props.amount !== 0 ? (
-        props.up ? (
-          <i className="fa fa-caret-up" style={{ color: "green" }}></i>
-        ) : (
-          <i
-            className="fa fa-caret-down"
-            style={{ color: props.showbg ? "white" : "red" }}
-          ></i>
-        )
-      ) : (
-        <></>
+      {props.mode === Mode.MODAL && (
+        <React.Fragment>
+          {props.showname && props.symbol} : {props.price} USDT
+          <br />
+          Today : {props.side} {props.percentage}
+          {"% "}
+        </React.Fragment>
       )}
+      {Caret()}
     </React.Fragment>
   );
 };
