@@ -6,7 +6,8 @@
   "scripts": {
     "start": "concurrently --kill-others \"yarn client\" \"yarn logic\"",
     "client": "cd botclient && yarn start",
-    "logic": "cd botlogic && yarn start"
+    "logic": "cd botlogic && source venv/bin/activate && python3 index.py",
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/KombangkoeDias/CryptoBot#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "concurrently": "^6.0.2"
   }
 }

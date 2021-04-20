@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import serverURL from "../configs/serverURL";
-import CoinValues from "./CoinValues";
+import CoinValues from "./CoinTextValues";
 import Modal from "./Modal/CoinInfoModal";
 
 class CoinPrice extends React.Component {
@@ -12,6 +12,8 @@ class CoinPrice extends React.Component {
       price: 0,
       up: null,
       abbr: "",
+      name_with_no_: "",
+      basePrice: 0,
     };
   }
 
@@ -48,19 +50,41 @@ class CoinPrice extends React.Component {
     } catch (err) {}
   }
 
-  getAbbreviationName() {
+  getAbbreviationName(callBack) {
     const n = this.state.symbol.search("USDT");
     var abbr;
     if (this.state.symbol[n - 1] === "_") {
       abbr = this.state.symbol.substring(0, n - 1);
     } else abbr = this.state.symbol.substring(0, n);
     abbr = abbr.toLowerCase();
-    this.setState({ abbr: abbr });
+    this.setState({ abbr: abbr }, () => callBack());
+  }
+
+  getBasePrice() {
+    this.setState({ basePrice: this.props.Prices[this.state.name_with_no_] });
+  }
+
+  calculatePercentage() {
+    var newside = 0;
+    var new_percentage = 0;
+    var basePrice = this.props.Prices[this.state.abbr.toUpperCase() + "USDT"];
+    if (this.state.price > 0 && basePrice > 0) {
+      if (this.state.price >= basePrice) {
+        newside = "up";
+      } else {
+        newside = "down";
+      }
+      new_percentage = (
+        (Math.abs(this.state.price - basePrice) / basePrice) *
+        100
+      ).toFixed(2);
+    }
+    return { side: newside, percentage: new_percentage };
   }
 
   componentDidMount() {
     this.getPriceRepeatedly();
-    this.getAbbreviationName();
+    this.getAbbreviationName(() => this.getBasePrice());
   }
 
   CoinValues() {
@@ -114,11 +138,37 @@ class CoinPrice extends React.Component {
           className="mr-1"
           alt={this.state.symbol}
         ></img>
+        {this.calculatePercentage()["percentage"] !== 0 && (
+          <div
+            style={{
+              position: "absolute",
+              top: "-10px",
+              left: "0px",
+              width: "50px",
+              height: "30px",
+              border: "1px solid gold",
+              backgroundColor:
+                this.calculatePercentage()["side"] === "up"
+                  ? "lightgreen"
+                  : "red",
+              borderRadius: "50%",
+              fontSize: "13px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color:
+                this.calculatePercentage()["side"] === "up" ? "black" : "white",
+            }}
+          >
+            {this.calculatePercentage()["percentage"] + "%"}
+          </div>
+        )}
+
         {this.CoinValues()}
         <div
-          class="modal fade"
+          className="modal fade"
           id={this.state.symbol + "modal"}
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenterTitle"
           aria-hidden="true"

@@ -2,9 +2,9 @@ import React from "react";
 
 const Modal = (props) => {
   return (
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content" style={{ borderRadius: "20px" }}>
-        <div class="modal-header">
+    <div className="modal-dialog modal-dialog-centered" role="document">
+      <div className="modal-content" style={{ borderRadius: "20px" }}>
+        <div className="modal-header">
           <img
             src={
               "/Asset/logos/" +
@@ -18,21 +18,25 @@ const Modal = (props) => {
             className="mr-1"
             alt={props.symbol}
           ></img>
-          <h5 class="modal-title" id="exampleModalLongTitle">
+          <h5 className="modal-title" id="exampleModalLongTitle">
             {props.symbol}
           </h5>
           <button
             type="button"
-            class="close"
+            className="close"
             data-dismiss="modal"
             aria-label="Close"
           >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">{props.CoinValues()}</div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+        <div className="modal-body">{props.CoinValues()}</div>
+        <div className="modal-footer">
+          <button
+            type="button"
+            className="btn btn-secondary"
+            data-dismiss="modal"
+          >
             Close
           </button>
         </div>
