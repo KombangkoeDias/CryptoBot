@@ -1,66 +1,99 @@
 import React from "react";
-import axios from "axios";
-import serverURL from "../../configs/serverURL";
 import CoinValues from "../../Values/CoinTextValues";
 import Modal from "../../Values/Modal/CoinInfoModal";
 import Mode from "../../Values/CoinValueMode";
+import PriceService from "../../Services/PriceService";
 
 class PriceCard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      info: {
+        basePrice: 0,
+        priceNow: 0,
+        percentage: 0,
+        side: null,
+        percentage_range: [0, 0],
+        price_range: [0, 0],
+      },
+      up: null,
+    };
   }
 
   async getPriceRepeatedly() {
     try {
-      await this.props.coin.fetchPriceNow();
-      setTimeout(() => this.getPriceRepeatedly(), 1000);
+      const info = await PriceService.getInfo(
+        this.props.abbr.toUpperCase() + "USDT"
+      );
+      this.props.updateCoinList(info);
+      if (this.state.info.priceNow !== 0) {
+        if (info.priceNow > this.state.info.priceNow) {
+          //console.log("up");
+          this.setState({ up: true }, () =>
+            setTimeout(() => this.setState({ up: null }), 500)
+          );
+        } else if (info.priceNow < this.state.info.priceNow) {
+          //console.log("down");
+          this.setState({ up: false }, () =>
+            setTimeout(() => this.setState({ up: null }), 500)
+          );
+        }
+      }
+      info.percentage = parseFloat(info.percentage).toFixed(2);
+      this.setState({ info: info });
+      setTimeout(() => this.getPriceRepeatedly());
     } catch (err) {
       console.log(err);
     }
   }
 
   componentDidMount() {
-    this.props.coin.fetchBasePrice().then(() => {
-      this.getPriceRepeatedly();
-    });
+    this.getPriceRepeatedly();
   }
 
   CoinValues(Modal = false) {
     return (
       <CoinValues
         showname={this.props.showname}
-        symbol={this.props.coin.symbol}
-        up={this.props.coin.up}
-        priceNow={this.props.coin.priceNow}
+        symbol={this.props.symbol}
+        up={this.state.up}
+        priceNow={this.state.info.priceNow}
         showbg={this.props.showbg}
         mode={Modal === false ? this.props.mode : Mode.MODAL}
-        amount={this.props.coin.amount}
-        abbr={this.props.coin.abbr.toUpperCase()}
-        side={this.props.coin.ide}
-        percentage={this.props.coin.percentage}
+        amount={this.props.amount}
+        abbr={this.props.abbr.toUpperCase()}
+        side={this.state.info.side}
+        percentage={this.state.info.percentage}
       />
     );
   }
 
   render() {
-    console.log(this.props.coin.priceNow);
+    //console.log(this.props.priceNow);
+    let color = "white";
+    if (this.props.showbg) {
+      if (this.state.up !== null) {
+        if (this.state.up) {
+          color = "lightgreen";
+        } else {
+          color = "red";
+        }
+      }
+    }
+    //console.log(color);
+
     return (
       <div
         type="button"
         data-toggle="modal"
-        data-target={"#" + this.props.coin.symbol + "modal"}
+        data-target={"#" + this.props.symbol + "modal"}
+        className={color}
         style={{
           width: "100%",
           height: "100%",
           padding: "10px",
           borderRadius: "10px",
-          backgroundColor: this.props.showbg
-            ? this.props.coin.up == null
-              ? "white"
-              : this.props.coin.up
-              ? "lightgreen"
-              : "red"
-            : "white",
+          backgroundColor: color,
           border: "1px solid gold",
           boxShadow:
             "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
@@ -69,20 +102,19 @@ class PriceCard extends React.Component {
         <img
           src={
             "/Asset/logos/" +
-            this.props.coin.abbr +
-            (this.props.coin.abbr === "pols" ||
-            this.props.coin.abbr === "safemoon"
+            this.props.abbr +
+            (this.props.abbr === "pols" || this.props.abbr === "safemoon"
               ? ".jpeg"
               : ".png")
           }
           width="30"
           height="30"
           className="mr-1"
-          alt={this.props.coin.symbol}
+          alt={this.props.symbol}
         ></img>
-        {this.props.coin.percentage !== 0 && this.props.mode === Mode.NORMAL && (
+        {this.state.info.percentage !== 0 && this.props.mode === Mode.NORMAL && (
           <div
-            id={this.props.coin.symbol}
+            id={this.props.symbol}
             style={{
               position: "absolute",
               top: "-10px",
@@ -91,31 +123,30 @@ class PriceCard extends React.Component {
               height: "30px",
               border: "1px solid gold",
               backgroundColor:
-                this.props.coin.side === "up" ? "lightgreen" : "red",
+                this.state.info.side === "up" ? "lightgreen" : "red",
               borderRadius: "50%",
               fontSize: "13px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              color: this.props.coin.side === "up" ? "black" : "white",
+              color: this.state.info.side === "up" ? "black" : "white",
             }}
           >
-            {this.props.coin.percentage + "%"}
+            {this.state.info.percentage + "%"}
           </div>
         )}
-
         {this.CoinValues()}
         <div
           className="modal fade"
-          id={this.props.coin.symbol + "modal"}
+          id={this.props.symbol + "modal"}
           tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenterTitle"
           aria-hidden="true"
         >
           <Modal
-            symbol={this.props.coin.symbol}
-            abbr={this.props.coin.abbr}
+            symbol={this.props.symbol}
+            abbr={this.props.abbr}
             CoinValues={() => this.CoinValues(true)}
           />
         </div>

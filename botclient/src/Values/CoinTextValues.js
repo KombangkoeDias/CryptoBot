@@ -28,7 +28,7 @@ const CoinValues = (props) => {
     <React.Fragment>
       {props.mode === Mode.NORMAL && (
         <React.Fragment>
-          {props.showname && props.symbol} : {props.price}
+          {props.showname && props.symbol} : {props.priceNow}
           {"  "}
         </React.Fragment>
       )}
@@ -36,12 +36,12 @@ const CoinValues = (props) => {
         <>
           {props.amount} {props.showname && props.abbr}{" "}
           <i className="fa fa-long-arrow-alt-right"></i> ${" "}
-          {parseFloat(props.amount * props.price).toFixed(4)}{" "}
+          {parseFloat(props.amount * props.priceNow).toFixed(4)}{" "}
         </>
       )}
       {props.mode === Mode.MODAL && (
         <React.Fragment>
-          {props.showname && props.symbol} : {props.price} USDT
+          {props.showname && props.symbol} : {props.priceNow} USDT
           <br />
           Today : {props.side} {props.percentage}
           {"% "}

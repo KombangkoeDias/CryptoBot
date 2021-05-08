@@ -5,6 +5,7 @@ from Controller.DatabaseConnector import EverydayPriceDB
 class Coin:
     def __init__(self,symbol,exchange='binance',sturdy=False, notify=True):
         self.symbol = symbol
+        self.abbr = ""
         self.priceNow = None
         self.percentageReached = PercentageReached(sturdy)
         self.basePrice = 0
@@ -15,6 +16,14 @@ class Coin:
         self.exchange = exchange
         self.sturdy = sturdy
         self.wantNotify = notify
+        self.getAbbreviation()
+
+    def getAbbreviation(self):
+        idx = self.symbol.find('USDT')
+        if(idx != -1):
+            self.abbr = self.symbol[0:idx]
+            if(self.abbr[-1] == '_'):
+                self.abbr = self.abbr[0:-1]
 
     def calculatePercentage(self):
 
@@ -62,7 +71,7 @@ class Coin:
         return self.percentageReached.getPercentageRange()
 
     def getBasePrice(self):
-        x = EverydayPriceDB.find_one({'symbol': self.symbol})['price']
+        x = EverydayPriceDB.find_one({'symbol': self.abbr+'USDT'})['price']
         self.basePrice = x
 
     # def resetDaily(self):

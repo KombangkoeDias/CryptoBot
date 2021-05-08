@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Coin from "../../Coins/CoinClass";
 import CoinList from "../../Coins/Coins";
 import PriceCard from "./PriceCard";
@@ -6,8 +6,6 @@ import Mode from "../../Values/CoinValueMode";
 import $ from "jquery";
 
 const Prices = (props) => {
-  const [CoinListState, setCoinListState] = useState(CoinList);
-
   function addNewCoin() {
     const symbol = $("#symbol").val();
     const pair = $("#pair").val();
@@ -16,25 +14,20 @@ const Prices = (props) => {
     console.log(CoinList);
   }
 
-  // for (var i = 0; i < CoinList.length; i++) {
-  //   const coin = CoinList[i];
-  //   useEffect(() => {
-  //     const index = CoinListState.indexOf(coin);
-  //     let newCoinList = CoinList;
-  //     newCoinList[index] = coin;
-  //     setCoinListState(newCoinList);
-  //   }, [
-  //     coin.symbol,
-  //     coin.exchange,
-  //     coin.amount,
-  //     coin.percentage,
-  //     coin.basePrice,
-  //     coin.priceNow,
-  //     coin.side,
-  //     coin.abbr,
-  //     coin.up,
-  //   ]);
-  // }
+  function updateCoinList(i, info) {
+    let new_coin = new Coin(
+      CoinList[i].symbol,
+      CoinList[i].exchange,
+      CoinList[i].amount,
+      info.basePrice,
+      info.percentage,
+      info.percentage_range,
+      info.price_range,
+      info.side,
+      info.priceNow
+    );
+    CoinList[i] = new_coin;
+  }
 
   return (
     <React.Fragment>
@@ -49,7 +42,7 @@ const Prices = (props) => {
           <h2>Coins in watchlist</h2>
         </div>
         <div className="row ml-2 mr-2 mt-4">
-          {CoinList.map((coin) => (
+          {CoinList.map((coin, i) => (
             <div
               className="col-3 mb-3"
               style={{
@@ -60,11 +53,14 @@ const Prices = (props) => {
               key={coin.symbol}
             >
               <PriceCard
-                coin={coin}
+                updateCoinList={(info) => updateCoinList(i, info)}
                 showbg={true}
                 showname={true}
                 key={coin.symbol}
+                symbol={coin.symbol}
+                amount={coin.amount}
                 mode={Mode.NORMAL}
+                abbr={coin.abbr}
               />
             </div>
           ))}

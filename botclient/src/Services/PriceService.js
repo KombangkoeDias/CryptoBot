@@ -10,6 +10,14 @@ const PriceService = {
     });
     return respond.data.price;
   },
+  getInfo: async (symbol) => {
+    const respond = await axios.get(serverURL + "/coin/info", {
+      params: {
+        symbol: symbol,
+      },
+    });
+    return respond.data;
+  },
 };
 
 export default PriceService;

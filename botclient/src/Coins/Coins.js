@@ -65,7 +65,7 @@ const amount = {
   SAFEMOON_USDT: 32743900,
 };
 
-const CoinList = [];
+let CoinList = [];
 for (const symbol in symbolList) {
   CoinList.push(new Coin(symbol, symbolList[symbol], amount[symbol]));
 }
