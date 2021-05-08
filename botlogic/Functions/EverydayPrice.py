@@ -1,6 +1,8 @@
-def EverydayPriceFunc(EverydayPrice):
+from Controller.DatabaseConnector import EverydayPriceDB
+
+def EverydayPriceFunc():
     res = dict()
-    x = EverydayPrice.find()
+    x = EverydayPriceDB.find()
     for val in x:
         res[val['symbol']] = val['price']
     return res

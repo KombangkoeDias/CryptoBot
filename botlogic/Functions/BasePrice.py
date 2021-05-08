@@ -1,7 +1,7 @@
-
 from flask import request
+from Coin.coin import Coins
 
-def BasePriceFunc(EverydayPrice):
+def BasePriceFunc():
     symbol = request.args.get('symbol')
-    x = EverydayPrice.find_one({'symbol': symbol})
-    return {'price': x['price']}
+    Coins[symbol].getBasePrice()
+    return {'price': Coins[symbol].basePrice}

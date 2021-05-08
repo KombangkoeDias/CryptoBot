@@ -1,7 +1,5 @@
 from flask import request
-from Coin.Coin import Coin
+from Coin.coin import Coins
 def CoinPriceFunc():
     symbol = request.args.get('symbol')
-    exchange = request.args.get('exchange')
-    coin = Coin(symbol, exchange)
-    return coin.getPrice()
+    return {'price': Coins[symbol].getCurrentPrice()}
