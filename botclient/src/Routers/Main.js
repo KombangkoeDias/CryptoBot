@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import Prices from "../Components/Prices";
+import Prices from "../Components/Prices/Prices";
 import RealPort from "../Components/RealPort";
 import BotPort from "../Components/BotPort";
 

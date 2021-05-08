@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import CoinList from "../Coins/Coins";
-import CoinPrice from "../Values/CoinPrice";
+import CoinPrice from "./Prices/PriceCard";
 import Mode from "../Values/CoinValueMode";
 import $ from "jquery";
-import EverydayPrice from "../Services/Everyday/EveryPrices";
 
 const RealPort = () => {
   const [width, setWidth] = useState($(window).width());
@@ -15,14 +14,11 @@ const RealPort = () => {
       setWidth($(window).width());
       setHeight($(window).height());
     });
-    EverydayPrice.getPrice().then((value) => {
-      setPrices(value);
-    });
   }, []);
 
   return (
     <div className="row">
-      <div className="col-6 col-md-3">
+      {/* <div className="col-6 col-md-3">
         {CoinList.slice(0, CoinList.length / 2).map((coin) => (
           <div
             className="row ml-3 mb-1"
@@ -67,7 +63,7 @@ const RealPort = () => {
             />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

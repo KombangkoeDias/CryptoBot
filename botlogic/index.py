@@ -1,10 +1,9 @@
 import flask
 from flask_cors import CORS, cross_origin
 import pymongo
-import json
-from EverydayPrice import EverydayPriceFunc
-from CoinPrice import CoinPriceFunc
-from flask import request
+from Functions.EverydayPrice import EverydayPriceFunc
+from Functions.CoinPrice import CoinPriceFunc
+from Functions.BasePrice import BasePriceFunc
 
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
@@ -22,10 +21,16 @@ EverydayPriceDB = db['EverydayPrice']
 def EverydayPrice():
     return EverydayPriceFunc(EverydayPriceDB)
 
+@app.route("/basePrice", methods=['GET'])
+@cross_origin()
+def getBasePrice():
+    return BasePriceFunc(EverydayPriceDB)
 
 @app.route('/coin/price', methods=['GET'])
 @cross_origin()
 def CoinPrice():
     return CoinPriceFunc()
+
+
 app.run()
 

@@ -1,4 +1,4 @@
-import Coin from "./Coin";
+import Coin from "./CoinClass";
 
 const symbolList = {
   ADAUSDT: "binance",
@@ -11,9 +11,9 @@ const symbolList = {
   DOTUSDT: "binance",
   ENJUSDT: "binance",
   ETHUSDT: "binance",
-  FILUSDT: "binance",
   GT_USDT: "gateio",
   HOTUSDT: "binance",
+  INJUSDT: "binance",
   KSMUSDT: "binance",
   KYL_USDT: "gateio",
   LINKUSDT: "binance",
@@ -25,12 +25,8 @@ const symbolList = {
   POLK_USDT: "gateio",
   POLS_USDT: "gateio",
   SOLUSDT: "binance",
-  STORJUSDT: "binance",
   STPTUSDT: "binance",
   SXPUSDT: "binance",
-  THETAUSDT: "binance",
-  WANUSDT: "binance",
-  XTZUSDT: "binance",
   ZILUSDT: "binance",
   SAFEMOON_USDT: "bitmart",
 };
@@ -49,6 +45,7 @@ const amount = {
   FILUSDT: 0,
   GT_USDT: 5.4619,
   HOTUSDT: 4092,
+  INJUSDT: 0.76,
   KSMUSDT: 0.652528,
   KYL_USDT: 34.1944,
   LINKUSDT: 1.25373,
@@ -63,8 +60,6 @@ const amount = {
   STORJUSDT: 0,
   STPTUSDT: 273.127,
   SXPUSDT: 8.90309,
-  THETAUSDT: 0,
-  WANUSDT: 19.0505,
   XTZUSDT: 0,
   ZILUSDT: 189.934,
   SAFEMOON_USDT: 32743900,
@@ -74,4 +69,5 @@ const CoinList = [];
 for (const symbol in symbolList) {
   CoinList.push(new Coin(symbol, symbolList[symbol], amount[symbol]));
 }
+
 export default CoinList;

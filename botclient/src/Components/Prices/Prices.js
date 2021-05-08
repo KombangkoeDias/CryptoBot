@@ -1,10 +1,9 @@
 import React from "react";
-import Coin from "../Coins/Coin";
-import CoinList from "../Coins/Coins";
-import CoinPrice from "../Values/CoinPrice";
-import Mode from "../Values/CoinValueMode";
+import Coin from "../../Coins/CoinClass";
+import CoinList from "../../Coins/Coins";
+import PriceCard from "./PriceCard";
+import Mode from "../../Values/CoinValueMode";
 import $ from "jquery";
-import EverydayPrice from "../Services/Everyday/EveryPrices";
 
 class Prices extends React.Component {
   constructor(props) {
@@ -19,12 +18,6 @@ class Prices extends React.Component {
     const exchange = $("#exchange").val();
     CoinList.push(new Coin(symbol + pair, exchange));
     console.log(CoinList);
-  }
-
-  componentDidMount() {
-    EverydayPrice.getPrice().then((value) => {
-      this.setState({ Prices: value });
-    });
   }
 
   render() {
@@ -51,10 +44,8 @@ class Prices extends React.Component {
                 }}
                 key={coin.symbol}
               >
-                <CoinPrice
-                  Prices={this.state.Prices}
-                  symbol={coin.symbol}
-                  exchange={coin.exchange}
+                <PriceCard
+                  coin={coin}
                   showbg={true}
                   showname={true}
                   key={coin.symbol}
@@ -63,7 +54,7 @@ class Prices extends React.Component {
               </div>
             ))}
           </div>
-          <div className="row ml-3">
+          {/* <div className="row ml-3">
             <h3 style={{ width: "100vw" }}>Add a new coin into watchlist</h3>
             <div className="mr-3">
               <label htmlFor="symbol" className="mr-3">
@@ -99,7 +90,7 @@ class Prices extends React.Component {
             >
               Create
             </button>
-          </div>
+          </div> */}
         </div>
       </React.Fragment>
     );
