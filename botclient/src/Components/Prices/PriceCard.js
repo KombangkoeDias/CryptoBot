@@ -3,6 +3,8 @@ import CoinValues from "../../Values/CoinTextValues";
 import Modal from "../../Values/Modal/CoinInfoModal";
 import Mode from "../../Values/CoinValueMode";
 import PriceService from "../../Services/PriceService";
+import CoinLogo from "../CoinImg/CoinLogo";
+import Caret from "./Caret";
 
 class PriceCard extends React.Component {
   constructor(props) {
@@ -25,6 +27,7 @@ class PriceCard extends React.Component {
       const info = await PriceService.getInfo(
         this.props.abbr.toUpperCase() + "USDT"
       );
+      console.log(info);
       this.props.updateCoinList(info);
       if (this.state.info.priceNow !== 0) {
         if (info.priceNow > this.state.info.priceNow) {
@@ -99,19 +102,7 @@ class PriceCard extends React.Component {
             "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
         }}
       >
-        <img
-          src={
-            "/Asset/logos/" +
-            this.props.abbr +
-            (this.props.abbr === "pols" || this.props.abbr === "safemoon"
-              ? ".jpeg"
-              : ".png")
-          }
-          width="30"
-          height="30"
-          className="mr-1"
-          alt={this.props.symbol}
-        ></img>
+        <CoinLogo coin={this.props.coin} />
         {this.state.info.percentage !== 0 && this.props.mode === Mode.NORMAL && (
           <div
             id={this.props.symbol}
@@ -135,7 +126,12 @@ class PriceCard extends React.Component {
             {this.state.info.percentage + "%"}
           </div>
         )}
-        {this.CoinValues()}
+        {this.props.coin.symbol} : {this.state.info.priceNow}{" "}
+        <Caret
+          up={this.state.up}
+          mode={Mode.NORMAL}
+          showbg={this.props.showbg}
+        />
         <div
           className="modal fade"
           id={this.props.symbol + "modal"}

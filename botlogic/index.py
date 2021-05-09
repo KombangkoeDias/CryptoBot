@@ -5,6 +5,9 @@ from Functions.CoinPrice import CoinPriceFunc
 from Functions.BasePrice import BasePriceFunc
 from Functions.CoinPercentage import CoinPercentageFunc
 from Functions.CoinInfo import CoinInfoFunc
+from Functions.CoinBuy import CoinBuyFunc
+from Functions.CoinSell import CoinSellFunc
+from Functions.CoinTradeData import CoinTradeDataFunc
 
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
@@ -37,5 +40,20 @@ def CoinPercentage():
 def CoinInfo():
     return CoinInfoFunc()
 
+@app.route('/coin/buy', methods=['POST'])
+@cross_origin()
+def CoinBuy():
+    return CoinBuyFunc()
+
+@app.route('/coin/sell', methods=['POST'])
+@cross_origin()
+def CoinSell():
+    return CoinSellFunc()
+
+
+@app.route('/coin/trade_data', methods=['POST'])
+@cross_origin()
+def GetCoinTradeData():
+    return CoinTradeDataFunc()
 app.run()
 

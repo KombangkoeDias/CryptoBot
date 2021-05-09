@@ -47,8 +47,8 @@ class Coin:
                 if newside == 'down' and self.side == 'up':
                     print("down to up")
                     self.percentageReached.clearPercentage("up")
-                self.side = newside
-                self.percentageReached.setPercentage(newside,percent,True)
+            self.percentageReached.setPercentage(newside, percent, True)
+        self.side = newside
 
     def getCurrentPrice(self):
         self.priceNow = getPrice(self.symbol,self.exchange)

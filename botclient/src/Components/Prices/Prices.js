@@ -3,6 +3,7 @@ import Coin from "../../Coins/CoinClass";
 import CoinList from "../../Coins/Coins";
 import PriceCard from "./PriceCard";
 import Mode from "../../Values/CoinValueMode";
+import CoinListShow from "../SubComponents/CoinListShow/CoinListShow";
 import $ from "jquery";
 
 const Prices = (props) => {
@@ -54,6 +55,7 @@ const Prices = (props) => {
             >
               <PriceCard
                 updateCoinList={(info) => updateCoinList(i, info)}
+                coin={coin}
                 showbg={true}
                 showname={true}
                 key={coin.symbol}
@@ -65,6 +67,7 @@ const Prices = (props) => {
             </div>
           ))}
         </div>
+        <CoinListShow />
         {/* <div className="row ml-3">
             <h3 style={{ width: "100vw" }}>Add a new coin into watchlist</h3>
             <div className="mr-3">

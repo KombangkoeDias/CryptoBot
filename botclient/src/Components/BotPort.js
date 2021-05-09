@@ -1,7 +1,14 @@
 import React from "react";
+import CoinList from "../Coins/Coins";
 
 const BotPort = () => {
-  return <p>Bot Port</p>;
+  return CoinList.map((coin) => {
+    return (
+      <p>
+        {coin.symbol} : {coin.amount}
+      </p>
+    );
+  });
 };
 
 export default BotPort;

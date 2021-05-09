@@ -5,3 +5,9 @@ client = pymongo.MongoClient("mongodb+srv://kbd:kbd@cryptodatabase.04g9w.mongodb
 db = client['cryptoDatabase']
 
 EverydayPriceDB = db['EverydayPrice']
+
+BotPort = db['BotPort']
+
+BotTransaction = db['BotTransaction']
+
+BotProfit = db['BotProfit']
