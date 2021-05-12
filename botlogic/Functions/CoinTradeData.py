@@ -19,6 +19,9 @@ def CoinTradeDataFunc():
     if Profit is None:
         res_profit = {'symbol': symbol, 'profit': 0}
     else:
-        res_profit = dict(Profit)
-
+        res_profit = Profit
+    for key in ['_id']:
+        del res_port[key]
+        del res_transactions[key]
+        del res_profit[key]
     return {'symbol': symbol, 'port': res_port, 'transactions': res_transactions, 'profit': res_profit}

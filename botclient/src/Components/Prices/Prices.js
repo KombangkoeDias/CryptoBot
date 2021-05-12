@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Coin from "../../Coins/CoinClass";
 import CoinList from "../../Coins/Coins";
 import PriceCard from "./PriceCard";
 import Mode from "../../Values/CoinValueMode";
 import CoinListShow from "../SubComponents/CoinListShow/CoinListShow";
+import styles from "./Prices.module.css";
 import $ from "jquery";
 
 const Prices = (props) => {
@@ -14,6 +15,8 @@ const Prices = (props) => {
     CoinList.push(new Coin(symbol + pair, exchange));
     console.log(CoinList);
   }
+
+  const [display, setDisplay] = useState(4);
 
   function updateCoinList(i, info) {
     let new_coin = new Coin(
@@ -30,9 +33,17 @@ const Prices = (props) => {
     CoinList[i] = new_coin;
   }
 
+  const buttonStyle = (val) => {
+    return {
+      backgroundColor: display === val ? "orange" : "white",
+      width: "50px",
+      borderRadius: "6px",
+    };
+  };
+
   return (
     <React.Fragment>
-      <div style={{ width: "100vw", overflowX: "hidden" }}>
+      <div style={{ overflowX: "hidden" }}>
         <div
           className="row"
           style={{
@@ -42,12 +53,39 @@ const Prices = (props) => {
         >
           <h2>Coins in watchlist</h2>
         </div>
+        <div
+          className="row"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <button
+            className={"btn mr-3 " + styles.displayButton}
+            style={buttonStyle(3)}
+            onClick={() => setDisplay(3)}
+          >
+            3
+          </button>
+          <button
+            className={"btn mr-3 " + styles.displayButton}
+            style={buttonStyle(4)}
+            onClick={() => setDisplay(4)}
+          >
+            4
+          </button>
+          <button
+            className={"btn mr-3 " + styles.displayButton}
+            style={buttonStyle(6)}
+            onClick={() => setDisplay(6)}
+          >
+            6
+          </button>
+        </div>
         <div className="row ml-2 mr-2 mt-4">
           {CoinList.map((coin, i) => (
             <div
-              className="col-3 mb-3"
+              className={"col-" + 12 / display + " mb-3"}
               style={{
                 width: "100vw",
+                //height: {""},
                 display: "flex",
                 justifyContent: "center",
               }}

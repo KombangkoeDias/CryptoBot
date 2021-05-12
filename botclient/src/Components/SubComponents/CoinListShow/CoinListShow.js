@@ -57,8 +57,9 @@ class Test extends React.Component {
       <div
         className={"col-6 " + styles.movers}
         style={{
-          height: "220px",
+          height: "300px",
           overflowY: "scroll",
+          overflowX: "hidden",
           marginBottom: "10px",
           border: "2px solid green",
           borderRadius: "10px",
@@ -113,7 +114,14 @@ class Test extends React.Component {
       <React.Fragment>
         {" "}
         <hr />
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            width: "100%",
+            overflowX: "hidden",
+          }}
+        >
           <div>
             <h3 style={{ textAlign: "center" }}>Top Movers</h3>
             <div className="row">

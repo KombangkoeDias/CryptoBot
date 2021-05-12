@@ -1,0 +1,8 @@
+.displayButton:hover {
+  border: 1px solid gold;
+}
+
+.displayButton {
+  border: 1px solid lightgray;
+  outline: none;
+}

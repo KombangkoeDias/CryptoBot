@@ -5,7 +5,8 @@ const BotPort = () => {
   return CoinList.map((coin) => {
     return (
       <p>
-        {coin.symbol} : {coin.amount}
+        {coin.symbol} : {coin.amount} {coin.abbr.toUpperCase()} {"=>"} ${" "}
+        {coin.amount * coin.priceNow}
       </p>
     );
   });
