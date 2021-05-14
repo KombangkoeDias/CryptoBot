@@ -3,7 +3,7 @@ import CoinList from "../../../Coins/Coins";
 import CoinLogo from "../../CoinImg/CoinLogo";
 import styles from "./CoinListShow.module.css";
 
-class Test extends React.Component {
+class CoinListShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +11,7 @@ class Test extends React.Component {
       downList: [],
     };
   }
-  letTest() {
+  update() {
     let upListState = [...CoinList].filter((coin) => {
       return coin.side === "up";
     });
@@ -31,10 +31,10 @@ class Test extends React.Component {
     // });
     // this.setState({ sortedByPercentage: sortedByPercentageList });
     //console.log("run");
-    setTimeout(() => this.letTest(), 1000);
+    setTimeout(() => this.update(), 1000);
   }
   componentDidMount() {
-    this.letTest();
+    this.update();
   }
 
   determineRankColor(i, list) {
@@ -135,4 +135,4 @@ class Test extends React.Component {
   }
 }
 
-export default Test;
+export default CoinListShow;

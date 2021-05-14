@@ -15,7 +15,7 @@ function Caret(props) {
       ></i>
     )
   ) : (
-    <></>
+    <i className="fa fa-caret-up" style={{ color: "transparent" }}></i>
   );
 }
 

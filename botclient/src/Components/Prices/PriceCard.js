@@ -126,7 +126,18 @@ class PriceCard extends React.Component {
             {this.state.info.percentage + "%"}
           </div>
         )}
-        {this.props.coin.symbol} : {this.state.info.priceNow}{" "}
+        {this.props.mode === Mode.NORMAL && (
+          <>
+            {this.props.coin.symbol} : {this.state.info.priceNow}
+          </>
+        )}
+        {this.props.mode == Mode.HOLDINGS && (
+          <>
+            {" "}
+            {this.props.coin.amount} {this.props.coin.abbr.toUpperCase()} = ${" "}
+            {(this.props.coin.amount * this.state.info.priceNow).toFixed(2)}
+          </>
+        )}{" "}
         <Caret
           up={this.state.up}
           mode={Mode.NORMAL}
