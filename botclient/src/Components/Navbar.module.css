@@ -1,6 +1,9 @@
 .linkItem {
   border-radius: 10px;
   border: 1px solid transparent;
+  width: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 .linkItem:hover {

@@ -36,7 +36,6 @@ const RealPort = () => {
   return (
     <React.Fragment>
       <TotalPortFolio />
-
       <div className="row">
         <div className="col">
           {CoinList.slice(0, CoinList.length / 2).map((coin, i) => (
