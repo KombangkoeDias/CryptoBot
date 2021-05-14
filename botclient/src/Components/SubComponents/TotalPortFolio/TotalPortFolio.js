@@ -18,6 +18,7 @@ class TotalPortFolio extends React.Component {
     let loaded = true;
     for (let i = 0; i < CoinList.length; ++i) {
       if (CoinList[i].priceNow === 0) {
+        //console.log(CoinList[i].symbol);
         loaded = false;
       }
       port = port + CoinList[i].amount * CoinList[i].priceNow.toFixed(2);

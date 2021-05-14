@@ -67,6 +67,38 @@ const amount = {
   //ERSDLETH: 0,
 };
 
+const avg_buy = {
+  ADAUSDT: 0.569,
+  ATOMUSDT: null,
+  BANDUSDT: null,
+  BNBUSDT: 307.04,
+  BTCUSDT: null,
+  CAKEUSDT: 13.62,
+  DENTUSDT: 0.013,
+  DOTUSDT: 16.49,
+  ENJUSDT: 3.28,
+  ETHUSDT: 1584.21,
+  GT_USDT: 3.86,
+  HOTUSDT: null,
+  INJUSDT: 16.37,
+  KSMUSDT: 256.53,
+  KYL_USDT: 1.24,
+  LINKUSDT: 26.58,
+  LITUSDT: 8.3,
+  ONEUSDT: null,
+  PBR_USDT: 0.513,
+  PCX_USDT: 14.32,
+  PKF_USDT: 2,
+  POLK_USDT: 2.2,
+  POLS_USDT: 3.92,
+  SOLUSDT: 4.1,
+  STPTUSDT: 0.1222,
+  SXPUSDT: 3.37,
+  ZILUSDT: 0.173744,
+  SAFEMOON_USDT: 0.000001,
+  //ERSDLETH: "bitmart",
+};
+
 let CoinList = [];
 for (const symbol in symbolList) {
   CoinList.push(new Coin(symbol, symbolList[symbol], amount[symbol]));

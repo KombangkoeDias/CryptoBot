@@ -6,6 +6,7 @@ class Coin {
   constructor(
     symbol,
     exchange = "binance",
+    //avg_buy = null,
     amount = 0,
     basePrice = 0,
     percentage = 0,
@@ -16,6 +17,7 @@ class Coin {
   ) {
     this.symbol = symbol;
     this.exchange = exchange;
+    //this.avg_buy = avg_buy;
     this.amount = amount;
     this.percentage = percentage;
     this.basePrice = basePrice;

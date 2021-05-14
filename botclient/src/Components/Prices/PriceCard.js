@@ -27,7 +27,7 @@ class PriceCard extends React.Component {
       const info = await PriceService.getInfo(
         this.props.abbr.toUpperCase() + "USDT"
       );
-      console.log(info);
+      //console.log(info);
       this.props.updateCoinList(info);
       if (this.state.info.priceNow !== 0) {
         if (info.priceNow > this.state.info.priceNow) {

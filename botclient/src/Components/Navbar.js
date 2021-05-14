@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-  let path = window.location.pathname;
-  path = path.substring(1, path.length);
-  console.log(path);
+  const [pathState, setPathState] = useState("");
+
+  useEffect(() => {
+    let path = window.location.pathname;
+    path = path.substring(1, path.length);
+    setPathState(path);
+  }, [window.location.pathname]);
 
   const colorGradient = "radial-gradient(white, gold)";
 
+  const boxShadow =
+    "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+
   const linkStyle = {
     price: {
-      background: path === "price" ? colorGradient : "transparent",
+      background: pathState === "price" ? colorGradient : "transparent",
+      boxShadow: pathState === "price" ? boxShadow : "none",
     },
     real_port: {
-      background: path === "real_port" ? colorGradient : "transparent",
+      background: pathState === "real_port" ? colorGradient : "transparent",
+      boxShadow: pathState === "real_port" ? boxShadow : "none",
     },
     bot_port: {
-      background: path === "bot_port" ? colorGradient : "transparent",
+      background: pathState === "bot_port" ? colorGradient : "transparent",
+      boxShadow: pathState === "bot_port" ? boxShadow : "none",
     },
   };
 
