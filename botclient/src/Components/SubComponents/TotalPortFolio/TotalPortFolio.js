@@ -44,13 +44,13 @@ class TotalPortFolio extends React.Component {
     return (
       <div className="row">
         <div
-          className="col mt-4"
+          className="col mb-3 mt-2"
           style={{ display: "flex", justifyContent: "center" }}
         >
           <div>
             {this.state.loaded && (
               <React.Fragment>
-                <h1 style={{ textAlign: "center" }}>Port Value</h1>
+                <h1 style={{ textAlign: "center" }}>Real Port Value</h1>
                 <h3
                   style={{
                     textAlign: "center",
@@ -76,7 +76,7 @@ class TotalPortFolio extends React.Component {
           <div>
             {!this.state.loaded && (
               <React.Fragment>
-                <h1 style={{ textAlign: "center" }}>Port Value</h1>
+                <h1 style={{ textAlign: "center" }}>Real Port Value</h1>
                 <h3 style={{ textAlign: "center" }}>Loading...</h3>
               </React.Fragment>
             )}
