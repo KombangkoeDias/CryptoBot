@@ -81,6 +81,7 @@ class CoinListShow extends React.Component {
           {list.map((coin, i) => {
             return (
               <div
+                key={coin.symbol}
                 className="col-12"
                 style={{
                   backgroundColor: this.determineRankColor(i, list),

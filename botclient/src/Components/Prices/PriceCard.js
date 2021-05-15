@@ -24,9 +24,15 @@ class PriceCard extends React.Component {
 
   async getPriceRepeatedly() {
     try {
-      const info = await PriceService.getInfo(
-        this.props.abbr.toUpperCase() + "USDT"
-      );
+      let theSymbol = this.props.symbol;
+      let n = theSymbol.search("_");
+      if (n !== -1) {
+        theSymbol =
+          theSymbol.substring(0, n) +
+          theSymbol.substring(n + 1, theSymbol.length);
+      }
+
+      const info = await PriceService.getInfo(theSymbol);
       //console.log(info);
       this.props.updateCoinList(info);
       if (this.state.info.priceNow !== 0) {
@@ -46,7 +52,7 @@ class PriceCard extends React.Component {
       this.setState({ info: info });
       setTimeout(() => this.getPriceRepeatedly());
     } catch (err) {
-      console.log(err);
+      console.log(this.props.symbol, err);
     }
   }
 

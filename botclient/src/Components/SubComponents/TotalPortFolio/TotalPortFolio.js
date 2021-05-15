@@ -24,7 +24,6 @@ class TotalPortFolio extends React.Component {
       port = port + CoinList[i].amount * CoinList[i].priceNow.toFixed(2);
     }
     this.setState({ loaded: loaded });
-    port = port.toFixed(2);
     if (port > this.state.portValue) {
       this.setState({ up: true }, () =>
         setTimeout(() => this.setState({ up: null }), 500)
@@ -34,7 +33,7 @@ class TotalPortFolio extends React.Component {
         setTimeout(() => this.setState({ up: null }), 500)
       );
     }
-    this.setState({ portValue: port });
+    this.setState({ portValue: port.toFixed(2) });
     setTimeout(() => this.update(), 1000);
   }
   componentDidMount() {

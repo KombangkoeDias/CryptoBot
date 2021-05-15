@@ -29,6 +29,9 @@ const symbolList = {
   SXPUSDT: "binance",
   ZILUSDT: "binance",
   SAFEMOON_USDT: "bitmart",
+  RING_USDT: "gateio",
+  PHABUSD: "binance",
+  eRSDLETH: "bitmart",
   //ERSDLETH: "bitmart",
 };
 
@@ -64,6 +67,9 @@ const amount = {
   XTZUSDT: 0,
   ZILUSDT: 189.934,
   SAFEMOON_USDT: 27357889,
+  RING_USDT: 452.918,
+  PHABUSD: 0,
+  eRSDLETH: 0,
   //ERSDLETH: 0,
 };
 

@@ -16,7 +16,15 @@ class Coin:
         self.exchange = exchange
         self.sturdy = sturdy
         self.wantNotify = notify
+        self.symbolWithNoUnderscore = self.getSymbolWithNoUnderscore()
         self.getAbbreviation()
+
+    def getSymbolWithNoUnderscore(self):
+        theSymbol = ''
+        for char in self.symbol:
+            if char != '_':
+                theSymbol += char
+        return theSymbol
 
     def getAbbreviation(self):
         idx = self.symbol.find('USDT')
@@ -71,7 +79,7 @@ class Coin:
         return self.percentageReached.getPercentageRange()
 
     def getBasePrice(self):
-        x = EverydayPriceDB.find_one({'symbol': self.abbr+'USDT'})['price']
+        x = EverydayPriceDB.find_one({'symbol': self.symbolWithNoUnderscore})['price']
         self.basePrice = x
 
     # def resetDaily(self):
@@ -119,7 +127,10 @@ Coins = {
     "THETAUSDT": Coin("THETAUSDT", notify=False),
     "WANUSDT": Coin("WANUSDT", notify=False),
     "XTZUSDT": Coin("XTZUSDT", notify=False),
-    "INJUSDT": Coin("INJUSDT")
+    "INJUSDT": Coin("INJUSDT"),
+    "RINGUSDT": Coin("RING_USDT", exchange='gate.io'),
+    'PHABUSD': Coin("PHABUSD"),
+    "eRSDLETH": Coin("eRSDL_ETH", exchange='bitmart')
 }
 
 

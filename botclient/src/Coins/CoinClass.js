@@ -25,18 +25,50 @@ class Coin {
     this.priceNow = priceNow;
     this.percentage_range = percentage_range;
     this.price_range = price_range;
+    this.tradingPair = this.getTradingPair();
     this.abbr = "";
     this.getAbbreviationName();
   }
 
   getAbbreviationName() {
-    let n = this.symbol.search("USDT");
-    if (n === -1) {
-      n = this.symbol.search("ETH");
+    switch (this.tradingPair) {
+      case "USDT":
+        this.abbr = this.symbol
+          .substring(0, this.symbol.length - 4)
+          .toLowerCase();
+        break;
+      case "BUSD":
+        this.abbr = this.symbol
+          .substring(0, this.symbol.length - 4)
+          .toLowerCase();
+        break;
+      case "ETH":
+        this.abbr = this.symbol
+          .substring(0, this.symbol.length - 3)
+          .toLowerCase();
+        break;
     }
-    this.abbr = this.symbol.substring(0, n).toLowerCase();
     if (this.abbr.charAt(this.abbr.length - 1) === "_") {
       this.abbr = this.abbr.substring(0, this.abbr.length - 1);
+    }
+  }
+
+  getTradingPair() {
+    if (
+      this.symbol.substring(this.symbol.length - 4, this.symbol.length) ===
+      "USDT"
+    ) {
+      return "USDT";
+    } else if (
+      this.symbol.substring(this.symbol.length - 4, this.symbol.length) ===
+      "BUSD"
+    ) {
+      return "BUSD";
+    } else if (
+      this.symbol.substring(this.symbol.length - 3, this.symbol.length) ===
+      "ETH"
+    ) {
+      return "ETH";
     }
   }
 }

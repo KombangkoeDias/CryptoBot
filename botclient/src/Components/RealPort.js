@@ -5,6 +5,7 @@ import PriceCard from "../Components/Prices/PriceCard";
 import Mode from "../Values/CoinValueMode";
 import $ from "jquery";
 import TotalPortFolio from "./SubComponents/TotalPortFolio/TotalPortFolio";
+import PieChart from "./SubComponents/PieChart/PieChart";
 
 const RealPort = () => {
   const [width, setWidth] = useState($(window).width());
@@ -36,9 +37,10 @@ const RealPort = () => {
   return (
     <React.Fragment>
       <TotalPortFolio />
+      <PieChart />
       <div className="row">
         <div className="col">
-          {CoinList.slice(0, CoinList.length / 2).map((coin, i) => (
+          {CoinList.slice(0, Math.ceil(CoinList.length / 2)).map((coin, i) => (
             <div
               className="row ml-3 mb-1 "
               style={{
@@ -62,7 +64,7 @@ const RealPort = () => {
           ))}
         </div>
         <div className="col">
-          {CoinList.slice(CoinList.length / 2, CoinList.length).map(
+          {CoinList.slice(Math.ceil(CoinList.length / 2), CoinList.length).map(
             (coin, i) => (
               <div
                 className="row ml-3 mb-1 mr-2"
@@ -74,7 +76,7 @@ const RealPort = () => {
               >
                 <PriceCard
                   updateCoinList={(info) =>
-                    updateCoinList(i + CoinList.length / 2, info)
+                    updateCoinList(i + Math.ceil(CoinList.length / 2), info)
                   }
                   coin={coin}
                   showbg={false}
