@@ -1,7 +1,3 @@
-import axios from "axios";
-import serverURL from "../configs/serverURL";
-import PriceService from "../Services/PriceService";
-
 class Coin {
   constructor(
     symbol,
@@ -25,9 +21,23 @@ class Coin {
     this.priceNow = priceNow;
     this.percentage_range = percentage_range;
     this.price_range = price_range;
+    this.symbolWithNoUnderscore = this.getSymbolWithNoUnderscore();
     this.tradingPair = this.getTradingPair();
     this.abbr = "";
     this.getAbbreviationName();
+  }
+
+  getSymbolWithNoUnderscore() {
+    let n = this.symbol.search("_");
+    let thisSymbol = "";
+    if (n !== -1) {
+      thisSymbol = thisSymbol + this.symbol.substring(0, n);
+      thisSymbol =
+        thisSymbol + this.symbol.substring(n + 1, this.symbol.length);
+    } else {
+      thisSymbol = this.symbol;
+    }
+    return thisSymbol;
   }
 
   getAbbreviationName() {

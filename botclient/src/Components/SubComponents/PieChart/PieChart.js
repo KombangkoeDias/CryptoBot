@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CanvasJSReact from "../../../CanvasJS/canvasjs.react";
 import CoinList from "../../../Coins/Coins";
+import PriceFunctions from "../../Prices/CalculatePriceFunctions";
 let CanvasJS = CanvasJSReact.CanvasJS;
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 class PieChart extends Component {
@@ -20,7 +21,15 @@ class PieChart extends Component {
         //console.log(CoinList[i].symbol);
         loaded = false;
       }
-      port = port + CoinList[i].amount * CoinList[i].priceNow.toFixed(2);
+      port =
+        port +
+        parseFloat(
+          PriceFunctions.calculateTotalHoldings(
+            CoinList[i].tradingPair,
+            CoinList[i].amount,
+            CoinList[i].priceNow
+          )
+        );
     }
     this.setState({ loaded: loaded, port: port.toFixed(2) });
     setTimeout(() => this.update(), 1000);
@@ -34,7 +43,15 @@ class PieChart extends Component {
       data.push({
         name: CoinList[i].abbr.toUpperCase(),
         y:
-          ((CoinList[i].amount * CoinList[i].priceNow) / this.state.port) * 100,
+          (parseFloat(
+            PriceFunctions.calculateTotalHoldings(
+              CoinList[i].tradingPair,
+              CoinList[i].amount,
+              CoinList[i].priceNow
+            )
+          ) /
+            this.state.port) *
+          100,
       });
     }
 
@@ -57,7 +74,7 @@ class PieChart extends Component {
       ],
       data: [
         {
-          type: "doughnut",
+          type: "pie",
           showInLegend: false,
           indexLabel: "{name}: {y}",
           yValueFormatString: "#,###.##'%'",
@@ -80,8 +97,8 @@ class PieChart extends Component {
             style={{ display: "flex", justifyContent: "center" }}
             className="mb-3"
           >
-            <div class="spinner-border" role="status">
-              <span class="sr-only">Loading...</span>
+            <div className="spinner-border" role="status">
+              <span className="sr-only">Loading...</span>
             </div>
           </div>
         )}

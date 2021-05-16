@@ -69,7 +69,7 @@ const amount = {
   SAFEMOON_USDT: 27357889,
   RING_USDT: 452.918,
   PHABUSD: 0,
-  eRSDLETH: 0,
+  eRSDLETH: 38,
   //ERSDLETH: 0,
 };
 

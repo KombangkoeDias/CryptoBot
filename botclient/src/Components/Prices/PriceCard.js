@@ -4,7 +4,9 @@ import Modal from "../../Values/Modal/CoinInfoModal";
 import Mode from "../../Values/CoinValueMode";
 import PriceService from "../../Services/PriceService";
 import CoinLogo from "../CoinImg/CoinLogo";
+import CoinList from "../../Coins/Coins";
 import Caret from "./Caret";
+import PriceFunctions from "./CalculatePriceFunctions";
 
 class PriceCard extends React.Component {
   constructor(props) {
@@ -77,6 +79,27 @@ class PriceCard extends React.Component {
     );
   }
 
+  checkIfNLargestGain(n) {
+    let upCoins = PriceFunctions.calculateLargeGains();
+    if (upCoins.length < n) {
+      return false;
+    }
+    return (
+      this.checkIfLoaded() &&
+      PriceFunctions.calculateLargeGains()[n - 1].symbol === this.props.symbol
+    );
+  }
+
+  checkIfLoaded() {
+    let load = true;
+    for (let i = 0; i < CoinList.length; ++i) {
+      if (CoinList[i].priceNow === 0) {
+        load = false;
+      }
+    }
+    return load;
+  }
+
   render() {
     //console.log(this.props.priceNow);
     let color = "white";
@@ -103,45 +126,83 @@ class PriceCard extends React.Component {
           padding: "10px",
           borderRadius: "10px",
           backgroundColor: color,
-          border: "1px solid gold",
+          border:
+            this.checkIfNLargestGain(1) && this.props.mode === Mode.NORMAL
+              ? "3px solid gold"
+              : this.checkIfNLargestGain(2) && this.props.mode === Mode.NORMAL
+              ? "3px solid silver"
+              : this.checkIfNLargestGain(3) && this.props.mode === Mode.NORMAL
+              ? "3px solid #CD7F32"
+              : "1px solid gold",
           boxShadow:
             "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
         }}
       >
         <CoinLogo coin={this.props.coin} />
         {this.state.info.percentage !== 0 && this.props.mode === Mode.NORMAL && (
-          <div
-            id={this.props.symbol}
-            style={{
-              position: "absolute",
-              top: "-10px",
-              left: "0px",
-              width: "50px",
-              height: "30px",
-              border: "1px solid gold",
-              backgroundColor:
-                this.state.info.side === "up" ? "lightgreen" : "red",
-              borderRadius: "50%",
-              fontSize: "13px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              color: this.state.info.side === "up" ? "black" : "white",
-            }}
-          >
-            {this.state.info.percentage + "%"}
-          </div>
+          <React.Fragment>
+            <div
+              id={this.props.symbol}
+              style={{
+                position: "absolute",
+                top: "-10px",
+                left: "0px",
+                width: "50px",
+                height: "30px",
+                border: "1px solid gold",
+                backgroundColor:
+                  this.state.info.side === "up" ? "lightgreen" : "red",
+                borderRadius: "50%",
+                fontSize: "13px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                color: this.state.info.side === "up" ? "black" : "white",
+              }}
+            >
+              {this.state.info.percentage + "%"}
+            </div>
+            {this.checkIfNLargestGain(1) && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "-30px",
+                  left: "30px",
+                  transform: "rotate(30deg)",
+                }}
+              >
+                <img
+                  src="Asset/accessories/crown.png"
+                  width="50"
+                  height="50"
+                ></img>
+              </div>
+            )}
+          </React.Fragment>
         )}
         {this.props.mode === Mode.NORMAL && (
           <>
-            {this.props.coin.symbol} : {this.state.info.priceNow}
+            {this.props.coin.symbolWithNoUnderscore} :{" "}
+            {this.state.info.priceNow}
           </>
         )}
         {this.props.mode == Mode.HOLDINGS && (
           <>
             {" "}
             {this.props.coin.amount} {this.props.coin.abbr.toUpperCase()} = ${" "}
-            {(this.props.coin.amount * this.state.info.priceNow).toFixed(2)}
+            {PriceFunctions.calculateTotalHoldings(
+              this.props.coin.tradingPair,
+              this.props.coin.amount,
+              this.state.info.priceNow
+            )}
+            {/* {this.props.coin.tradingPair !== "ETH"
+              ? (this.props.coin.amount * this.state.info.priceNow).toFixed(2)
+              : (
+                  this.props.coin.amount *
+                  this.state.info.priceNow *
+                  CoinList.filter((coin) => coin.symbol === "ETHUSDT")[0]
+                    .priceNow
+                ).toFixed(2)} */}
           </>
         )}{" "}
         <Caret
