@@ -5,39 +5,86 @@ import PriceCard from "./PriceCard";
 import Mode from "../../Values/CoinValueMode";
 import CoinListShow from "../SubComponents/CoinListShow/CoinListShow";
 import styles from "./Prices.module.css";
+import PriceFunctions from "./CalculatePriceFunctions";
 import $ from "jquery";
 
 const Prices = (props) => {
-  function addNewCoin() {
-    const symbol = $("#symbol").val();
-    const pair = $("#pair").val();
-    const exchange = $("#exchange").val();
-    CoinList.push(new Coin(symbol + pair, exchange));
-    console.log(CoinList);
-  }
+  // function addNewCoin() {
+  //   const symbol = $("#symbol").val();
+  //   const pair = $("#pair").val();
+  //   const exchange = $("#exchange").val();
+  //   CoinList.push(new Coin(symbol + pair, exchange));
+  //   console.log(CoinList);
+  // }
 
   const [display, setDisplay] = useState(4);
+  const [modified_CoinList, setModifiedCoinList] = useState([...CoinList]);
+  const [rankBy, setRankBy] = useState("Alphabet");
 
-  function updateCoinList(i, info) {
-    let new_coin = new Coin(
-      CoinList[i].symbol,
-      CoinList[i].exchange,
-      CoinList[i].amount,
-      info.basePrice,
-      info.percentage,
-      info.percentage_range,
-      info.price_range,
-      info.side,
-      info.priceNow
-    );
-    CoinList[i] = new_coin;
-  }
+  const RankBy = (field) => {
+    let tmp = [...CoinList];
+    switch (field) {
+      case "Price":
+        tmp.sort((a, b) => b.priceNow - a.priceNow);
+        break;
+      case "Amount":
+        tmp.sort((a, b) => b.amount - a.amount);
+        break;
+      case "Percentage":
+        tmp.sort((a, b) => b.percentage - a.percentage);
+        break;
+      case "Total Value":
+        tmp.sort(
+          (a, b) =>
+            parseFloat(
+              PriceFunctions.calculateTotalHoldings(
+                b.tradingPair,
+                b.amount,
+                b.priceNow
+              )
+            ) -
+            parseFloat(
+              PriceFunctions.calculateTotalHoldings(
+                a.tradingPair,
+                a.amount,
+                a.priceNow
+              )
+            )
+        );
+        break;
+      case "Alphabet":
+        tmp.sort((a, b) => b.symbol - a.symbol);
+        break;
+    }
+    setModifiedCoinList(tmp);
+    setRankBy(field);
+  };
+
+  let RankConditions = [
+    "Alphabet",
+    "Price",
+    "Amount",
+    "Percentage",
+    "Total Value",
+  ];
+
+  const ResetRank = () => {
+    setModifiedCoinList(CoinList);
+    setRankBy("");
+  };
 
   const buttonStyle = (val) => {
     return {
       backgroundColor: display === val ? "orange" : "white",
       width: "50px",
       borderRadius: "6px",
+    };
+  };
+
+  const rankButtonStyle = (val) => {
+    return {
+      backgroundColor: rankBy === val ? "gold" : "transparent",
+      border: rankBy === val ? "1px solid gold" : "transparent",
     };
   };
 
@@ -78,9 +125,24 @@ const Prices = (props) => {
           >
             6
           </button>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div className="mr-1">Rank By:</div>
+            {RankConditions.map((cond) => {
+              return (
+                <button
+                  key={cond}
+                  className={"btn " + styles.displayButton}
+                  style={rankButtonStyle(cond)}
+                  onClick={() => RankBy(cond)}
+                >
+                  {cond}
+                </button>
+              );
+            })}
+          </div>
         </div>
         <div className="row ml-2 mr-2 mt-4">
-          {CoinList.map((coin, i) => (
+          {modified_CoinList.map((coin) => (
             <div
               className={"col-" + 12 / display + " mb-3"}
               style={{
@@ -92,7 +154,9 @@ const Prices = (props) => {
               key={coin.symbol}
             >
               <PriceCard
-                updateCoinList={(info) => updateCoinList(i, info)}
+                updateCoinList={(symbol, info) =>
+                  PriceFunctions.updateCoinList(symbol, info)
+                }
                 coin={coin}
                 showbg={true}
                 showname={true}

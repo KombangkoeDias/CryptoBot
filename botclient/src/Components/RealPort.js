@@ -6,6 +6,7 @@ import Mode from "../Values/CoinValueMode";
 import $ from "jquery";
 import TotalPortFolio from "./SubComponents/TotalPortFolio/TotalPortFolio";
 import PieChart from "./SubComponents/PieChart/PieChart";
+import PriceFunctions from "./Prices/CalculatePriceFunctions";
 
 const RealPort = () => {
   const [width, setWidth] = useState($(window).width());
@@ -18,21 +19,6 @@ const RealPort = () => {
       setHeight($(window).height());
     });
   }, []);
-
-  function updateCoinList(i, info) {
-    let new_coin = new Coin(
-      CoinList[i].symbol,
-      CoinList[i].exchange,
-      CoinList[i].amount,
-      info.basePrice,
-      info.percentage,
-      info.percentage_range,
-      info.price_range,
-      info.side,
-      info.priceNow
-    );
-    CoinList[i] = new_coin;
-  }
 
   return (
     <React.Fragment>
@@ -50,7 +36,9 @@ const RealPort = () => {
               }}
             >
               <PriceCard
-                updateCoinList={(info) => updateCoinList(i, info)}
+                updateCoinList={(symbol, info) =>
+                  PriceFunctions.updateCoinList(symbol, info)
+                }
                 coin={coin}
                 showbg={false}
                 showname={true}
@@ -75,8 +63,8 @@ const RealPort = () => {
                 }}
               >
                 <PriceCard
-                  updateCoinList={(info) =>
-                    updateCoinList(i + Math.ceil(CoinList.length / 2), info)
+                  updateCoinList={(symbol, info) =>
+                    PriceFunctions.updateCoinList(symbol, info)
                   }
                   coin={coin}
                   showbg={false}

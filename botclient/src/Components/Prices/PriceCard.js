@@ -36,7 +36,7 @@ class PriceCard extends React.Component {
 
       const info = await PriceService.getInfo(theSymbol);
       //console.log(info);
-      this.props.updateCoinList(info);
+      this.props.updateCoinList(this.props.symbol, info);
       if (this.state.info.priceNow !== 0) {
         if (info.priceNow > this.state.info.priceNow) {
           //console.log("up");
@@ -98,6 +98,10 @@ class PriceCard extends React.Component {
       }
     }
     return load;
+  }
+
+  showValue() {
+    return this.state.info.priceNow;
   }
 
   render() {
@@ -182,8 +186,7 @@ class PriceCard extends React.Component {
         )}
         {this.props.mode === Mode.NORMAL && (
           <>
-            {this.props.coin.symbolWithNoUnderscore} :{" "}
-            {this.state.info.priceNow}
+            {this.props.coin.symbolWithNoUnderscore} : {this.showValue()}
           </>
         )}
         {this.props.mode == Mode.HOLDINGS && (
@@ -195,14 +198,6 @@ class PriceCard extends React.Component {
               this.props.coin.amount,
               this.state.info.priceNow
             )}
-            {/* {this.props.coin.tradingPair !== "ETH"
-              ? (this.props.coin.amount * this.state.info.priceNow).toFixed(2)
-              : (
-                  this.props.coin.amount *
-                  this.state.info.priceNow *
-                  CoinList.filter((coin) => coin.symbol === "ETHUSDT")[0]
-                    .priceNow
-                ).toFixed(2)} */}
           </>
         )}{" "}
         <Caret

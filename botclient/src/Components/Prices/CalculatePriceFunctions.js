@@ -1,5 +1,6 @@
 import CoinList from "../../Coins/Coins";
-const CalculatePriceFunctions = {
+import Coin from "../../Coins/CoinClass";
+const PriceFunctions = {
   calculateTotalHoldings: (tradingPair, amount, priceNow) => {
     if (tradingPair === "ETH") {
       return (
@@ -16,6 +17,22 @@ const CalculatePriceFunctions = {
     upCoins = upCoins.sort((a, b) => b.percentage - a.percentage);
     return upCoins;
   },
+  updateCoinList: (symbol, info) => {
+    let the_coin = CoinList.filter((coin) => coin.symbol === symbol)[0];
+    let i = CoinList.indexOf(the_coin);
+    let new_coin = new Coin(
+      CoinList[i].symbol,
+      CoinList[i].exchange,
+      CoinList[i].amount,
+      info.basePrice,
+      info.percentage,
+      info.percentage_range,
+      info.price_range,
+      info.side,
+      info.priceNow
+    );
+    CoinList[i] = new_coin;
+  },
 };
 
-export default CalculatePriceFunctions;
+export default PriceFunctions;
