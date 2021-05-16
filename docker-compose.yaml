@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+
+    botclient:
+      image: botclient:latest
+      build: botclient
+      links: 
+        - botlogic:botlogic
+      ports:
+        - 3000:3000
+    
+    botlogic:
+      image: botlogic:latest
+      build: botlogic
+      ports:
+        - 5000:5000

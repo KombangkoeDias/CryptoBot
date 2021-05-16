@@ -98,7 +98,7 @@ const Prices = (props) => {
             justifyContent: "center",
           }}
         >
-          <h2>Coins in watchlist</h2>
+          <h2 className="mt-2">Coins in watchlist</h2>
         </div>
         <div
           className="row"

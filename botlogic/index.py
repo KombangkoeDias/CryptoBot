@@ -15,6 +15,11 @@ cors = CORS(app)
 app.config['CORS_HEADER'] = 'Content-Type'
 
 
+@app.route('/ping', methods=['GET'])
+@cross_origin()
+def ping():
+    return "pong"
+
 @app.route('/EverydayPrice', methods=['GET'])
 @cross_origin()
 def EverydayPrice():
