@@ -2,11 +2,13 @@ import React from "react";
 import CoinValues from "../../Values/CoinTextValues";
 import Modal from "../../Values/Modal/CoinInfoModal";
 import Mode from "../../Values/CoinValueMode";
-import PriceService from "../../Services/PriceService";
+import PriceService from "../../Services/CoinService";
 import CoinLogo from "../CoinImg/CoinLogo";
 import CoinList from "../../Coins/Coins";
 import Caret from "./Caret";
 import PriceFunctions from "./CalculatePriceFunctions";
+import { ThemeContext, themes } from "../../Contexts/Theme";
+import CSS from "../../Constants/ConstantCSS";
 
 class PriceCard extends React.Component {
   constructor(props) {
@@ -106,7 +108,8 @@ class PriceCard extends React.Component {
 
   render() {
     //console.log(this.props.priceNow);
-    let color = "white";
+    let value = this.context;
+    let color = value.card;
     if (this.props.showbg) {
       if (this.state.up !== null) {
         if (this.state.up) {
@@ -138,8 +141,8 @@ class PriceCard extends React.Component {
               : this.checkIfNLargestGain(3) && this.props.mode === Mode.NORMAL
               ? "3px solid #CD7F32"
               : "1px solid gold",
-          boxShadow:
-            "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+          boxShadow: CSS.boxShadow,
+          color: value.text,
         }}
       >
         <CoinLogo coin={this.props.coin} />
@@ -224,4 +227,5 @@ class PriceCard extends React.Component {
   }
 }
 
+PriceCard.contextType = ThemeContext;
 export default PriceCard;

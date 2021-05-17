@@ -8,6 +8,7 @@ from Functions.CoinInfo import CoinInfoFunc
 from Functions.CoinBuy import CoinBuyFunc
 from Functions.CoinSell import CoinSellFunc
 from Functions.CoinTradeData import CoinTradeDataFunc
+from Functions.CheckIfExist import CheckIfExistFunc
 
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
@@ -55,10 +56,14 @@ def CoinBuy():
 def CoinSell():
     return CoinSellFunc()
 
-
 @app.route('/coin/trade_data', methods=['POST'])
 @cross_origin()
 def GetCoinTradeData():
     return CoinTradeDataFunc()
+
+@app.route('/coin/checkIfExist', methods=['POST'])
+@cross_origin()
+def CheckIfExist():
+    return CheckIfExistFunc()
 app.run()
 

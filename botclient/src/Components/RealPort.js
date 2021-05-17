@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import CoinList from "../Coins/Coins";
 import Coin from "../Coins/CoinClass";
 import PriceCard from "../Components/Prices/PriceCard";
@@ -7,8 +7,10 @@ import $ from "jquery";
 import TotalPortFolio from "./SubComponents/TotalPortFolio/TotalPortFolio";
 import PieChart from "./SubComponents/PieChart/PieChart";
 import PriceFunctions from "./Prices/CalculatePriceFunctions";
+import { ThemeContext, themes } from "../Contexts/Theme";
 
 const RealPort = () => {
+  const value = useContext(ThemeContext);
   const [width, setWidth] = useState($(window).width());
   const [height, setHeight] = useState($(window).height());
   const [Prices, setPrices] = useState([]);
@@ -21,7 +23,7 @@ const RealPort = () => {
   }, []);
 
   return (
-    <React.Fragment>
+    <div style={{ backgroundColor: value.background, color: value.text }}>
       <TotalPortFolio />
       <PieChart />
       <div className="row">
@@ -80,7 +82,7 @@ const RealPort = () => {
           )}
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

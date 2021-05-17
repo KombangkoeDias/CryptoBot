@@ -1,7 +1,7 @@
 import axios from "axios";
 import serverURL from "../configs/serverURL";
 
-const PriceService = {
+const CoinService = {
   getBasePrice: async (symbol) => {
     const respond = await axios.get(serverURL + "/basePrice", {
       params: {
@@ -18,6 +18,16 @@ const PriceService = {
     });
     return respond.data;
   },
+  checkIfExist: async (symbol, exchange) => {
+    const respond = await axios.post(serverURL + "/coin/checkIfExist", {
+      symbol: symbol,
+      exchange: exchange,
+    });
+    if (respond.data["exist"]) {
+      return true;
+    }
+    return false;
+  },
 };
 
-export default PriceService;
+export default CoinService;

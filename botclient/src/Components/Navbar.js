@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./Navbar.module.css";
-import { ThemeContext, themes } from "../Constants/Theme";
+import { ThemeContext, themes } from "../Contexts/Theme";
 
 const Navbar = (props) => {
   const [pathState, setPathState] = useState("");

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import CanvasJSReact from "../../../CanvasJS/canvasjs.react";
 import CoinList from "../../../Coins/Coins";
 import PriceFunctions from "../../Prices/CalculatePriceFunctions";
+import { ThemeContext, themes } from "../../../Contexts/Theme";
+
 let CanvasJS = CanvasJSReact.CanvasJS;
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 class PieChart extends Component {
@@ -38,6 +40,7 @@ class PieChart extends Component {
     this.update();
   }
   render() {
+    let value = this.context;
     let data = [];
     for (let i = 0; i < CoinList.length; ++i) {
       data.push({
@@ -62,8 +65,10 @@ class PieChart extends Component {
     const options = {
       animationEnabled: true,
       title: {
-        text: "Porfolio",
+        text: "Portfolio",
+        fontColor: value.text,
       },
+      backgroundColor: value.background,
       subtitles: [
         {
           text: "",
@@ -77,6 +82,7 @@ class PieChart extends Component {
           type: "pie",
           showInLegend: false,
           indexLabel: "{name}: {y}",
+          indexLabelFontColor: value.text,
           yValueFormatString: "#,###.##'%'",
           dataPoints: data,
         },
@@ -107,4 +113,5 @@ class PieChart extends Component {
     );
   }
 }
+PieChart.contextType = ThemeContext;
 export default PieChart;

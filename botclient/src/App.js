@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Router from "./Routers/Main";
 import Navbar from "./Components/Navbar";
-import { ThemeContext, themes } from "./Constants/Theme";
+import { ThemeContext, themes } from "./Contexts/Theme";
 
 function App() {
   const [theme, setTheme] = useState(themes.dark);

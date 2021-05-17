@@ -2,6 +2,7 @@ import React from "react";
 import CoinList from "../../../Coins/Coins";
 import Caret from "../../Prices/Caret";
 import Mode from "../../../Values/CoinValueMode";
+import { ThemeContext, themes } from "../../../Contexts/Theme";
 
 class TotalPortFolio extends React.Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class TotalPortFolio extends React.Component {
   }
 
   render() {
+    let value = this.context;
     return (
       <div className="row">
         <div
@@ -56,7 +58,7 @@ class TotalPortFolio extends React.Component {
                     textAlign: "center",
                     color:
                       this.state.up === null
-                        ? "black"
+                        ? value.text
                         : this.state.up
                         ? "green"
                         : "red",
@@ -86,5 +88,6 @@ class TotalPortFolio extends React.Component {
     );
   }
 }
+TotalPortFolio.contextType = ThemeContext;
 
 export default TotalPortFolio;

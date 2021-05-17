@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Coin from "../../Coins/CoinClass";
 import CoinList from "../../Coins/Coins";
 import PriceCard from "./PriceCard";
@@ -6,7 +6,7 @@ import Mode from "../../Values/CoinValueMode";
 import CoinListShow from "../SubComponents/CoinListShow/CoinListShow";
 import styles from "./Prices.module.css";
 import PriceFunctions from "./CalculatePriceFunctions";
-import $ from "jquery";
+import { ThemeContext, themes } from "../../Contexts/Theme";
 
 const Prices = (props) => {
   // function addNewCoin() {
@@ -16,6 +16,7 @@ const Prices = (props) => {
   //   CoinList.push(new Coin(symbol + pair, exchange));
   //   console.log(CoinList);
   // }
+  const value = useContext(ThemeContext);
 
   const [display, setDisplay] = useState(4);
   const [modified_CoinList, setModifiedCoinList] = useState([...CoinList]);
@@ -83,19 +84,32 @@ const Prices = (props) => {
 
   const rankButtonStyle = (val) => {
     return {
-      backgroundColor: rankBy === val ? "gold" : "transparent",
+      backgroundColor:
+        rankBy === val
+          ? value === themes.dark
+            ? value.card
+            : "gold"
+          : "transparent",
       border: rankBy === val ? "1px solid gold" : "transparent",
+      color: value.text,
     };
   };
 
   return (
     <React.Fragment>
-      <div style={{ overflowX: "hidden" }}>
+      <div
+        style={{
+          overflowX: "hidden",
+          backgroundColor: value.background,
+          color: value.text,
+        }}
+      >
         <div
           className="row"
           style={{
             display: "flex",
             justifyContent: "center",
+            backgroundColor: value.background,
           }}
         >
           <h2 className="mt-2">Coins in watchlist</h2>
