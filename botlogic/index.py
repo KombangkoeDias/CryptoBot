@@ -66,5 +66,5 @@ def GetCoinTradeData():
 @cross_origin()
 def CheckIfExist():
     return CheckIfExistFunc()
-app.run()
+app.run(host="0.0.0.0", port=5000)
 
