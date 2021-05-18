@@ -2,7 +2,6 @@ import React from "react";
 import Mode from "./CoinValueMode";
 
 const CoinValues = (props) => {
-  console.log(props.info.price_range);
   function Caret() {
     return props.up !== null && props.amount !== 0 ? (
       props.up ? (

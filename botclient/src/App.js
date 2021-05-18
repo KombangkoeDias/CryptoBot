@@ -4,10 +4,31 @@ import Navbar from "./Components/Navbar";
 import { ThemeContext, themes } from "./Contexts/Theme";
 
 function App() {
-  const [theme, setTheme] = useState(themes.dark);
+  let existingTheme = "";
+  if (localStorage.getItem("theme")) {
+    switch (localStorage.getItem("theme")) {
+      case "dark":
+        existingTheme = themes.dark;
+        break;
+      case "light":
+        existingTheme = themes.light;
+        break;
+    }
+  } else {
+    existingTheme = themes.dark;
+    localStorage.setItem("theme", "dark");
+  }
+  console.log(localStorage.getItem("theme"));
+  const [theme, setTheme] = useState(existingTheme);
 
   const toggleTheme = () => {
     setTheme(theme === themes.dark ? themes.light : themes.dark);
+    if (localStorage.getItem("theme") === "dark") {
+      localStorage.setItem("theme", "light");
+    } else {
+      localStorage.setItem("theme", "dark");
+    }
+    console.log(localStorage.getItem("theme"));
   };
 
   return (
