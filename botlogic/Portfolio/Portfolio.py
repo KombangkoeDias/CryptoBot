@@ -57,10 +57,10 @@ class Portfolio:
         if sell_price == 0:
             return {'error': 'can\'t sell, exchange not correct'}
         value = self.PortDB.find_one({'symbol': symbol})
-        self.createTransaction(symbol, amount, sell_price, 'sell')
         if value is None or amount > float(value['amount']):
-            raise ValueError('Not enough coin amount, can\'t sell')
+            return {"error": 'can\'t sell, not enough coin'}
         else:
+            self.createTransaction(symbol, amount, sell_price, 'sell')
             currAmount = float(value['amount'])
             currAverageBuy = float(value['average_buy'])
             self.PortDB.update_one({'symbol': symbol},
