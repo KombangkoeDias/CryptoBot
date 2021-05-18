@@ -117,7 +117,7 @@ const BuyComponent = (props) => {
       <div className="row" style={{ padding: "0px 10px 0px 10px" }}>
         <div className="col">
           {(symbol === "" || exchange === "" || pair == "") && (
-            <p>Enter symbol and exchange</p>
+            <p>Enter symbol, pair and choose exchange</p>
           )}
           {exist === null && symbol !== "" && exchange !== "" && pair != "" && (
             <p>Searching...</p>
