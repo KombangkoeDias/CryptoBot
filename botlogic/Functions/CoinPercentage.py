@@ -1,4 +1,4 @@
-from Coin.coin import Coins
+from ..Coin.coin import Coins
 from flask import request
 
 

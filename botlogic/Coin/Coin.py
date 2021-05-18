@@ -1,6 +1,6 @@
-from Coin.notification import PercentageReached
-from Coin.apiConnector import getPrice
-from Controller.DatabaseConnector import EverydayPriceDB
+from .notification import PercentageReached
+from .apiConnector import getPrice
+from ..Controller.DatabaseConnector import EverydayPriceDB
 
 pairs = ['USDT', 'BUSD', 'ETH', 'BTC']
 

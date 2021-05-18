@@ -1,4 +1,3 @@
-import requests
 
 class PercentageReached:
     def __init__(self,sturdy):

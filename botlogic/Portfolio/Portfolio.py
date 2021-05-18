@@ -1,6 +1,6 @@
 from datetime import datetime
-from Coin.coin import Coin
-from Controller.DatabaseConnector import BotPort, BotProfit, BotTransaction, RealPort, RealProfit, RealTransaction
+from ..Coin.coin import Coin
+from ..Controller.DatabaseConnector import BotPort, BotProfit, BotTransaction, RealPort, RealProfit, RealTransaction
 
 class Portfolio:
     def __init__(self, PortDB, ProfitDB, TransactionDB):

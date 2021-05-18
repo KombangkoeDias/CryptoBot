@@ -1,6 +1,5 @@
-from Coin.coin import Coins
+from ..Coin.coin import Coins
 from flask import request
-from Controller.DatabaseConnector import EverydayPriceDB
 
 
 def CoinInfoFunc():
