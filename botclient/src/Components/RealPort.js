@@ -8,6 +8,7 @@ import TotalPortFolio from "./SubComponents/TotalPortFolio/TotalPortFolio";
 import PieChart from "./SubComponents/PieChart/PieChart";
 import PriceFunctions from "./Prices/CalculatePriceFunctions";
 import { ThemeContext, themes } from "../Contexts/Theme";
+import TradeComponent from "./SubComponents/TradeComponent/TradeComponent";
 
 const RealPort = () => {
   const value = useContext(ThemeContext);
@@ -23,7 +24,13 @@ const RealPort = () => {
   }, []);
 
   return (
-    <div style={{ backgroundColor: value.background, color: value.text }}>
+    <div
+      style={{
+        backgroundColor: value.background,
+        color: value.text,
+        overflowX: "hidden",
+      }}
+    >
       <TotalPortFolio />
       <PieChart />
       <div className="row">
@@ -81,6 +88,22 @@ const RealPort = () => {
             )
           )}
         </div>
+      </div>
+      <div
+        className="row mt-3"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <h3>Edit Port</h3>
+      </div>
+      <div
+        className="row"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: value.background,
+        }}
+      >
+        <TradeComponent port={"real_port"} />
       </div>
     </div>
   );

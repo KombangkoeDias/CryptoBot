@@ -1,6 +1,7 @@
 from datetime import datetime
 from Coin.coin import Coin
 from Controller.DatabaseConnector import BotPort, BotProfit, BotTransaction, RealPort, RealProfit, RealTransaction
+from flask import request
 
 class Portfolio:
     def __init__(self, PortDB, ProfitDB, TransactionDB):
@@ -30,7 +31,9 @@ class Portfolio:
 
     def buyCoin(self, _symbol, amount ,exchange):
         coin = Coin(_symbol, exchange)
-        buy_price = coin.getCurrentPrice()
+        buy_price = request.json.get('buy_price')
+        if buy_price == None:
+            buy_price = coin.getCurrentPrice()
         symbol = coin.symbolWithNoUnderscore
         if buy_price == 0:
             return {'error': 'can\'t buy, exchange not correct'}
@@ -47,7 +50,9 @@ class Portfolio:
                 "buy_price": buy_price}
     def sellCoin(self, _symbol, amount, exchange):
         coin = Coin(_symbol, exchange)
-        sell_price = coin.getCurrentPrice()
+        sell_price = request.json.get('sell_price')
+        if sell_price == None:
+            sell_price = coin.getCurrentPrice()
         symbol = coin.symbolWithNoUnderscore
         if sell_price == 0:
             return {'error': 'can\'t sell, exchange not correct'}

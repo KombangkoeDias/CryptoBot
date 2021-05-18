@@ -155,6 +155,7 @@ const Prices = (props) => {
             })}
           </div>
         </div>
+
         <div className="row ml-2 mr-2 mt-4">
           {modified_CoinList.map((coin) => (
             <div
