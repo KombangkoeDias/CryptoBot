@@ -14,7 +14,6 @@ const RealPort = () => {
   const value = useContext(ThemeContext);
   const [width, setWidth] = useState($(window).width());
   const [height, setHeight] = useState($(window).height());
-  const [Prices, setPrices] = useState([]);
 
   useEffect(() => {
     $(window).on("resize", () => {
@@ -33,6 +32,23 @@ const RealPort = () => {
     >
       <TotalPortFolio />
       <PieChart />
+      <div
+        className="row"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <button
+          className="btn btn-secondary mb-2"
+          style={{ width: "100px" }}
+          onClick={() => {
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+          }}
+        >
+          Edit
+        </button>
+      </div>
       <div className="row">
         <div className="col">
           {CoinList.slice(0, Math.ceil(CoinList.length / 2)).map((coin, i) => (
@@ -93,7 +109,7 @@ const RealPort = () => {
         className="row mt-3"
         style={{ display: "flex", justifyContent: "center" }}
       >
-        <h3>Edit Port</h3>
+        <h3>Edit Portfolio</h3>
       </div>
       <div
         className="row"

@@ -7,7 +7,7 @@ import TradeService from "../../../Services/TradeService";
 
 const BuyComponent = (props) => {
   const [symbol, setSymbol] = useState("");
-  const [trade, setTrade] = useState("");
+  const [trade, setTrade] = useState("buy");
   const [pair, setPair] = useState("");
   const [exchange, setExchange] = useState("binance");
   const [amount, setAmount] = useState("");
@@ -42,13 +42,6 @@ const BuyComponent = (props) => {
       setExist(null);
     }
   }, [symbol, pair, exchange]);
-
-  useEffect(() => {
-    if (trade !== "") {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-    }
-    //window.scrollTo(0, document.body.scrollHeight);
-  }, [trade]);
 
   const ValidateInput = () => {
     if (symbol === "") {
@@ -103,19 +96,6 @@ const BuyComponent = (props) => {
         <button
           className={"btn btn-primary mr-3 " + styles.buttonStyle}
           style={{
-            backgroundColor: trade === "sell" ? value.selected : "grey",
-            color: trade === "sell" ? value.text : "white",
-            width: "100px",
-          }}
-          onClick={() => {
-            setTrade("sell");
-          }}
-        >
-          Sell
-        </button>
-        <button
-          className={"btn btn-primary " + styles.buttonStyle}
-          style={{
             backgroundColor: trade === "buy" ? value.selected : "grey",
             color: trade === "buy" ? value.text : "white",
             width: "100px",
@@ -125,6 +105,19 @@ const BuyComponent = (props) => {
           }}
         >
           Buy
+        </button>
+        <button
+          className={"btn btn-primary " + styles.buttonStyle}
+          style={{
+            backgroundColor: trade === "sell" ? value.selected : "grey",
+            color: trade === "sell" ? value.text : "white",
+            width: "100px",
+          }}
+          onClick={() => {
+            setTrade("sell");
+          }}
+        >
+          Sell
         </button>
       </div>
 
@@ -258,6 +251,12 @@ const BuyComponent = (props) => {
               style={{ display: "flex", justifyContent: "flex-end" }}
             >
               {" "}
+              <button
+                className={styles.executeButton + " mr-3"}
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              >
+                Back To Top
+              </button>
               <button
                 className={styles.executeButton}
                 onClick={() => ExecuteTrade()}
