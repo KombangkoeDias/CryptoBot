@@ -18,7 +18,7 @@ function App() {
     existingTheme = themes.dark;
     localStorage.setItem("theme", "dark");
   }
-  console.log(localStorage.getItem("theme"));
+
   const [theme, setTheme] = useState(existingTheme);
 
   const toggleTheme = () => {
@@ -28,7 +28,6 @@ function App() {
     } else {
       localStorage.setItem("theme", "dark");
     }
-    console.log(localStorage.getItem("theme"));
   };
 
   return (
