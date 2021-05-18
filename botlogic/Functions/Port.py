@@ -1,6 +1,6 @@
-from ..Portfolio.Portfolio import BotPortfolio, RealPortfolio
+from Portfolio.Portfolio import BotPortfolio, RealPortfolio
 from flask import request
-from ..Coin.coin import Coin
+from Coin.coin import Coin
 
 NoPortError = {"error": "no such port"}
 

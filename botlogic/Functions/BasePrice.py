@@ -1,5 +1,5 @@
 from flask import request
-from ..Coin.coin import Coins
+from Coin.coin import Coins
 
 def BasePriceFunc():
     symbol = request.args.get('symbol')

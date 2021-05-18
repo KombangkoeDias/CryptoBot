@@ -1,5 +1,5 @@
 from flask import request
-from ..Coin.coin import Coin
+from Coin.coin import Coin
 
 def CheckIfExistFunc():
     request.get_data()

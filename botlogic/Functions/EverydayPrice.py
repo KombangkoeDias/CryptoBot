@@ -1,4 +1,4 @@
-from ..Controller.DatabaseConnector import EverydayPriceDB
+from Controller.DatabaseConnector import EverydayPriceDB
 
 def EverydayPriceFunc():
     res = dict()
