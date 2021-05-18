@@ -30,12 +30,15 @@ class Coin:
         return theSymbol
 
     def getAbbreviation(self):
-        for pair in pairs:
-            if self.tradingPair == pair:
-                self.abbr = self.symbol[:len(self.symbol)-len(pair)]
-                break
-        if(self.abbr[-1] == '_'):
-            self.abbr = self.abbr[0:-1]
+        try:
+            for pair in pairs:
+                if self.tradingPair == pair:
+                    self.abbr = self.symbol[:len(self.symbol)-len(pair)]
+                    break
+            if(self.abbr[-1] == '_'):
+                self.abbr = self.abbr[0:-1]
+        except:
+            print("no such pair", flush=True)
 
 
     def calculatePercentage(self):

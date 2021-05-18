@@ -57,7 +57,7 @@ const BuyComponent = (props) => {
         }}
         className="row"
       >
-        <label htmlFor="symbol" className="col ">
+        <label htmlFor="symbol" className="col">
           Symbol
         </label>
         <input
@@ -68,7 +68,7 @@ const BuyComponent = (props) => {
           style={{ textTransform: "uppercase" }}
           onChange={(e) => setSymbol(e.target.value.toUpperCase())}
         />
-        <label htmlFor="pair" className="col ">
+        <label htmlFor="pair" className="col">
           Pair
         </label>
         <input
@@ -97,6 +97,7 @@ const BuyComponent = (props) => {
           name="exchange"
           value={exchange}
           onChange={(e) => setExchange(e.target.value)}
+          className="col"
         >
           <option value="binance">binance</option>
           <option value="gate.io">gate.io</option>
@@ -124,7 +125,9 @@ const BuyComponent = (props) => {
           {exist !== null && (
             <div>
               {symbol !== "" && exchange !== "" && pair != "" && (
-                <p>{exist ? "Symbol Existed!" : "Symbol Not Existed!"}</p>
+                <p style={{ color: exist ? "lightgreen" : "darkred" }}>
+                  {exist ? "Symbol Existed!" : "Symbol Not Existed!"}
+                </p>
               )}
             </div>
           )}
