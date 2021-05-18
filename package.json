@@ -8,6 +8,7 @@
     "client": "cd botclient && yarn start",
     "logic": "cd botlogic && source venv/bin/activate && python3 index.py",
     "test": "node test.js",
+    "docker": "docker-compose up --build",
     "deploy-client": "git subtree push --prefix botclient botclient main",
     "deploy-server": "git subtree push --prefix botlogic botlogic main"
   },

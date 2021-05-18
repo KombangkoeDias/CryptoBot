@@ -2,6 +2,7 @@ import React from "react";
 import Mode from "./CoinValueMode";
 
 const CoinValues = (props) => {
+  console.log(props.info.price_range);
   function Caret() {
     return props.up !== null && props.amount !== 0 ? (
       props.up ? (
@@ -30,13 +31,14 @@ const CoinValues = (props) => {
         <React.Fragment>
           {props.showname && props.symbol} : {props.priceNow}
           {"  "}
+          {Caret()}
         </React.Fragment>
       )}
       {props.mode === Mode.HOLDINGS && (
         <>
           {props.amount} {props.showname && props.abbr}{" "}
           <i className="fa fa-long-arrow-alt-right"></i> ${" "}
-          {parseFloat(props.amount * props.priceNow).toFixed(4)}{" "}
+          {parseFloat(props.amount * props.priceNow).toFixed(4)} {Caret()}
         </>
       )}
       {props.mode === Mode.MODAL && (
@@ -44,10 +46,17 @@ const CoinValues = (props) => {
           {props.showname && props.symbol} : {props.priceNow} USDT
           <br />
           Today : {props.side} {props.percentage}
-          {"% "}
+          {Caret()}
+          <br />
+          From base price of {props.info.basePrice}
+          <br />
+          {/* With price range of {props.info.price_range[0]} to{" "}
+          {props.info.price_range[1]}
+          <br /> */}
         </React.Fragment>
       )}
-      {Caret()}
+
+      <br />
     </React.Fragment>
   );
 };

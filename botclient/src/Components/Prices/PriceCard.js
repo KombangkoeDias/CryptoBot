@@ -77,6 +77,7 @@ class PriceCard extends React.Component {
         abbr={this.props.abbr.toUpperCase()}
         side={this.state.info.side}
         percentage={this.state.info.percentage}
+        info={this.state.info}
       />
     );
   }
