@@ -2,6 +2,8 @@ from Coin.notification import PercentageReached
 from Coin.apiConnector import getPrice
 from Controller.DatabaseConnector import EverydayPriceDB
 
+pairs = ['USDT', 'BUSD', 'ETH', 'BTC']
+
 class Coin:
     def __init__(self,symbol,exchange='binance',sturdy=False, notify=True):
         self.symbol = symbol
@@ -17,6 +19,7 @@ class Coin:
         self.sturdy = sturdy
         self.wantNotify = notify
         self.symbolWithNoUnderscore = self.getSymbolWithNoUnderscore()
+        self.tradingPair = self.getTradingPair()
         self.getAbbreviation()
 
     def getSymbolWithNoUnderscore(self):
@@ -27,11 +30,13 @@ class Coin:
         return theSymbol
 
     def getAbbreviation(self):
-        idx = self.symbol.find('USDT')
-        if(idx != -1):
-            self.abbr = self.symbol[0:idx]
-            if(self.abbr[-1] == '_'):
-                self.abbr = self.abbr[0:-1]
+        for pair in pairs:
+            if self.tradingPair == pair:
+                self.abbr = self.symbol[:len(self.symbol)-len(pair)]
+                break
+        if(self.abbr[-1] == '_'):
+            self.abbr = self.abbr[0:-1]
+
 
     def calculatePercentage(self):
 
@@ -82,6 +87,10 @@ class Coin:
         x = EverydayPriceDB.find_one({'symbol': self.symbolWithNoUnderscore})['price']
         self.basePrice = x
 
+    def getTradingPair(self):
+        for pair in pairs:
+            if (self.symbol[len(self.symbol)-len(pair):] == pair):
+                return pair
     # def resetDaily(self):
     #     self.percentageReached = PercentageReached(self.sturdy)
     #     self.basePrice = getPrice(self.symbol,self.exchange)

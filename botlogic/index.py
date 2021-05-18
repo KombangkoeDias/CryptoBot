@@ -5,9 +5,7 @@ from Functions.CoinPrice import CoinPriceFunc
 from Functions.BasePrice import BasePriceFunc
 from Functions.CoinPercentage import CoinPercentageFunc
 from Functions.CoinInfo import CoinInfoFunc
-from Functions.CoinBuy import CoinBuyFunc
-from Functions.CoinSell import CoinSellFunc
-from Functions.CoinTradeData import CoinTradeDataFunc
+from Functions.Port import CoinBuyFunc, CoinSellFunc, CoinTradeDataFunc
 from Functions.CheckIfExist import CheckIfExistFunc
 
 app = flask.Flask(__name__)
@@ -30,6 +28,9 @@ def EverydayPrice():
 @cross_origin()
 def getBasePrice():
     return BasePriceFunc()
+
+
+#Coin
 
 @app.route('/coin/price', methods=['GET'])
 @cross_origin()

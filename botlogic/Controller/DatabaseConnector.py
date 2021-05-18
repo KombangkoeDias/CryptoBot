@@ -11,3 +11,9 @@ BotPort = db['BotPort']
 BotTransaction = db['BotTransaction']
 
 BotProfit = db['BotProfit']
+
+RealPort = db['RealPort']
+
+RealTransaction = db['RealTransaction']
+
+RealProfit = db['RealProfit']
