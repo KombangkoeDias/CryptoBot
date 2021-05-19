@@ -1,5 +1,6 @@
 import axios from "axios";
 import serverURL from "../configs/serverURL";
+import priceURL from "../configs/priceserverURL";
 
 const CoinService = {
   getBasePrice: async (symbol) => {
@@ -10,10 +11,11 @@ const CoinService = {
     });
     return respond.data.price;
   },
-  getInfo: async (symbol) => {
-    const respond = await axios.get(serverURL + "/coin/info", {
+  getInfo: async (symbol, exchange) => {
+    const respond = await axios.get(priceURL + "/coin/info", {
       params: {
         symbol: symbol,
+        exchange: exchange,
       },
     });
     return respond.data;
