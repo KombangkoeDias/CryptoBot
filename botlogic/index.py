@@ -1,12 +1,8 @@
 import flask
 from flask_cors import CORS, cross_origin
-from Functions.EverydayPrice import EverydayPriceFunc
-from Functions.CoinPrice import CoinPriceFunc
-from Functions.BasePrice import BasePriceFunc
-from Functions.CoinPercentage import CoinPercentageFunc
-from Functions.CoinInfo import CoinInfoFunc
 from Functions.Port import CoinBuyFunc, CoinSellFunc, CoinTradeDataFunc
 from Functions.CheckIfExist import CheckIfExistFunc
+from Functions.WatchList import AddCoinToWatchList, RemoveCoinFromWatchList, getWatchList
 
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
@@ -19,33 +15,24 @@ app.config['CORS_HEADER'] = 'Content-Type'
 def ping():
     return "pong"
 
-@app.route('/EverydayPrice', methods=['GET'])
+#Watch List
+
+@app.route('/watchlist/add', methods=['POST'])
 @cross_origin()
-def EverydayPrice():
-    return EverydayPriceFunc()
+def CoinWatchListAdd():
+    return AddCoinToWatchList()
 
-@app.route("/basePrice", methods=['GET'])
+@app.route('/watchlist/remove', methods=['POST'])
 @cross_origin()
-def getBasePrice():
-    return BasePriceFunc()
+def CoinWatchListRemove():
+    return RemoveCoinFromWatchList()
 
-
+@app.route('/watchlist/get', methods=['GET'])
+@cross_origin()
+def CoinWatchListGet():
+    return getWatchList()
 #Coin
 
-@app.route('/coin/price', methods=['GET'])
-@cross_origin()
-def CoinPrice():
-    return CoinPriceFunc()
-
-@app.route('/coin/percentage', methods=['GET'])
-@cross_origin()
-def CoinPercentage():
-    return CoinPercentageFunc()
-
-@app.route('/coin/info', methods=['GET'])
-@cross_origin()
-def CoinInfo():
-    return CoinInfoFunc()
 
 @app.route('/coin/buy', methods=['POST'])
 @cross_origin()

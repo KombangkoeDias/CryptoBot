@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="931330ad-6468-4b3a-aa61-7e5ad0058850" name="Default Changelist" comment="" />
+    <list default="true" id="931330ad-6468-4b3a-aa61-7e5ad0058850" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../botclient/src/configs/priceserverURL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../botlogic/Functions/WatchList.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../botlogic/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../botlogic/scripts/watchlistmaker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/botprice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Coin/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Coin/apiConnector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Coin/coin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Coin/notification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller/DatabaseConnector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/CoinInfo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Coins/Coins.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Coins/Coins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/Prices/PriceCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/Prices/PriceCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/Prices/Prices.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/Prices/Prices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Services/CoinService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Services/CoinService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/Coin/Coin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Coin/Coin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/Controller/DatabaseConnector.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Controller/DatabaseConnector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/BasePrice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/CheckIfExist.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Functions/CheckIfExist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/CoinInfo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/CoinPercentage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/CoinPrice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/EverydayPrice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/Portfolio/Portfolio.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Portfolio/Portfolio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +82,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1621408049011</updated>
-      <workItem from="1621408052230" duration="5422000" />
+      <workItem from="1621408052230" duration="5431000" />
     </task>
     <servers />
   </component>

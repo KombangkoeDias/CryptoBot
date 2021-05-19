@@ -6,6 +6,9 @@ def CheckIfExistFunc():
     symbol = request.json.get('symbol')
     exchange = request.json.get('exchange')
     print(symbol, exchange, flush=True)
+    return helper(symbol,exchange)
+
+def helper(symbol, exchange):
     if symbol is None or exchange is None:
         return {'exist': False}
     coin = Coin(symbol, exchange)

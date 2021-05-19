@@ -29,12 +29,11 @@ class Portfolio:
             transactions[side].append(newTransaction)
             self.TransactionDB.update_one({'symbol': symbol}, {"$set": {'transactions': transactions}})
 
-    def buyCoin(self, _symbol, amount ,exchange):
-        coin = Coin(_symbol, exchange)
+    def buyCoin(self, symbol, amount ,exchange):
+        coin = Coin(symbol, exchange)
         buy_price = request.json.get('buy_price')
         if buy_price == None:
             buy_price = coin.getCurrentPrice()
-        symbol = coin.symbolWithNoUnderscore
         if buy_price == 0:
             return {'error': 'can\'t buy, exchange not correct'}
         value = self.PortDB.find_one({'symbol': symbol})
@@ -48,12 +47,11 @@ class Portfolio:
         value = self.PortDB.find_one({'symbol': symbol})
         return {'symbol': value['symbol'], 'amount': value['amount'], 'average_buy': value['average_buy'],
                 "buy_price": buy_price}
-    def sellCoin(self, _symbol, amount, exchange):
-        coin = Coin(_symbol, exchange)
+    def sellCoin(self, symbol, amount, exchange):
+        coin = Coin(symbol, exchange)
         sell_price = request.json.get('sell_price')
         if sell_price == None:
             sell_price = coin.getCurrentPrice()
-        symbol = coin.symbolWithNoUnderscore
         if sell_price == 0:
             return {'error': 'can\'t sell, exchange not correct'}
         value = self.PortDB.find_one({'symbol': symbol})

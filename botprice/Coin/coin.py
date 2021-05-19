@@ -105,6 +105,7 @@ class Coin:
 
 
 
+
 # ADA = Coin("ADAUSDT")
 # ADA.basePrice = 1.4
 # ADA.priceNow = 1.5

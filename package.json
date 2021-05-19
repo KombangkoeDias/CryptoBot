@@ -9,6 +9,7 @@
     "logic": "cd botlogic && source venv/bin/activate && python3 index.py",
     "test": "node test.js",
     "docker": "docker-compose up --build",
+    "watchlist-starter": "cd botlogic && source venv/bin/activate && cd scripts && python3 watchlistmaker.py",
     "deploy-client": "git subtree push --prefix botclient botclient main",
     "deploy-server": "git subtree push --prefix botlogic botlogic main"
   },
