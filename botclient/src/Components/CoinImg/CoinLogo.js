@@ -1,14 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+import MapStateToProps from "../../Constants/MapStateToProps";
 
 const CoinLogo = (props) => {
   let coin = props.coin;
   return (
     <img
-      src={
-        "/Asset/logos/" +
-        coin.abbr +
-        (coin.abbr === "pols" || coin.abbr === "safemoon" ? ".jpeg" : ".png")
-      }
+      src={props.LogoList[coin.symbol]}
       width="30"
       height="30"
       className="mr-1"
@@ -17,4 +15,4 @@ const CoinLogo = (props) => {
   );
 };
 
-export default CoinLogo;
+export default connect(MapStateToProps)(CoinLogo);

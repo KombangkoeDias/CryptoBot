@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently --kill-others \"yarn client\" \"yarn logic\"",
+    "start": "concurrently --kill-others \"yarn client\" \"yarn logic\" \"yarn price\"",
     "client": "cd botclient && yarn start",
     "logic": "cd botlogic && source venv/bin/activate && python3 index.py",
+    "price": "cd botprice && source venv/bin/activate && python3 index.py",
     "test": "node test.js",
     "docker": "docker-compose up --build",
     "watchlist-starter": "cd botlogic && source venv/bin/activate && cd scripts && python3 watchlistmaker.py",

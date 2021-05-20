@@ -4,8 +4,8 @@ import CSS from "../../../Constants/ConstantCSS";
 import { ThemeContext, themes } from "../../../Contexts/Theme";
 import styles from "./TradeComponent.module.css";
 import TradeService from "../../../Services/TradeService";
-import store from "../../../store/store";
-import { fetchCoinList } from "../../../store/Reducers/CoinListReducers";
+import { connect } from "react-redux";
+import MapStateToProps from "../../../Constants/MapStateToProps";
 
 const BuyComponent = (props) => {
   const [symbol, setSymbol] = useState("");
@@ -190,6 +190,7 @@ const BuyComponent = (props) => {
           <input
             id="symbol"
             type="text"
+            list="symbols"
             value={symbol}
             className="col"
             style={{
@@ -197,13 +198,20 @@ const BuyComponent = (props) => {
               border: symbolOk ? "2px solid transparent" : "2px solid darkred",
             }}
             onChange={(e) => setSymbol(e.target.value.toUpperCase())}
+            autoComplete="off"
           />
+          <datalist id="symbols">
+            {props.CoinList.map((coin) => {
+              return <option value={coin.abbr.toUpperCase()} />;
+            })}
+          </datalist>
           <label htmlFor="pair" className="col">
             Pair
           </label>
           <input
             id="pair"
             type="text"
+            list="pairs"
             value={pair}
             className="col"
             style={{
@@ -211,8 +219,20 @@ const BuyComponent = (props) => {
               border: pairOk ? "2px solid transparent" : "2px solid darkred",
             }}
             onChange={(e) => setPair(e.target.value.toUpperCase())}
+            autoComplete="off"
           />
         </div>
+        <datalist id="pairs">
+          {[
+            ...new Set(
+              props.CoinList.map((coin) => {
+                return coin.tradingPair;
+              })
+            ),
+          ].map((pair) => {
+            return <option value={pair.toUpperCase()} />;
+          })}
+        </datalist>
         <div
           className="row"
           style={{
@@ -324,4 +344,4 @@ const BuyComponent = (props) => {
   );
 };
 
-export default BuyComponent;
+export default connect(MapStateToProps)(BuyComponent);

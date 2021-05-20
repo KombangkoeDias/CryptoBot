@@ -1,10 +1,12 @@
 import Coin from "../../Coins/CoinClass";
 import CoinService from "../../Services/CoinService";
 
-function CoinListReducer(state = { CoinList: [] }, action) {
+function CoinListReducer(state = { CoinList: [], LogoList: {} }, action) {
   switch (action.type) {
     case "update":
       return { ...state, CoinList: action.payload };
+    case "get_logo":
+      return { ...state, LogoList: action.payload };
     default:
       return state;
   }
@@ -12,6 +14,7 @@ function CoinListReducer(state = { CoinList: [] }, action) {
 
 async function getCoinList() {
   let anotherCoinList = [];
+  let logoList = {};
   const data = await CoinService.getWatchList();
   let i = 0;
   for (const symbol in data) {
@@ -19,18 +22,20 @@ async function getCoinList() {
       new Coin(
         symbol,
         data[symbol]["exchange"],
-        data[symbol]["amount"],
+        data[symbol]["amount"]
         //data[symbol]["logo"]
       )
     );
+    logoList[symbol] = data[symbol]["logo"];
     i = i + 1;
   }
-  return anotherCoinList;
+  return [logoList, anotherCoinList];
 }
 
 export async function fetchCoinList(dispatch, getState) {
-  const CoinList = await getCoinList();
+  const [LogoList, CoinList] = await getCoinList();
   dispatch({ type: "update", payload: CoinList });
+  dispatch({ type: "get_logo", payload: LogoList });
 }
 
 export default CoinListReducer;

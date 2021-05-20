@@ -2,26 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="931330ad-6468-4b3a-aa61-7e5ad0058850" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../botclient/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Coins/CoinClass.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Coins/CoinClass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Coins/Coins.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Coins/Coins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/Prices/CalculatePriceFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/Prices/CalculatePriceFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/Prices/PriceCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/Prices/PriceCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/Prices/Prices.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/Prices/Prices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/RealPort.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/RealPort.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/CoinListShow/CoinListShow.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/CoinListShow/CoinListShow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/PieChart/PieChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/PieChart/PieChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/TotalPortFolio/TotalPortFolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/TotalPortFolio/TotalPortFolio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/CoinImg/CoinLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/CoinImg/CoinLogo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/TradeComponent/TradeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/TradeComponent/TradeComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Constants/MapStateToProps.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Constants/MapStateToProps.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botclient/src/Services/CoinService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Services/CoinService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/.idea/Everyday.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/.idea/Everyday.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/Controller/DatabaseConnector.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Controller/DatabaseConnector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/store/Reducers/CoinListReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/store/Reducers/CoinListReducers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botlogic/Functions/WatchList.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Functions/WatchList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/geckodriver.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botlogic/scripts/watchlistmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/scripts/watchlistmaker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/botprice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/botprice.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coin/coin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Coin/coin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/pyvenv.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pyvenv.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +27,17 @@
       <list>
         <option value="Python Script" />
       </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
     </option>
   </component>
   <component name="Git.Settings">
@@ -102,6 +107,9 @@
       <workItem from="1621442387228" duration="1239000" />
       <workItem from="1621504176844" duration="701000" />
       <workItem from="1621505243759" duration="102000" />
+      <workItem from="1621505611486" duration="506000" />
+      <workItem from="1621518490677" duration="196000" />
+      <workItem from="1621519853232" duration="148000" />
     </task>
     <servers />
   </component>

@@ -52,6 +52,6 @@ def getWatchList():
         val['notify'] = coin['notify']
         val['sturdy'] = coin['sturdy']
         val['amount'] = float(coin['amount'])
-        #val['logo'] = coin['logo']
+        val['logo'] = coin['logo']
         res[coin['symbol']] = val
     return res
