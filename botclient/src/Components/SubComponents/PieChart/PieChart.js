@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import CanvasJSReact from "../../../CanvasJS/canvasjs.react";
-import CoinList from "../../../Coins/Coins";
 import PriceFunctions from "../../Prices/CalculatePriceFunctions";
 import { ThemeContext, themes } from "../../../Contexts/Theme";
+import { connect } from "react-redux";
+import MapStateToProps from "../../../Constants/MapStateToProps";
 
 let CanvasJS = CanvasJSReact.CanvasJS;
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -16,20 +17,21 @@ class PieChart extends Component {
   }
 
   update() {
+    //console.log(this.props.CoinList);
     let loaded = true;
     let port = 0;
-    for (let i = 0; i < CoinList.length; ++i) {
-      if (CoinList[i].priceNow === 0) {
-        //console.log(CoinList[i].symbol);
+    for (let i = 0; i < this.props.CoinList.length; ++i) {
+      if (this.props.CoinList[i].priceNow === 0) {
+        //console.log(this.props.CoinList[i].symbol);
         loaded = false;
       }
       port =
         port +
         parseFloat(
           PriceFunctions.calculateTotalHoldings(
-            CoinList[i].tradingPair,
-            CoinList[i].amount,
-            CoinList[i].priceNow
+            this.props.CoinList[i].tradingPair,
+            this.props.CoinList[i].amount,
+            this.props.CoinList[i].priceNow
           )
         );
     }
@@ -42,25 +44,27 @@ class PieChart extends Component {
   render() {
     let value = this.context;
     let data = [];
-    for (let i = 0; i < CoinList.length; ++i) {
-      data.push({
-        name: CoinList[i].abbr.toUpperCase(),
-        y:
-          (parseFloat(
-            PriceFunctions.calculateTotalHoldings(
-              CoinList[i].tradingPair,
-              CoinList[i].amount,
-              CoinList[i].priceNow
-            )
-          ) /
-            this.state.port) *
-          100,
+    if (this.state.loaded) {
+      for (let i = 0; i < this.props.CoinList.length; ++i) {
+        data.push({
+          name: this.props.CoinList[i].abbr.toUpperCase(),
+          y:
+            (parseFloat(
+              PriceFunctions.calculateTotalHoldings(
+                this.props.CoinList[i].tradingPair,
+                this.props.CoinList[i].amount,
+                this.props.CoinList[i].priceNow
+              )
+            ) /
+              this.state.port) *
+            100,
+        });
+      }
+
+      data = data.sort(function (a, b) {
+        return b.y - a.y;
       });
     }
-
-    data = data.sort(function (a, b) {
-      return b.y - a.y;
-    });
 
     const options = {
       animationEnabled: true,
@@ -114,4 +118,4 @@ class PieChart extends Component {
   }
 }
 PieChart.contextType = ThemeContext;
-export default PieChart;
+export default connect(MapStateToProps)(PieChart);

@@ -2,40 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="931330ad-6468-4b3a-aa61-7e5ad0058850" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../botclient/src/configs/priceserverURL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../botlogic/Functions/WatchList.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../botlogic/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../botlogic/scripts/watchlistmaker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/botprice.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Coin/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Coin/apiConnector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Coin/coin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Coin/notification.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controller/DatabaseConnector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controller/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Functions/CoinInfo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Coins/CoinClass.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Coins/CoinClass.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botclient/src/Coins/Coins.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Coins/Coins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/Prices/CalculatePriceFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/Prices/CalculatePriceFunctions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botclient/src/Components/Prices/PriceCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/Prices/PriceCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botclient/src/Components/Prices/Prices.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/Prices/Prices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/RealPort.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/RealPort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/CoinListShow/CoinListShow.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/CoinListShow/CoinListShow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/PieChart/PieChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/PieChart/PieChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/TotalPortFolio/TotalPortFolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/TotalPortFolio/TotalPortFolio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/TradeComponent/TradeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/TradeComponent/TradeComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botclient/src/Services/CoinService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Services/CoinService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/Coin/Coin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Coin/Coin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/.idea/Everyday.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/.idea/Everyday.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botlogic/Controller/DatabaseConnector.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Controller/DatabaseConnector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/BasePrice.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/CheckIfExist.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Functions/CheckIfExist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/CoinInfo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/CoinPercentage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/CoinPrice.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/EverydayPrice.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/Portfolio/Portfolio.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Portfolio/Portfolio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/WatchList.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Functions/WatchList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botlogic/scripts/watchlistmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/scripts/watchlistmaker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +60,35 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="index" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="botprice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/index.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.index" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -83,6 +98,10 @@
       <option name="presentableId" value="Default" />
       <updated>1621408049011</updated>
       <workItem from="1621408052230" duration="5431000" />
+      <workItem from="1621418742355" duration="3204000" />
+      <workItem from="1621442387228" duration="1239000" />
+      <workItem from="1621504176844" duration="701000" />
+      <workItem from="1621505243759" duration="102000" />
     </task>
     <servers />
   </component>
@@ -99,8 +118,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/botprice$index.coverage" NAME="index Coverage Results" MODIFIED="1621413161392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/botprice$index.coverage" NAME="index Coverage Results" MODIFIED="1621505246466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

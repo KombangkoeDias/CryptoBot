@@ -1,12 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Coin from "../../Coins/CoinClass";
-import CoinList from "../../Coins/Coins";
 import PriceCard from "./PriceCard";
 import Mode from "../../Values/CoinValueMode";
 import CoinListShow from "../SubComponents/CoinListShow/CoinListShow";
 import styles from "./Prices.module.css";
 import PriceFunctions from "./CalculatePriceFunctions";
 import { ThemeContext, themes } from "../../Contexts/Theme";
+import { connect } from "react-redux";
+import MapStateToProps from "../../Constants/MapStateToProps";
+import ManageComponent from "../../Components/SubComponents/TradeComponent/TradeComponent";
 
 const Prices = (props) => {
   // function addNewCoin() {
@@ -19,11 +21,32 @@ const Prices = (props) => {
   const value = useContext(ThemeContext);
 
   const [display, setDisplay] = useState(4);
-  const [modified_CoinList, setModifiedCoinList] = useState([...CoinList]);
+  const [modified_CoinList, setModifiedCoinList] = useState([]);
+  const [CoinListState, setCoinListState] = useState([]);
   const [rankBy, setRankBy] = useState("Alphabet");
+  const [load, setLoad] = useState(false);
+  const [manage, setManage] = useState(true);
+
+  const Manage = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    setManage(true);
+  };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    setCoinListState(props.CoinList);
+    if (props.CoinList.length !== 0 && modified_CoinList.length == 0) {
+      setLoad(true);
+      setModifiedCoinList(props.CoinList);
+      RankBy(rankBy);
+    }
+  }, [props.CoinList]);
 
   const RankBy = (field) => {
-    let tmp = [...CoinList];
+    let tmp = [...props.CoinList];
     switch (field) {
       case "Price":
         tmp.sort((a, b) => b.priceNow - a.priceNow);
@@ -68,11 +91,6 @@ const Prices = (props) => {
     "Percentage",
     "Total Value",
   ];
-
-  const ResetRank = () => {
-    setModifiedCoinList(CoinList);
-    setRankBy("");
-  };
 
   const buttonStyle = (val) => {
     return {
@@ -153,6 +171,13 @@ const Prices = (props) => {
                 </button>
               );
             })}
+            <button
+              className={"btn " + styles.displayButton}
+              style={{ color: "white" }}
+              onClick={() => Manage()}
+            >
+              Manage
+            </button>
           </div>
         </div>
 
@@ -184,7 +209,39 @@ const Prices = (props) => {
             </div>
           ))}
         </div>
-        <CoinListShow />
+        {!load && (
+          <div
+            style={{
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <div
+              className="spinner-border"
+              role="status"
+              style={{
+                color: "white",
+                width: "100px",
+                height: "100px",
+                fontSize: "30px",
+              }}
+            ></div>
+          </div>
+        )}
+        {load && <CoinListShow />}
+        {manage && (
+          <div
+            className="row"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <ManageComponent port={""} mode={"manage"} />
+          </div>
+        )}
         {/* <div className="row ml-3">
             <h3 style={{ width: "100vw" }}>Add a new coin into watchlist</h3>
             <div className="mr-3">
@@ -227,4 +284,4 @@ const Prices = (props) => {
   );
 };
 
-export default Prices;
+export default connect(MapStateToProps)(Prices);

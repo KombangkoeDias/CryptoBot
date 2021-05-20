@@ -4,11 +4,12 @@ import Modal from "../../Values/Modal/CoinInfoModal";
 import Mode from "../../Values/CoinValueMode";
 import PriceService from "../../Services/CoinService";
 import CoinLogo from "../CoinImg/CoinLogo";
-import CoinList from "../../Coins/Coins";
 import Caret from "./Caret";
 import PriceFunctions from "./CalculatePriceFunctions";
 import { ThemeContext, themes } from "../../Contexts/Theme";
 import CSS from "../../Constants/ConstantCSS";
+import { connect } from "react-redux";
+import MapStateToProps from "../../Constants/MapStateToProps";
 
 class PriceCard extends React.Component {
   constructor(props) {
@@ -28,15 +29,10 @@ class PriceCard extends React.Component {
 
   async getPriceRepeatedly() {
     try {
-      let theSymbol = this.props.symbol;
-      let n = theSymbol.search("_");
-      if (n !== -1) {
-        theSymbol =
-          theSymbol.substring(0, n) +
-          theSymbol.substring(n + 1, theSymbol.length);
-      }
-
-      const info = await PriceService.getInfo(theSymbol);
+      const info = await PriceService.getInfo(
+        this.props.symbol,
+        this.props.coin.exchange
+      );
       //console.log(info);
       this.props.updateCoinList(this.props.symbol, info);
       if (this.state.info.priceNow !== 0) {
@@ -95,8 +91,8 @@ class PriceCard extends React.Component {
 
   checkIfLoaded() {
     let load = true;
-    for (let i = 0; i < CoinList.length; ++i) {
-      if (CoinList[i].priceNow === 0) {
+    for (let i = 0; i < this.props.CoinList.length; ++i) {
+      if (this.props.CoinList[i].priceNow === 0) {
         load = false;
       }
     }
@@ -229,4 +225,4 @@ class PriceCard extends React.Component {
 }
 
 PriceCard.contextType = ThemeContext;
-export default PriceCard;
+export default connect(MapStateToProps)(PriceCard);

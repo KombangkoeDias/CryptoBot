@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Router from "./Routers/Main";
 import Navbar from "./Components/Navbar";
 import { ThemeContext, themes } from "./Contexts/Theme";
+import store from "./store/store";
+import { fetchCoinList } from "./store/Reducers/CoinListReducers";
+import { Provider } from "react-redux";
 
 function App() {
   let existingTheme = "";
@@ -30,13 +33,17 @@ function App() {
     }
   };
 
+  store.dispatch(fetchCoinList);
+
   return (
-    <React.Fragment>
-      <ThemeContext.Provider value={theme}>
-        <Navbar toggleTheme={toggleTheme} />
-        <Router />
-      </ThemeContext.Provider>
-    </React.Fragment>
+    <div style={{ backgroundColor: theme.background, height: "100vh" }}>
+      <Provider store={store}>
+        <ThemeContext.Provider value={theme}>
+          <Navbar toggleTheme={toggleTheme} />
+          <Router />
+        </ThemeContext.Provider>
+      </Provider>
+    </div>
   );
 }
 

@@ -70,12 +70,12 @@ CoinAmount = {
 "eRSDLETH": 38,
 }
 
-for key in Coins.keys():
-    print(f'"{key}": ,')
+# for key in Coins.keys():
+#     print(f'"{key}": ,')
 
 for symbol in Coins.keys():
     coin = Coins[symbol]
-    rq.post(serverurl + '/watchlist/add', data={'symbol': coin.symbol,
+    rq.post(serverurl + '/watchlist/add', json={'symbol': coin.symbol,
                                                 'exchange': coin.exchange,
                                                 'sturdy': coin.sturdy,
                                                 'notify': coin.wantNotify,

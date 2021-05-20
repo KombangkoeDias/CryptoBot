@@ -30,6 +30,22 @@ const CoinService = {
     }
     return false;
   },
+  getWatchList: async () => {
+    const respond = await axios.get(serverURL + "/watchlist/get");
+    return respond.data;
+  },
+  manageCoin: async (symbol, exchange, amount, side) => {
+    const respond = await axios.post(serverURL + "/watchlist/" + side, {
+      symbol: symbol,
+      exchange: exchange,
+      amount: amount,
+    });
+    if (respond.data["inserted"] || respond.data["deleted"]) {
+      return true;
+    } else {
+      return false;
+    }
+  },
 };
 
 export default CoinService;

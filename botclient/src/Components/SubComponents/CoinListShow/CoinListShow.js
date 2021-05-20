@@ -1,7 +1,8 @@
 import React from "react";
-import CoinList from "../../../Coins/Coins";
 import CoinLogo from "../../CoinImg/CoinLogo";
 import styles from "./CoinListShow.module.css";
+import { connect } from "react-redux";
+import MapStateToProps from "../../../Constants/MapStateToProps";
 
 class CoinListShow extends React.Component {
   constructor(props) {
@@ -12,14 +13,14 @@ class CoinListShow extends React.Component {
     };
   }
   update() {
-    let upListState = [...CoinList].filter((coin) => {
+    let upListState = [...this.props.CoinList].filter((coin) => {
       return coin.side === "up";
     });
     upListState = [...upListState].sort((a, b) => {
       return b.percentage - a.percentage;
     });
     this.setState({ upList: upListState });
-    let downListState = [...CoinList].filter((coin) => {
+    let downListState = [...this.props.CoinList].filter((coin) => {
       return coin.side === "down";
     });
     downListState = [...downListState].sort((a, b) => {
@@ -136,4 +137,4 @@ class CoinListShow extends React.Component {
   }
 }
 
-export default CoinListShow;
+export default connect(MapStateToProps)(CoinListShow);

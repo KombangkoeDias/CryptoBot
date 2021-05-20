@@ -4,6 +4,7 @@ class Coin {
     exchange = "binance",
     //avg_buy = null,
     amount = 0,
+    //logo = "",
     basePrice = 0,
     percentage = 0,
     percentage_range = [0, 0],
@@ -13,6 +14,7 @@ class Coin {
   ) {
     this.symbol = symbol;
     this.exchange = exchange;
+    //this.logo = logo;
     //this.avg_buy = avg_buy;
     this.amount = amount;
     this.percentage = percentage;

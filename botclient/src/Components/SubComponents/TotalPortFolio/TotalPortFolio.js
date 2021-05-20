@@ -1,8 +1,9 @@
 import React from "react";
-import CoinList from "../../../Coins/Coins";
 import Caret from "../../Prices/Caret";
 import Mode from "../../../Values/CoinValueMode";
 import { ThemeContext, themes } from "../../../Contexts/Theme";
+import { connect } from "react-redux";
+import MapStateToProps from "../../../Constants/MapStateToProps";
 
 class TotalPortFolio extends React.Component {
   constructor(props) {
@@ -17,12 +18,15 @@ class TotalPortFolio extends React.Component {
   update() {
     let port = 0;
     let loaded = true;
-    for (let i = 0; i < CoinList.length; ++i) {
-      if (CoinList[i].priceNow === 0) {
+    for (let i = 0; i < this.props.CoinList.length; ++i) {
+      if (this.props.CoinList[i].priceNow === 0) {
         //console.log(CoinList[i].symbol);
         loaded = false;
       }
-      port = port + CoinList[i].amount * CoinList[i].priceNow.toFixed(2);
+      port =
+        port +
+        this.props.CoinList[i].amount *
+          this.props.CoinList[i].priceNow.toFixed(2);
     }
     this.setState({ loaded: loaded });
     if (port > this.state.portValue) {
@@ -90,4 +94,4 @@ class TotalPortFolio extends React.Component {
 }
 TotalPortFolio.contextType = ThemeContext;
 
-export default TotalPortFolio;
+export default connect(MapStateToProps)(TotalPortFolio);
