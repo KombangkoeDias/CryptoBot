@@ -12,7 +12,8 @@
     "docker": "docker-compose up --build",
     "watchlist-starter": "cd botlogic && source venv/bin/activate && cd scripts && python3 watchlistmaker.py",
     "deploy-client": "git subtree push --prefix botclient botclient main",
-    "deploy-server": "git subtree push --prefix botlogic botlogic main"
+    "deploy-server": "git subtree push --prefix botlogic botlogic main",
+    "docker-push": "chmod 755 ./dockerpush.sh && ./dockerpush.sh"
   },
   "repository": {
     "type": "git",

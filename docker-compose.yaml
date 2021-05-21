@@ -14,3 +14,9 @@ services:
       build: botlogic
       ports:
         - 5000:5000
+
+    botprice:
+      image: botprice:latest
+      build: botprice
+      ports:
+        - 8080:8080

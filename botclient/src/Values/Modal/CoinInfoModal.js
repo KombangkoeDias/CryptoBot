@@ -1,4 +1,5 @@
 import React from "react";
+import CoinLogo from "../../Components/CoinImg/CoinLogo";
 
 const Modal = (props) => {
   return (
@@ -12,19 +13,7 @@ const Modal = (props) => {
         }}
       >
         <div className="modal-header">
-          <img
-            src={
-              "/Asset/logos/" +
-              props.abbr +
-              (props.abbr === "pols" || props.abbr === "safemoon"
-                ? ".jpeg"
-                : ".png")
-            }
-            width="30"
-            height="30"
-            className="mr-1"
-            alt={props.symbol}
-          ></img>
+          <CoinLogo coin={props.coin} />
           <h5 className="modal-title" id="exampleModalLongTitle">
             {props.symbol}
           </h5>

@@ -507,3 +507,102 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 
 ###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1621530582526	geckodriver	INFO	Listening on 127.0.0.1:57334
+1621530583528	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofileUEsp1N"
+*** You are running in headless mode.
+1621530584414	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621530585673	Marionette	INFO	Listening on port 57368
+1621530585725	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621530588357	Marionette	INFO	Stopped listening on port 57368
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621531686332	geckodriver	INFO	Listening on 127.0.0.1:63251
+1621531687345	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofileMYA6hr"
+*** You are running in headless mode.
+1621531688040	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621531688820	Marionette	INFO	Listening on port 63281
+1621531688920	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621531691106	Marionette	INFO	Stopped listening on port 63281
+1621531735329	geckodriver	INFO	Listening on 127.0.0.1:64402
+1621531736347	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofile9cqjaZ"
+*** You are running in headless mode.
+1621531736866	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621531737645	Marionette	INFO	Listening on port 64432
+1621531737703	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621531740211	Marionette	INFO	Stopped listening on port 64432
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621531767306	geckodriver	INFO	Listening on 127.0.0.1:65214
+1621531768318	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofilekkW8Ws"
+*** You are running in headless mode.
+1621531768736	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621531769321	Marionette	INFO	Listening on port 65246
+1621531769366	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621531771675	Marionette	INFO	Stopped listening on port 65246
+1621531820319	geckodriver	INFO	Listening on 127.0.0.1:50046
+1621531821334	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofileAPeRDK"
+*** You are running in headless mode.
+1621531821872	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621531822720	Marionette	INFO	Listening on port 50077
+1621531822832	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621531825092	Marionette	INFO	Stopped listening on port 50077
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621531891069	geckodriver	INFO	Listening on 127.0.0.1:51656
+1621531892081	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofileS1l8kx"
+*** You are running in headless mode.
+1621531892686	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621531893430	Marionette	INFO	Listening on port 51689
+1621531893447	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621531895698	Marionette	INFO	Stopped listening on port 51689
+1621531928113	geckodriver	INFO	Listening on 127.0.0.1:52562
+1621531929122	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofileY7Rb5V"
+*** You are running in headless mode.
+1621531929540	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621531930250	Marionette	INFO	Listening on port 52596
+1621531930263	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621531932693	Marionette	INFO	Stopped listening on port 52596
+1621532096905	geckodriver	INFO	Listening on 127.0.0.1:55886
+1621532097914	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofiley5oZx7"
+*** You are running in headless mode.
+1621532098641	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621532099403	Marionette	INFO	Listening on port 55919
+1621532099492	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621532101817	Marionette	INFO	Stopped listening on port 55919
+console.error: (new Error("Connection closed before committing the transaction.", "resource://gre/modules/Sqlite.jsm", 687))
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 687: Error: Connection closed before committing the transaction.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621532908129	geckodriver	INFO	Listening on 127.0.0.1:55244
+1621532909134	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofileQpt3w8"
+*** You are running in headless mode.
+1621532909689	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621532910431	Marionette	INFO	Listening on port 55279
+1621532910504	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621532912546	Marionette	INFO	Stopped listening on port 55279
+console.error: (new Error("Connection closed before committing the transaction.", "resource://gre/modules/Sqlite.jsm", 687))
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 687: Error: Connection closed before committing the transaction.
+1621533104919	geckodriver	INFO	Listening on 127.0.0.1:59489
+1621533105928	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofile3TRHWz"
+*** You are running in headless mode.
+1621533106439	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621533107233	Marionette	INFO	Listening on port 59520
+1621533107297	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621533109336	Marionette	INFO	Stopped listening on port 59520
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+

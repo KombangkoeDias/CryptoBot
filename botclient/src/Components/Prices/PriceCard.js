@@ -216,6 +216,7 @@ class PriceCard extends React.Component {
           <Modal
             symbol={this.props.symbol}
             abbr={this.props.abbr}
+            coin={this.props.coin}
             CoinValues={() => this.CoinValues(true)}
           />
         </div>
