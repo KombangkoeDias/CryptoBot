@@ -12,7 +12,6 @@ const CoinService = {
     return respond.data.price;
   },
   getInfo: async (symbol, exchange) => {
-    console.log(symbol);
     const respond = await axios.get(priceURL + "/coin/info", {
       params: {
         symbol: symbol,

@@ -9,21 +9,21 @@ class Portfolio:
         self.ProfitDB = ProfitDB
         self.TransactionDB = TransactionDB
 
-    def createTransaction(self, symbol, amount, price, side):
-        value = self.TransactionDB.find_one({'symbol': symbol})
+    def createTransaction(self, symbol, amount, price, side, exchange):
+        value = self.TransactionDB.find_one({'symbol': symbol, 'exchange': exchange})
         if side == 'buy':
             newTransaction = {'amount': amount, 'buy_price': price,
-                              'transaction_time': datetime.now().strftime('%-d/%-m/%Y %-H:%M:%-S')}
+                              'transaction_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')+'.0'}
         elif side == 'sell':
             newTransaction = {'amount': amount, 'sell_price': price,
-                              'transaction_time': datetime.now().strftime('%-d/%-m/%Y %-H:%M:%-S')}
+                              'transaction_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')+'.0'}
         else:
             raise ValueError('buy or sell only')
         if value is None:
             if side == 'buy':
-                self.TransactionDB.insert_one({'symbol': symbol, 'transactions': {'buy': [newTransaction], 'sell': []}})
+                self.TransactionDB.insert_one({'symbol': symbol, 'exchange': exchange, 'transactions': {'buy': [newTransaction], 'sell': []}})
             else:
-                self.TransactionDB.insert_one({'symbol': symbol, 'transactions': {'buy': [], 'sell': [newTransaction]}})
+                self.TransactionDB.insert_one({'symbol': symbol, 'exchange': exchange, 'transactions': {'buy': [], 'sell': [newTransaction]}})
         else:
             transactions = value['transactions']
             transactions[side].append(newTransaction)
@@ -37,7 +37,7 @@ class Portfolio:
         if buy_price == 0:
             return {'error': 'can\'t buy, exchange not correct'}
         value = self.PortDB.find_one({'symbol': symbol})
-        self.createTransaction(symbol, amount, buy_price, 'buy')
+        self.createTransaction(symbol, amount, buy_price, 'buy', exchange)
         if value is None:
             self.PortDB.insert_one({'symbol': symbol, 'amount': amount, 'average_buy': buy_price})
         else:
@@ -58,7 +58,7 @@ class Portfolio:
         if value is None or amount > float(value['amount']):
             return {"error": 'can\'t sell, not enough coin'}
         else:
-            self.createTransaction(symbol, amount, sell_price, 'sell')
+            self.createTransaction(symbol, amount, sell_price, 'sell',exchange)
             currAmount = float(value['amount'])
             currAverageBuy = float(value['average_buy'])
             self.PortDB.update_one({'symbol': symbol},
@@ -99,6 +99,14 @@ class Portfolio:
             if key in res_profit.keys():
                 del res_profit[key]
         return {'symbol': symbol, 'port': res_port, 'transactions': res_transactions, 'profit': res_profit}
+
+    def getAllTradeData(self):
+        res = []
+        Ports = self.PortDB.find()
+        for coin in Ports:
+            symbol = coin['symbol']
+            res.append(self.getTradeData(symbol))
+        return {"trade_data": res}
 
 BotPortfolio = Portfolio(BotPort, BotProfit, BotTransaction)
 RealPortfolio = Portfolio(RealPort, RealProfit, RealTransaction)

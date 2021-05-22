@@ -32,7 +32,7 @@ const RealPort = (props) => {
       }}
     >
       <TotalPortFolio />
-      <PieChart />
+      <PieChart CoinList={props.CoinList} />
       <div
         className="row"
         style={{ display: "flex", justifyContent: "center" }}
@@ -125,7 +125,7 @@ const RealPort = (props) => {
       >
         <TradeComponent port={"real_port"} mode={"trade"} />
       </div>
-      <Charting />
+      {/* <Charting /> */}
     </div>
   );
 };

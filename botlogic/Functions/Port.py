@@ -35,10 +35,20 @@ def CoinTradeDataFunc():
     request.get_data()
     symbol = request.json.get('symbol')
     port = request.json.get('port')
-    symbol = Coin(symbol).getSymbolWithNoUnderscore()
+    symbol = Coin(symbol).symbol
     if (port == 'real_port'):
         return RealPortfolio.getTradeData(symbol)
     elif (port == 'bot_port'):
         return BotPortfolio.getTradeData(symbol)
+    else:
+        return NoPortError
+
+def AllCoinTradeDataFunc():
+    request.get_data()
+    port = request.json.get('port')
+    if port == 'real_port':
+        return RealPortfolio.getAllTradeData()
+    elif port == 'bot_port':
+        return BotPortfolio.getAllTradeData()
     else:
         return NoPortError

@@ -3,7 +3,10 @@ import Router from "./Routers/Main";
 import Navbar from "./Components/Navbar";
 import { ThemeContext, themes } from "./Contexts/Theme";
 import store from "./store/store";
-import { fetchCoinList } from "./store/Reducers/CoinListReducers";
+import {
+  fetchCoinList,
+  fetchTradeData,
+} from "./store/Reducers/CoinListReducers";
 import { Provider } from "react-redux";
 
 function App() {
@@ -34,6 +37,7 @@ function App() {
   };
 
   store.dispatch(fetchCoinList);
+  store.dispatch(fetchTradeData);
 
   return (
     <div style={{ backgroundColor: theme.background, height: "100vh" }}>

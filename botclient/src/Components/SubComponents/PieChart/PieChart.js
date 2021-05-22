@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import CanvasJSReact from "../../../CanvasJS/canvasjs.react";
 import PriceFunctions from "../../Prices/CalculatePriceFunctions";
 import { ThemeContext, themes } from "../../../Contexts/Theme";
-import { connect } from "react-redux";
-import MapStateToProps from "../../../Constants/MapStateToProps";
 
 let CanvasJS = CanvasJSReact.CanvasJS;
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -118,4 +116,4 @@ class PieChart extends Component {
   }
 }
 PieChart.contextType = ThemeContext;
-export default connect(MapStateToProps)(PieChart);
+export default PieChart;

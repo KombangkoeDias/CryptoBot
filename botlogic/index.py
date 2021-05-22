@@ -1,8 +1,9 @@
 import flask
 from flask_cors import CORS, cross_origin
-from Functions.Port import CoinBuyFunc, CoinSellFunc, CoinTradeDataFunc
+from Functions.Port import CoinBuyFunc, CoinSellFunc, CoinTradeDataFunc, AllCoinTradeDataFunc
 from Functions.CheckIfExist import CheckIfExistFunc
 from Functions.WatchList import AddCoinToWatchList, RemoveCoinFromWatchList, getWatchList
+
 
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
@@ -48,6 +49,11 @@ def CoinSell():
 @cross_origin()
 def GetCoinTradeData():
     return CoinTradeDataFunc()
+
+@app.route('/port/trade_data/all', methods=['POST'])
+@cross_origin()
+def GetAllCoinTradeData():
+    return AllCoinTradeDataFunc()
 
 @app.route('/coin/checkIfExist', methods=['POST'])
 @cross_origin()
