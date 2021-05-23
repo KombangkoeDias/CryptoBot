@@ -636,3 +636,23 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1621743651363	Marionette	INFO	Listening on port 54200
 1621743651461	Marionette	WARN	TLS certificate errors will be ignored for this session
 1621743654498	Marionette	INFO	Stopped listening on port 54200
+1621756729357	geckodriver	INFO	Listening on 127.0.0.1:51577
+1621756730319	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofileJk4i1y"
+*** You are running in headless mode.
+1621756733853	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621756735666	Marionette	INFO	Listening on port 51608
+1621756735765	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621756738446	Marionette	INFO	Stopped listening on port 51608
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1621758632124	geckodriver	INFO	Listening on 127.0.0.1:63653
+1621758633144	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofilex8mh8I"
+*** You are running in headless mode.
+1621758633755	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621758634718	Marionette	INFO	Listening on port 63664
+1621758634827	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621758637529	Marionette	INFO	Stopped listening on port 63664
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined

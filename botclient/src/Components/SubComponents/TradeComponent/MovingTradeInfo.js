@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import CSS from "../../../Constants/ConstantCSS";
 import styles from "./MovingTradeInfo.module.css";
 import CoinLogo from "../../CoinImg/CoinLogo";
+import { ThemeContext, themes } from "../../../Contexts/Theme";
 
 const MovingTradeInfo = (props) => {
   const transaction = props.transaction;
+  const value = useContext(ThemeContext);
   const move = props.move;
 
   const [timeToMove, setTimeToMove] = useState(false);
@@ -19,17 +21,21 @@ const MovingTradeInfo = (props) => {
       <div
         className={"col " + styles.moving}
         style={{
-          boxShadow: CSS.boxShadow,
+          boxShadow: value === themes.dark ? CSS.darkBoxShadow : CSS.boxShadow,
           border: "1px solid white",
           borderRadius: "10px",
           minHeight: "50px",
           padding: "20px",
           backgroundColor:
-            transaction.side === "buy" ? "lightgreen" : "darkred",
+            transaction.side === "buy"
+              ? value === themes.dark
+                ? "darkgreen"
+                : "lightgreen"
+              : "darkred",
           display: timeToMove ? "block" : "none",
         }}
       >
-        <div style={{ color: "white" }}>
+        <div style={{ color: value.text }}>
           <div className="row">
             <div className={"col " + styles.center}>
               {" "}

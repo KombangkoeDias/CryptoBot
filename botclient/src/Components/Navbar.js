@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./Navbar.module.css";
 import { ThemeContext, themes } from "../Contexts/Theme";
+import CSS from "../Constants/ConstantCSS";
 
 const Navbar = (props) => {
   const [pathState, setPathState] = useState("");
@@ -20,8 +21,7 @@ const Navbar = (props) => {
   const colorGradient =
     value === themes.dark ? value.card : "radial-gradient(white, gold)";
 
-  const boxShadow =
-    "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+  const boxShadow = themeName === "dark" ? CSS.darkBoxShadow : CSS.boxShadow;
 
   const linkStyle = {
     price: {

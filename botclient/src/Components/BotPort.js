@@ -26,13 +26,13 @@ const BotPort = (props) => {
   if (props.TradeData.length !== 0 && props.TransactionData.length !== 0) {
     if (!loaded) {
       setLoaded(true);
-      if (props.TradeData.length !== sortedByDateTransactionData.length) {
-        setSortedByDateTransactionData(
-          [...props.TransactionData].sort((a, b) => {
-            return b.time - a.time;
-          })
-        );
-      }
+    }
+    if (props.TransactionData.length !== sortedByDateTransactionData.length) {
+      setSortedByDateTransactionData(
+        [...props.TransactionData].sort((a, b) => {
+          return b.time - a.time;
+        })
+      );
     }
   }
   if (props.TradeData[0] === null) {
@@ -44,19 +44,50 @@ const BotPort = (props) => {
   return (
     <div style={{ overflowX: "hidden" }}>
       <div className="row mt-3 ">
-        <div className="col"></div>
+        <div className="col">
+          <div
+            className={"col " + styles.subcomponent}
+            style={{
+              minHeight: "500px",
+              maxHeight: "500px",
+              overflowY: "scroll",
+              color: value.text,
+            }}
+          >
+            <h4 style={{ textAlign: "center" }} className="mb-3">
+              Portfolio
+            </h4>
+            {loaded &&
+              props.TradeData.map((data) => {
+                return (
+                  <p>
+                    {data.port.symbol} {data.port.amount}{" "}
+                    {data.port.average_buy}{" "}
+                    {parseFloat(data.profit.profit).toFixed(2)}
+                  </p>
+                );
+              })}
+            {!loaded && (
+              <div className={styles.center}>
+                <div
+                  className="spinner-border"
+                  role="status"
+                  style={{ color: value.text }}
+                ></div>
+              </div>
+            )}
+          </div>
+        </div>
         <div
           className={"col " + styles.subcomponent}
           style={{
             minHeight: "500px",
             maxHeight: "500px",
             overflowY: "scroll",
+            color: value.text,
           }}
         >
-          <h4
-            style={{ color: value.text, textAlign: "center" }}
-            className="mb-3"
-          >
+          <h4 style={{ textAlign: "center" }} className="mb-3">
             Latest Transactions
           </h4>
           {loaded &&

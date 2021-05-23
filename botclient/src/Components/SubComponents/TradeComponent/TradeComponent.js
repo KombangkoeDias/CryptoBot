@@ -90,9 +90,9 @@ const BuyComponent = (props) => {
         trade,
         props.port
       );
-      if (result) {
-        window.location.reload();
-      }
+      // if (result) {
+      //   window.location.reload();
+      // }
     } else if (props.mode === "manage") {
       const result = await CoinService.manageCoin(
         CreateSymbol(),
