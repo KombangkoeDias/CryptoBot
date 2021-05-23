@@ -83,13 +83,16 @@ const BuyComponent = (props) => {
 
     setLoadExecute(true);
     if (props.mode === "trade") {
-      await TradeService.ExecuteTrade(
+      const result = await TradeService.ExecuteTrade(
         CreateSymbol(),
         exchange,
         amount,
         trade,
         props.port
       );
+      if (result) {
+        window.location.reload();
+      }
     } else if (props.mode === "manage") {
       const result = await CoinService.manageCoin(
         CreateSymbol(),

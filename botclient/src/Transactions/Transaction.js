@@ -1,6 +1,7 @@
 class Transaction {
-  constructor(symbol, exchange, price, side, amount, time) {
+  constructor(symbol, logo, exchange, price, side, amount, time) {
     this.symbol = symbol;
+    this.logo = logo;
     this.exchange = exchange;
     this.price = price;
     this.side = side;

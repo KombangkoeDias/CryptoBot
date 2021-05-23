@@ -6,11 +6,11 @@ const CoinLogo = (props) => {
   let coin = props.coin;
   return (
     <img
-      src={props.LogoList[coin.symbol]}
+      src={coin ? props.LogoList[coin.symbol] : props.logo}
       width="30"
       height="30"
       className="mr-1"
-      alt={coin.symbol}
+      alt={coin ? coin.symbol : props.logo}
     ></img>
   );
 };

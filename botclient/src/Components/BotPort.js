@@ -6,9 +6,17 @@ import { ThemeContext, themes } from "../Contexts/Theme";
 import { connect } from "react-redux";
 import MapStateToProps from ".././Constants/MapStateToProps";
 import MovingTradeInfo from "./SubComponents/TradeComponent/MovingTradeInfo";
+import { fetchTradeData } from "../store/Reducers/CoinListReducers";
+import store from "../store/store";
 
 const BotPort = (props) => {
   const value = useContext(ThemeContext);
+
+  useEffect(() => {
+    setInterval(() => {
+      store.dispatch(fetchTradeData);
+    }, 2000);
+  }, []);
 
   const [loaded, setLoaded] = useState(false);
 
@@ -18,39 +26,73 @@ const BotPort = (props) => {
   if (props.TradeData.length !== 0 && props.TransactionData.length !== 0) {
     if (!loaded) {
       setLoaded(true);
+      if (props.TradeData.length !== sortedByDateTransactionData.length) {
+        setSortedByDateTransactionData(
+          [...props.TransactionData].sort((a, b) => {
+            return b.time - a.time;
+          })
+        );
+      }
     }
-    props.TransactionData.sort((a, b) => {
-      return b.time - a.time;
-    });
+  }
+  if (props.TradeData[0] === null) {
+    if (!loaded) {
+      setLoaded(true);
+    }
   }
 
   return (
     <div style={{ overflowX: "hidden" }}>
-      {props.TradeData.length !== 0 && <h2>Loaded</h2>}
-      {loaded && (
-        <div className="row">
-          <div className="col"></div>
-          <div className="col">
-            {props.TransactionData.map((transaction) => {
-              return <MovingTradeInfo transaction={transaction} />;
+      <div className="row mt-3 ">
+        <div className="col"></div>
+        <div
+          className={"col " + styles.subcomponent}
+          style={{
+            minHeight: "500px",
+            maxHeight: "500px",
+            overflowY: "scroll",
+          }}
+        >
+          <h4
+            style={{ color: value.text, textAlign: "center" }}
+            className="mb-3"
+          >
+            Latest Transactions
+          </h4>
+          {loaded &&
+            props.TradeData[0] !== null &&
+            sortedByDateTransactionData.map((transaction, i) => {
+              return <MovingTradeInfo transaction={transaction} move={i} />;
             })}
-          </div>
+          {loaded && props.TradeData[0] === null && (
+            <h5 style={{ color: value.text, textAlign: "center" }}>
+              No Transactions yet
+            </h5>
+          )}
+          {!loaded && (
+            <div className={styles.center}>
+              <div
+                className="spinner-border"
+                role="status"
+                style={{ color: value.text }}
+              ></div>
+            </div>
+          )}
         </div>
-      )}
+        )
+      </div>
+
       <div
         className="mt-3 "
         style={{ display: "flex", justifyContent: "center" }}
       >
-        <h3 style={{ color: value.text }} className="mr-4">
-          Manual Trade
-        </h3>
+        <h3 style={{ color: value.text }}>Manual Trade</h3>
       </div>
       <div
         className="row"
         style={{
           display: "flex",
           justifyContent: "center",
-          width: "100%",
           backgroundColor: value.background,
         }}
       >

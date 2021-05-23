@@ -12,7 +12,10 @@ const TradeService = {
       port: port,
     });
 
-    console.log(respond.data);
+    if (!respond.data["error"]) {
+      return true;
+    }
+    return false;
   },
 };
 

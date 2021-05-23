@@ -50,40 +50,47 @@ export async function fetchCoinList(dispatch, getState) {
 export async function fetchTradeData(dispatch, getState) {
   let TradeData = await TradeDataService.get_all_trade_data("bot_port");
   let TransactionData = [];
-  for (let i = 0; i < TradeData.length; i++) {
-    let coin = TradeData[i];
-    let symbol = coin.transactions.symbol;
-    let exchange = coin.transactions.exchange;
-    let transactions = coin.transactions.transactions;
-    let buy_trade = transactions.buy;
-    let sell_trade = transactions.sell;
-    for (let j = 0; j < buy_trade.length; j++) {
-      let trade = buy_trade[j];
-      TransactionData.push(
-        new Transaction(
-          symbol,
-          exchange,
-          trade.buy_price,
-          "buy",
-          trade.amount,
-          new Date(Date.parse(trade.transaction_time))
-        )
-      );
-    }
-    for (let j = 0; j < sell_trade.length; j++) {
-      let trade = sell_trade[j];
-      TransactionData.push(
-        new Transaction(
-          symbol,
-          exchange,
-          trade.sell_price,
-          "sell",
-          trade.amount,
-          new Date(Date.parse(trade.transaction_time))
-        )
-      );
+  if (TradeData[0] !== null) {
+    // if it is then there's nothing in the port
+    for (let i = 0; i < TradeData.length; i++) {
+      let coin = TradeData[i];
+      let logo = coin.port.logo;
+      let symbol = coin.transactions.symbol;
+      let exchange = coin.transactions.exchange;
+      let transactions = coin.transactions.transactions;
+      let buy_trade = transactions.buy;
+      let sell_trade = transactions.sell;
+      for (let j = 0; j < buy_trade.length; j++) {
+        let trade = buy_trade[j];
+        TransactionData.push(
+          new Transaction(
+            symbol,
+            logo,
+            exchange,
+            trade.buy_price,
+            "buy",
+            trade.amount,
+            new Date(Date.parse(trade.transaction_time))
+          )
+        );
+      }
+      for (let j = 0; j < sell_trade.length; j++) {
+        let trade = sell_trade[j];
+        TransactionData.push(
+          new Transaction(
+            symbol,
+            logo,
+            exchange,
+            trade.sell_price,
+            "sell",
+            trade.amount,
+            new Date(Date.parse(trade.transaction_time))
+          )
+        );
+      }
     }
   }
+
   dispatch({ type: "update_trade_data", payload: TradeData });
   dispatch({ type: "update_transaction_data", payload: TransactionData });
 }
