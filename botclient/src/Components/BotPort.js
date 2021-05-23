@@ -58,6 +58,7 @@ const BotPort = (props) => {
               Portfolio
             </h4>
             {loaded &&
+              props.TradeData[0] !== null &&
               props.TradeData.map((data) => {
                 return (
                   <p>
@@ -67,6 +68,11 @@ const BotPort = (props) => {
                   </p>
                 );
               })}
+            {loaded && props.TradeData[0] === null && (
+              <h5 style={{ color: value.text, textAlign: "center" }}>
+                No coin in portfolio yet
+              </h5>
+            )}
             {!loaded && (
               <div className={styles.center}>
                 <div

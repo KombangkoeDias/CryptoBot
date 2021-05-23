@@ -111,5 +111,14 @@ class Portfolio:
             res = [None]
         return {"trade_data": res}
 
+    def clear(self):
+        try:
+            self.PortDB.remove()
+            self.TransactionDB.remove()
+            self.ProfitDB.remove()
+            return {'removed': True}
+        except:
+            return {'removed': False}
+
 BotPortfolio = Portfolio(BotPort, BotProfit, BotTransaction)
 RealPortfolio = Portfolio(RealPort, RealProfit, RealTransaction)

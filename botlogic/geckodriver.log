@@ -656,3 +656,48 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1621758634827	Marionette	WARN	TLS certificate errors will be ignored for this session
 1621758637529	Marionette	INFO	Stopped listening on port 63664
 JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
+1621759160837	geckodriver	INFO	Listening on 127.0.0.1:64729
+1621759161847	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofilemDPbii"
+*** You are running in headless mode.
+1621759162551	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621759163929	Marionette	INFO	Listening on port 64740
+1621759163949	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621759196728	geckodriver	INFO	Listening on 127.0.0.1:64900
+1621759197727	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofileDn8j5X"
+*** You are running in headless mode.
+1621759198217	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621759198869	Marionette	INFO	Listening on port 64911
+1621759198885	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621759201239	Marionette	INFO	Stopped listening on port 64911
+console.error: (new Error("Connection closed before committing the transaction.", "resource://gre/modules/Sqlite.jsm", 687))
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 687: Error: Connection closed before committing the transaction.
+1621759214681	geckodriver	INFO	Listening on 127.0.0.1:65062
+1621759215695	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofileeQqcsx"
+*** You are running in headless mode.
+1621759216103	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621759216737	Marionette	INFO	Listening on port 65073
+1621759216753	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621759219358	Marionette	INFO	Stopped listening on port 65073
+console.error: (new Error("Connection closed before committing the transaction.", "resource://gre/modules/Sqlite.jsm", 687))
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 687: Error: Connection closed before committing the transaction.
+1621759241276	geckodriver	INFO	Listening on 127.0.0.1:65220
+1621759242292	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofile9Vexhn"
+*** You are running in headless mode.
+1621759242727	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621759243354	Marionette	INFO	Listening on port 65233
+1621759243439	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621759246095	Marionette	INFO	Stopped listening on port 65233
+console.error: (new Error("Connection closed before committing the transaction.", "resource://gre/modules/Sqlite.jsm", 687))
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 687: Error: Connection closed before committing the transaction.
+1621759272629	geckodriver	INFO	Listening on 127.0.0.1:65412
+1621759273642	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofileoRTN7s"
+*** You are running in headless mode.
+1621759274093	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1621759274740	Marionette	INFO	Listening on port 65423
+1621759274802	Marionette	WARN	TLS certificate errors will be ignored for this session
+1621759277465	Marionette	INFO	Stopped listening on port 65423

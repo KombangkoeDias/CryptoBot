@@ -52,3 +52,13 @@ def AllCoinTradeDataFunc():
         return BotPortfolio.getAllTradeData()
     else:
         return NoPortError
+
+def PortRemoveFunc():
+    request.get_data()
+    port = request.json.get('port')
+    if port == 'real_port':
+        return RealPortfolio.clear()
+    elif port == 'bot_port':
+        return BotPortfolio.clear()
+    else:
+        return NoPortError
