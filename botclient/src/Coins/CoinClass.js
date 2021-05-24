@@ -10,7 +10,8 @@ class Coin {
     percentage_range = [0, 0],
     price_range = [0, 0],
     side = null,
-    priceNow = 0
+    priceNow = 0,
+    avg_buy = 0
   ) {
     this.symbol = symbol;
     this.exchange = exchange;
@@ -25,6 +26,7 @@ class Coin {
     this.price_range = price_range;
     this.symbolWithNoUnderscore = this.getSymbolWithNoUnderscore();
     this.tradingPair = this.getTradingPair();
+    this.avg_buy = avg_buy;
     this.abbr = "";
     this.getAbbreviationName();
   }

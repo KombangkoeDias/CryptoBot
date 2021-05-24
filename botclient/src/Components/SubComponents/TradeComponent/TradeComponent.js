@@ -88,7 +88,8 @@ const BuyComponent = (props) => {
         exchange,
         amount,
         trade,
-        props.port
+        props.port,
+        price
       );
       // if (result) {
       //   window.location.reload();

@@ -10,6 +10,8 @@ import TradeComponent from "./SubComponents/TradeComponent/TradeComponent";
 import { connect } from "react-redux";
 import MapStateToProps from "../Constants/MapStateToProps";
 import Charting from "./SubComponents/TradeComponent/Charting";
+import store from "../store/store";
+import { fetchRealPortData } from "../store/Reducers/CoinListReducers";
 
 const RealPort = (props) => {
   const value = useContext(ThemeContext);
@@ -21,6 +23,7 @@ const RealPort = (props) => {
       setWidth($(window).width());
       setHeight($(window).height());
     });
+    setInterval(() => store.dispatch(fetchRealPortData), 2000);
   }, []);
 
   return (

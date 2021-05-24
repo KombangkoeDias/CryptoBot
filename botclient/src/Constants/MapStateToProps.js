@@ -4,6 +4,7 @@ function mapStateToProps(state) {
     LogoList: state.LogoList,
     TradeData: state.TradeData,
     TransactionData: state.TransactionData,
+    RealPort: state.RealPort,
   };
 }
 

@@ -4,7 +4,13 @@ import TradeDataService from "../../Services/TradeDataService";
 import Transaction from "../../Transactions/Transaction";
 
 function CoinListReducer(
-  state = { CoinList: [], LogoList: {}, TradeData: [], TransactionData: [] },
+  state = {
+    CoinList: [],
+    LogoList: {},
+    TradeData: [],
+    TransactionData: [],
+    RealPort: [],
+  },
   action
 ) {
   switch (action.type) {
@@ -16,6 +22,10 @@ function CoinListReducer(
       return { ...state, TradeData: action.payload };
     case "update_transaction_data":
       return { ...state, TransactionData: action.payload };
+    case "update_real_port":
+      return { ...state, RealPort: action.payload };
+    // case "clear_bot_port":
+    //   return { ...state, TradeData: [null], TransactionData: [null] };
     default:
       return state;
   }
@@ -93,6 +103,31 @@ export async function fetchTradeData(dispatch, getState) {
 
   dispatch({ type: "update_trade_data", payload: TradeData });
   dispatch({ type: "update_transaction_data", payload: TransactionData });
+}
+
+export async function fetchRealPortData(dispatch, getState) {
+  let TradeData = await TradeDataService.get_all_trade_data("real_port");
+  let RealPort = [];
+  if (TradeData !== null) {
+    for (let i = 0; i < TradeData.length; i++) {
+      let coin = TradeData[i];
+      let port = coin.port;
+      let amount = port.amount;
+      let avg_buy = port.average_buy;
+      let logo = port.logo;
+      let symbol = port.symbol;
+      let exchange = port.exchange;
+      let real_port_coin = {
+        symbol: symbol,
+        exchange: exchange,
+        avg_buy: avg_buy,
+        logo: logo,
+        amount: amount,
+      };
+      RealPort.push(real_port_coin);
+    }
+  }
+  dispatch({ type: "update_real_port", payload: RealPort });
 }
 
 export default CoinListReducer;

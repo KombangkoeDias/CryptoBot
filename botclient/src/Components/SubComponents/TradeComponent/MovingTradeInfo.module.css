@@ -20,8 +20,24 @@
   }
 }
 
+@keyframes left-moving {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: 0px;
+    display: flex;
+  }
+}
+
 .moving {
   animation-name: moving;
   animation-duration: 0.5s;
   -webkit-animation-duration: 1s;
+}
+
+.leftMoving {
+  animation-name: left-moving;
+  animation-duration: 0.5s;
+  -webkit-animation-duration: 01s;
 }

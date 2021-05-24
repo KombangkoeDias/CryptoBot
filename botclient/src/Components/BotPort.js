@@ -6,6 +6,7 @@ import { ThemeContext, themes } from "../Contexts/Theme";
 import { connect } from "react-redux";
 import MapStateToProps from ".././Constants/MapStateToProps";
 import MovingTradeInfo from "./SubComponents/TradeComponent/MovingTradeInfo";
+import TradeService from "../Services/TradeService";
 import { fetchTradeData } from "../store/Reducers/CoinListReducers";
 import store from "../store/store";
 
@@ -42,47 +43,45 @@ const BotPort = (props) => {
   }
 
   return (
-    <div style={{ overflowX: "hidden" }}>
+    <div style={{ overflowX: "hidden", backgroundColor: value.background }}>
       <div className="row mt-3 ">
-        <div className="col">
-          <div
-            className={"col " + styles.subcomponent}
-            style={{
-              minHeight: "500px",
-              maxHeight: "500px",
-              overflowY: "scroll",
-              color: value.text,
-            }}
-          >
-            <h4 style={{ textAlign: "center" }} className="mb-3">
-              Portfolio
-            </h4>
-            {loaded &&
-              props.TradeData[0] !== null &&
-              props.TradeData.map((data) => {
-                return (
-                  <p>
-                    {data.port.symbol} {data.port.amount}{" "}
-                    {data.port.average_buy}{" "}
-                    {parseFloat(data.profit.profit).toFixed(2)}
-                  </p>
-                );
-              })}
-            {loaded && props.TradeData[0] === null && (
-              <h5 style={{ color: value.text, textAlign: "center" }}>
-                No coin in portfolio yet
-              </h5>
-            )}
-            {!loaded && (
-              <div className={styles.center}>
-                <div
-                  className="spinner-border"
-                  role="status"
-                  style={{ color: value.text }}
-                ></div>
-              </div>
-            )}
-          </div>
+        <div
+          className={"col " + styles.subcomponent}
+          style={{
+            minHeight: "500px",
+            maxHeight: "500px",
+            overflowY: "scroll",
+            color: value.text,
+            borderRight: "2px solid gold",
+          }}
+        >
+          <h4 style={{ textAlign: "center" }} className="mb-3">
+            Portfolio
+          </h4>
+          {loaded &&
+            props.TradeData[0] !== null &&
+            props.TradeData.map((data, i) => {
+              return (
+                <React.Fragment>
+                  <MovingTradeInfo port_data={data.port} move={i} />
+                  {/* {parseFloat(data.profit.profit).toFixed(2)} */}
+                </React.Fragment>
+              );
+            })}
+          {loaded && props.TradeData[0] === null && (
+            <h5 style={{ color: value.text, textAlign: "center" }}>
+              No coin in portfolio yet
+            </h5>
+          )}
+          {!loaded && (
+            <div className={styles.center}>
+              <div
+                className="spinner-border"
+                role="status"
+                style={{ color: value.text }}
+              ></div>
+            </div>
+          )}
         </div>
         <div
           className={"col " + styles.subcomponent}
@@ -130,11 +129,19 @@ const BotPort = (props) => {
         style={{
           display: "flex",
           justifyContent: "center",
-          backgroundColor: value.background,
         }}
       >
         <TradeComponent port={"bot_port"} mode={"trade"} />
       </div>
+      {/* <div className={"row mb-2 " + styles.center}>
+        <button
+          className="btn btn-danger"
+          onClick={() => TradeService.ClearPort("bot_port")}
+          style={{ padding: "10px", borderRadius: "10px" }}
+        >
+          Clear All Trade
+        </button>
+      </div> */}
     </div>
   );
 };

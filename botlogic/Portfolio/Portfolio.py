@@ -33,14 +33,16 @@ class Portfolio:
     def buyCoin(self, symbol, amount ,exchange):
         coin = Coin(symbol, exchange)
         buy_price = request.json.get('buy_price')
-        if buy_price == None:
+        if buy_price == "":
             buy_price = coin.getCurrentPrice()
+        else:
+            buy_price = float(buy_price)
         if buy_price == 0:
             return {'error': 'can\'t buy, exchange not correct'}
         value = self.PortDB.find_one({'symbol': symbol})
         self.createTransaction(symbol, amount, buy_price, 'buy', exchange)
         if value is None:
-            self.PortDB.insert_one({'symbol': symbol, 'amount': amount, 'average_buy': buy_price, 'logo': getLogo(coin.abbr)})
+            self.PortDB.insert_one({'symbol': symbol, 'amount': amount, 'exchange': exchange, 'average_buy': buy_price, 'logo': getLogo(coin.abbr)})
         else:
             currAmount = float(value['amount'])
             currAverageBuy = float(value['average_buy'])
@@ -51,8 +53,10 @@ class Portfolio:
     def sellCoin(self, symbol, amount, exchange):
         coin = Coin(symbol, exchange)
         sell_price = request.json.get('sell_price')
-        if sell_price == None:
+        if sell_price == "":
             sell_price = coin.getCurrentPrice()
+        else:
+            sell_price = float(sell_price)
         if sell_price == 0:
             return {'error': 'can\'t sell, exchange not correct'}
         value = self.PortDB.find_one({'symbol': symbol})
@@ -79,7 +83,7 @@ class Portfolio:
     def getTradeData(self, symbol):
         Port = self.PortDB.find_one({'symbol': symbol})
         if Port is None:
-            res_port = {'symbol': symbol, 'amount': 0, 'average_buy': 0, 'logo': None}
+            res_port = {'symbol': symbol, 'amount': 0, 'average_buy': 0, 'logo': None, 'exchange': None}
         else:
             res_port = Port
         Transactions = self.TransactionDB.find_one({'symbol': symbol})
