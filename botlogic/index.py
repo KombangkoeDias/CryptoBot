@@ -3,6 +3,7 @@ from flask_cors import CORS, cross_origin
 from Functions.Port import CoinBuyFunc, CoinSellFunc, CoinTradeDataFunc, AllCoinTradeDataFunc, PortRemoveFunc
 from Functions.CheckIfExist import CheckIfExistFunc
 from Functions.WatchList import AddCoinToWatchList, RemoveCoinFromWatchList, getWatchList
+from Functions.AddLogoToDatabase import AddLogoFunc
 
 
 app = flask.Flask(__name__)
@@ -64,6 +65,12 @@ def remove():
 @cross_origin()
 def CheckIfExist():
     return CheckIfExistFunc()
+
+# Logo
+@app.route('/logo/add', methods=['POST'])
+@cross_origin()
+def addLogo():
+    return AddLogoFunc()
 
 
 app.run(host="0.0.0.0", port=5000)

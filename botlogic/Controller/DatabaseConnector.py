@@ -21,6 +21,8 @@ RealProfit = db['RealProfit']
 
 WatchList = db['WatchList']
 
+Logos = db['Logos']
+
 def getTimeNow():
     x = datetime.datetime.now()
     return x.strftime('%Y-%m-%d %H:%M:%S')

@@ -1,6 +1,6 @@
 from datetime import datetime
 from Coin.coin import Coin
-from Controller.DatabaseConnector import BotPort, BotProfit, BotTransaction, RealPort, RealProfit, RealTransaction
+from Controller.DatabaseConnector import BotPort, BotProfit, BotTransaction, RealPort, RealProfit, RealTransaction, Logos
 from flask import request
 from Functions.getlogo import getLogo
 
@@ -42,7 +42,12 @@ class Portfolio:
         value = self.PortDB.find_one({'symbol': symbol})
         self.createTransaction(symbol, amount, buy_price, 'buy', exchange)
         if value is None:
-            self.PortDB.insert_one({'symbol': symbol, 'amount': amount, 'exchange': exchange, 'average_buy': buy_price, 'logo': getLogo(coin.abbr)})
+            logo = Logos.find_one({'symbol': symbol})
+            if logo is None:
+                logo = getLogo(coin.abbr)
+            else:
+                logo = logo['logo']
+            self.PortDB.insert_one({'symbol': symbol, 'amount': amount, 'exchange': exchange, 'average_buy': buy_price, 'logo': logo})
         else:
             currAmount = float(value['amount'])
             currAverageBuy = float(value['average_buy'])

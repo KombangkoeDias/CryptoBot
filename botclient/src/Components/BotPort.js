@@ -24,18 +24,45 @@ const BotPort = (props) => {
   const [sortedByDateTransactionData, setSortedByDateTransactionData] =
     useState([]);
 
+  const [filteredTransactionData, setFilteredTransactionData] = useState([]);
+
+  const [filter, setFilter] = useState("");
+
+  const updateFilter = (value) => {
+    setFilter(value);
+    console.log(filteredTransactionData);
+  };
+
+  const sorted = [...props.TransactionData].sort((a, b) => {
+    return b.time - a.time;
+  });
+
   if (props.TradeData.length !== 0 && props.TransactionData.length !== 0) {
     if (!loaded) {
       setLoaded(true);
     }
     if (props.TransactionData.length !== sortedByDateTransactionData.length) {
-      setSortedByDateTransactionData(
-        [...props.TransactionData].sort((a, b) => {
-          return b.time - a.time;
-        })
-      );
+      setSortedByDateTransactionData(sorted);
+      setFilteredTransactionData(sorted);
     }
   }
+
+  useEffect(() => {
+    if (filter === "") {
+      setFilteredTransactionData(sorted);
+    } else {
+      const filtered = sorted.filter(
+        (transaction) => transaction.symbol.search(filter.toUpperCase()) !== -1
+      );
+      console.log(filtered.length);
+      if (filteredTransactionData.length !== filtered.length) {
+        setFilteredTransactionData([...filtered]);
+      }
+    }
+  }, [filter]);
+
+  console.log(props.TradeData);
+
   if (props.TradeData[0] === null) {
     if (!loaded) {
       setLoaded(true);
@@ -60,14 +87,16 @@ const BotPort = (props) => {
           </h4>
           {loaded &&
             props.TradeData[0] !== null &&
-            props.TradeData.map((data, i) => {
-              return (
-                <React.Fragment>
-                  <MovingTradeInfo port_data={data.port} move={i} />
-                  {/* {parseFloat(data.profit.profit).toFixed(2)} */}
-                </React.Fragment>
-              );
-            })}
+            props.TradeData.sort((a, b) => b.port.amount - a.port.amount)
+              .filter((a) => a.port.amount !== 0)
+              .map((data, i) => {
+                return (
+                  <React.Fragment>
+                    <MovingTradeInfo port_data={data.port} move={i} />
+                    {/* {parseFloat(data.profit.profit).toFixed(2)} */}
+                  </React.Fragment>
+                );
+              })}
           {loaded && props.TradeData[0] === null && (
             <h5 style={{ color: value.text, textAlign: "center" }}>
               No coin in portfolio yet
@@ -95,9 +124,23 @@ const BotPort = (props) => {
           <h4 style={{ textAlign: "center" }} className="mb-3">
             Latest Transactions
           </h4>
+          <div className={"row mb-3 " + styles.center}>
+            <label htmlFor="filter" className="mr-3">
+              filter by
+            </label>
+            <input
+              id="filter"
+              type="text"
+              placeholder="Enter coin name"
+              value={filter}
+              onChange={(e) => updateFilter(e.target.value)}
+              style={{ textTransform: "uppercase" }}
+            />
+          </div>
+
           {loaded &&
             props.TradeData[0] !== null &&
-            sortedByDateTransactionData.map((transaction, i) => {
+            filteredTransactionData.map((transaction, i) => {
               return <MovingTradeInfo transaction={transaction} move={i} />;
             })}
           {loaded && props.TradeData[0] === null && (

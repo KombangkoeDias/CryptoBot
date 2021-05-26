@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="931330ad-6468-4b3a-aa61-7e5ad0058850" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/CoinImg/CoinLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/CoinImg/CoinLogo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/TradeComponent/TradeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/SubComponents/TradeComponent/TradeComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Constants/MapStateToProps.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Constants/MapStateToProps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/Services/CoinService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Services/CoinService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botclient/src/store/Reducers/CoinListReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/store/Reducers/CoinListReducers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/Functions/WatchList.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/Functions/WatchList.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bottrade/.idea/bottrade.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botlogic/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/geckodriver.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../botlogic/scripts/watchlistmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/scripts/watchlistmaker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/botprice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/botprice.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coin/coin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Coin/coin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pyvenv.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pyvenv.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +43,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -110,6 +102,7 @@
       <workItem from="1621505611486" duration="506000" />
       <workItem from="1621518490677" duration="196000" />
       <workItem from="1621519853232" duration="148000" />
+      <workItem from="1621946989949" duration="2741000" />
     </task>
     <servers />
   </component>
@@ -129,6 +122,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/botprice$index.coverage" NAME="index Coverage Results" MODIFIED="1621505246466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/botprice$index.coverage" NAME="index Coverage Results" MODIFIED="1621947206424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
