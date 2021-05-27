@@ -3,6 +3,7 @@ from flask_cors import CORS, cross_origin
 from Functions.Port import CoinBuyFunc, CoinSellFunc, CoinTradeDataFunc, AllCoinTradeDataFunc, PortRemoveFunc
 from Functions.CheckIfExist import CheckIfExistFunc
 from Functions.WatchList import AddCoinToWatchList, RemoveCoinFromWatchList, getWatchList
+from Functions.getBalance.pancake import PancakeFunc
 from Functions.AddLogoToDatabase import AddLogoFunc
 
 
@@ -72,6 +73,10 @@ def CheckIfExist():
 def addLogo():
     return AddLogoFunc()
 
-
+# Balance
+@app.route('/balance/pancake', methods=['GET'])
+@cross_origin()
+def pancake():
+    return PancakeFunc()
 app.run(host="0.0.0.0", port=5000)
 

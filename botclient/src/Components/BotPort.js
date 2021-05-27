@@ -37,6 +37,14 @@ const BotPort = (props) => {
     return b.time - a.time;
   });
 
+  const calculateProfit = () => {
+    let profit = 0;
+    for (let i = 0; i < props.TradeData.length; ++i) {
+      profit = profit + props.TradeData[i].profit.profit;
+    }
+    return profit;
+  };
+
   if (props.TradeData.length !== 0 && props.TransactionData.length !== 0) {
     if (!loaded) {
       setLoaded(true);
@@ -85,6 +93,9 @@ const BotPort = (props) => {
           <h4 style={{ textAlign: "center" }} className="mb-3">
             Portfolio
           </h4>
+          <h5 style={{ textAlign: "center" }}>
+            Profit :{calculateProfit().toFixed(4)} USDT
+          </h5>
           {loaded &&
             props.TradeData[0] !== null &&
             props.TradeData.sort((a, b) => b.port.amount - a.port.amount)

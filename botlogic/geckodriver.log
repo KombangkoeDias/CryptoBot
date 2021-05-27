@@ -1295,3 +1295,11 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 
 ###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1622052683364	geckodriver	INFO	Listening on 127.0.0.1:59943
+1622052684353	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mb/h8346vqn343b0xqcj96zyxhc0000gn/T/rust_mozprofilehBM8yV"
+*** You are running in headless mode.
+1622052688321	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1622052690678	Marionette	INFO	Listening on port 59993
+1622052690788	Marionette	WARN	TLS certificate errors will be ignored for this session
+1622052693381	Marionette	INFO	Stopped listening on port 59993

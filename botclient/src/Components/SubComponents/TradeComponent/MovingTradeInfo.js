@@ -4,6 +4,26 @@ import styles from "./MovingTradeInfo.module.css";
 import CoinLogo from "../../CoinImg/CoinLogo";
 import { ThemeContext, themes } from "../../../Contexts/Theme";
 
+const CalculateTimeDiff = (time) => {
+  var midnight = new Date();
+  midnight.setHours(0, 0, 0, 0);
+  const OneDay = 1000 * 60 * 60 * 24;
+  const OneHour = 1000 * 60 * 60;
+
+  if (time.getDate() == midnight.getDate()) {
+    return "Today at " + time.toLocaleTimeString();
+  } else if (time - midnight < -OneDay && time - midnight > -2 * OneDay) {
+    return "2 days ago at " + time.toLocaleTimeString();
+  } else if (time - midnight < 0 && time - midnight > -OneDay) {
+    return "yesterday at " + time.toLocaleTimeString();
+  } else {
+    var month = time.getUTCMonth() + 1;
+    var day = time.getUTCDate();
+    var year = time.getUTCFullYear();
+    return day + "/" + month + "/" + year + " at " + time.toLocaleTimeString();
+  }
+};
+
 const MovingTradeInfo = (props) => {
   const transaction = props.transaction;
   const port_data = props.port_data;
@@ -57,6 +77,11 @@ const MovingTradeInfo = (props) => {
                 amount : {transaction.amount}
               </div>
             </div>
+            <p
+              style={{ position: "absolute", right: "10px", fontSize: "10px" }}
+            >
+              {CalculateTimeDiff(transaction.time)}
+            </p>
           </div>
         )}
         {port_data !== undefined && (
