@@ -3,7 +3,10 @@ import Router from "./Routers/Main";
 import Navbar from "./Components/Navbar";
 import { ThemeContext, themes } from "./Contexts/Theme";
 import store from "./store/store";
-import { fetchCoinList } from "./store/Reducers/CoinListReducers";
+import {
+  fetchCoinList,
+  fetchRealPortData,
+} from "./store/Reducers/CoinListReducers";
 import { Provider } from "react-redux";
 
 function App() {

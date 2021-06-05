@@ -18,15 +18,18 @@ class TotalPortFolio extends React.Component {
   update() {
     let port = 0;
     let loaded = true;
-    for (let i = 0; i < this.props.CoinList.length; ++i) {
-      if (this.props.CoinList[i].priceNow === 0) {
+    const filteredPort = this.props.RealPort.filter(
+      (coin) => coin.coin.amount !== 0
+    ); // as there can be coin with amount 0 (already sold all) in the port
+    for (let i = 0; i < filteredPort.length; i++) {
+      if (filteredPort[i].coin.priceNow === 0) {
         //console.log(CoinList[i].symbol);
+        //console.log(filteredPort[i].coin.symbol);
         loaded = false;
       }
       port =
         port +
-        this.props.CoinList[i].amount *
-          this.props.CoinList[i].priceNow.toFixed(2);
+        filteredPort[i].coin.amount * filteredPort[i].coin.priceNow.toFixed(2);
     }
     this.setState({ loaded: loaded });
     if (port > this.state.portValue) {

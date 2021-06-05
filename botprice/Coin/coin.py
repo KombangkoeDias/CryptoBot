@@ -87,8 +87,11 @@ class Coin:
         return self.percentageReached.getPercentageRange()
 
     def getBasePrice(self):
-        x = EverydayPriceDB.find_one({'symbol': self.symbol})['price']
-        self.basePrice = x
+        x = EverydayPriceDB.find_one({'symbol': self.symbol})
+        if x is not None:
+            self.basePrice = x['price']
+        else:
+            self.basePrice = self.getCurrentPrice()
 
     def getTradingPair(self):
         for pair in pairs:

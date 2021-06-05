@@ -39,8 +39,10 @@ const BotPort = (props) => {
 
   const calculateProfit = () => {
     let profit = 0;
-    for (let i = 0; i < props.TradeData.length; ++i) {
-      profit = profit + props.TradeData[i].profit.profit;
+    if (props.TradeData[0] !== null) {
+      for (let i = 0; i < props.TradeData.length; ++i) {
+        profit = profit + props.TradeData[i].profit.profit;
+      }
     }
     return profit;
   };

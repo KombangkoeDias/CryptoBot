@@ -6,6 +6,8 @@ import styles from "./TradeComponent.module.css";
 import TradeService from "../../../Services/TradeService";
 import { connect } from "react-redux";
 import MapStateToProps from "../../../Constants/MapStateToProps";
+import { fetchRealPortData } from "../../../store/Reducers/CoinListReducers";
+import store from "../../../store/store";
 
 const BuyComponent = (props) => {
   const [symbol, setSymbol] = useState("");
@@ -91,6 +93,7 @@ const BuyComponent = (props) => {
         props.port,
         price
       );
+      store.dispatch(fetchRealPortData);
       // if (result) {
       //   window.location.reload();
       // }
@@ -206,7 +209,7 @@ const BuyComponent = (props) => {
           />
           <datalist id="symbols">
             {props.CoinList.map((coin) => {
-              return <option value={coin.abbr.toUpperCase()} />;
+              return <option value={coin.abbr.toUpperCase()} key={coin.abbr} />;
             })}
           </datalist>
           <label htmlFor="pair" className="col">
@@ -234,7 +237,7 @@ const BuyComponent = (props) => {
               })
             ),
           ].map((pair) => {
-            return <option value={pair.toUpperCase()} />;
+            return <option value={pair.toUpperCase()} key={pair} />;
           })}
         </datalist>
         <div

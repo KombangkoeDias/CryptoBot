@@ -13,7 +13,7 @@ const Modal = (props) => {
         }}
       >
         <div className="modal-header">
-          <CoinLogo coin={props.coin} />
+          <CoinLogo coin={props.coin} logo={props.logo} />
           <h5 className="modal-title" id="exampleModalLongTitle">
             {props.symbol}
           </h5>

@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="931330ad-6468-4b3a-aa61-7e5ad0058850" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../bottrade/.idea/bottrade.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/BotPort.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/BotPort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/CoinImg/CoinLogo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/CoinImg/CoinLogo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/Prices/CalculatePriceFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/Prices/CalculatePriceFunctions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/Prices/PriceCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/Prices/PriceCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Components/RealPort.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Components/RealPort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Constants/ConstantCSS.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Constants/ConstantCSS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/Values/Modal/CoinInfoModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/Values/Modal/CoinInfoModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../botclient/src/store/Reducers/CoinListReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../botclient/src/store/Reducers/CoinListReducers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../botlogic/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/../botlogic/geckodriver.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coin/coin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Coin/coin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Functions/CoinInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/CoinInfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bottrade/index.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../bottrade/index.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +111,7 @@
       <workItem from="1621518490677" duration="196000" />
       <workItem from="1621519853232" duration="148000" />
       <workItem from="1621946989949" duration="2741000" />
+      <workItem from="1622905555095" duration="271000" />
     </task>
     <servers />
   </component>

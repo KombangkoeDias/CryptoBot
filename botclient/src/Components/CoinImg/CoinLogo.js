@@ -4,9 +4,10 @@ import MapStateToProps from "../../Constants/MapStateToProps";
 
 const CoinLogo = (props) => {
   let coin = props.coin;
+  let logo = props.logo;
   return (
     <img
-      src={coin ? props.LogoList[coin.symbol] : props.logo}
+      src={!logo ? props.LogoList[coin.symbol] : props.logo}
       width="30"
       height="30"
       className="mr-1"

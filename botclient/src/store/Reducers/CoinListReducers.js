@@ -108,7 +108,7 @@ export async function fetchTradeData(dispatch, getState) {
 export async function fetchRealPortData(dispatch, getState) {
   let TradeData = await TradeDataService.get_all_trade_data("real_port");
   let RealPort = [];
-  if (TradeData !== null) {
+  if (TradeData[0] !== null) {
     for (let i = 0; i < TradeData.length; i++) {
       let coin = TradeData[i];
       let port = coin.port;
@@ -118,11 +118,14 @@ export async function fetchRealPortData(dispatch, getState) {
       let symbol = port.symbol;
       let exchange = port.exchange;
       let real_port_coin = {
-        symbol: symbol,
-        exchange: exchange,
+        coin: new Coin(
+          symbol,
+          exchange,
+          amount
+          //data[symbol]["logo"]
+        ),
         avg_buy: avg_buy,
         logo: logo,
-        amount: amount,
       };
       RealPort.push(real_port_coin);
     }

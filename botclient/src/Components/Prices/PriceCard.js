@@ -142,7 +142,7 @@ class PriceCard extends React.Component {
           color: value.text,
         }}
       >
-        <CoinLogo coin={this.props.coin} />
+        <CoinLogo coin={this.props.coin} logo={this.props.logo} />
         {this.state.info.percentage !== 0 && this.props.mode === Mode.NORMAL && (
           <React.Fragment>
             <div
@@ -218,6 +218,7 @@ class PriceCard extends React.Component {
             abbr={this.props.abbr}
             coin={this.props.coin}
             CoinValues={() => this.CoinValues(true)}
+            logo={this.props.logo}
           />
         </div>
       </div>

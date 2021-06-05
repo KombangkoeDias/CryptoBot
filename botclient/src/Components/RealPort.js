@@ -23,8 +23,20 @@ const RealPort = (props) => {
       setWidth($(window).width());
       setHeight($(window).height());
     });
-    setInterval(() => store.dispatch(fetchRealPortData), 2000);
+    store.dispatch(fetchRealPortData);
   }, []);
+
+  //console.log(props.RealPort);
+
+  const filterZeroAmountRealPort = [
+    ...props.RealPort.filter((coin) => coin.coin.amount !== 0),
+  ];
+
+  //console.log(filterZeroAmountRealPort.length);
+
+  const OnlyCoinInstanceRealPort = [
+    ...filterZeroAmountRealPort.map((coin) => coin.coin),
+  ];
 
   return (
     <div
@@ -35,7 +47,7 @@ const RealPort = (props) => {
       }}
     >
       <TotalPortFolio />
-      <PieChart CoinList={props.CoinList} />
+      <PieChart CoinList={OnlyCoinInstanceRealPort} />
       <div
         className="row"
         style={{ display: "flex", justifyContent: "center" }}
@@ -55,61 +67,65 @@ const RealPort = (props) => {
       </div>
       <div className="row">
         <div className="col">
-          {props.CoinList.slice(0, Math.ceil(props.CoinList.length / 2)).map(
-            (coin, i) => (
+          {filterZeroAmountRealPort
+            .slice(0, Math.ceil(filterZeroAmountRealPort.length / 2))
+            .map((coin, i) => (
               <div
                 className="row ml-3 mb-1 "
+                key={coin.coin.symbol}
                 style={{
                   display: "flex",
                   justifyContent: "center",
-                  height: "40px",
+                  height: "50px",
                 }}
               >
                 <PriceCard
                   updateCoinList={(symbol, info) =>
-                    PriceFunctions.updateCoinList(symbol, info)
+                    PriceFunctions.updateRealPort(symbol, info)
                   }
-                  coin={coin}
+                  coin={coin.coin}
                   showbg={false}
                   showname={true}
-                  key={coin.symbol}
-                  symbol={coin.symbol}
-                  amount={coin.amount}
+                  symbol={coin.coin.symbol}
+                  amount={coin.coin.amount}
                   mode={Mode.HOLDINGS}
-                  abbr={coin.abbr}
+                  abbr={coin.coin.abbr}
+                  logo={coin.logo}
                 />
               </div>
-            )
-          )}
+            ))}
         </div>
         <div className="col">
-          {props.CoinList.slice(
-            Math.ceil(props.CoinList.length / 2),
-            props.CoinList.length
-          ).map((coin, i) => (
-            <div
-              className="row ml-3 mb-1 mr-2"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                height: "40px",
-              }}
-            >
-              <PriceCard
-                updateCoinList={(symbol, info) =>
-                  PriceFunctions.updateCoinList(symbol, info)
-                }
-                coin={coin}
-                showbg={false}
-                showname={true}
-                key={coin.symbol}
-                symbol={coin.symbol}
-                amount={coin.amount}
-                mode={Mode.HOLDINGS}
-                abbr={coin.abbr}
-              />
-            </div>
-          ))}
+          {filterZeroAmountRealPort
+            .slice(
+              Math.ceil(filterZeroAmountRealPort.length / 2),
+              filterZeroAmountRealPort.length
+            )
+            .map((coin, i) => (
+              <div
+                className="row ml-3 mb-1 mr-2"
+                key={coin.coin.symbol}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  height: "50px",
+                }}
+              >
+                <PriceCard
+                  updateCoinList={(symbol, info) =>
+                    PriceFunctions.updateRealPort(symbol, info)
+                  }
+                  coin={coin.coin}
+                  showbg={false}
+                  showname={true}
+                  symbol={coin.coin.symbol}
+                  amount={coin.coin.amount}
+                  mode={Mode.HOLDINGS}
+                  abbr={coin.coin.abbr}
+                  logo={coin.logo}
+                />
+              </div>
+            ))}
         </div>
       </div>
       <div
