@@ -111,11 +111,38 @@ class Portfolio:
         return {'symbol': symbol, 'port': res_port, 'transactions': res_transactions, 'profit': res_profit}
 
     def getAllTradeData(self):
+        Port = self.PortDB.find()
+        Transactions = self.TransactionDB.find()
+        Profit = self.ProfitDB.find()
+        PortDict = dict()
+        TransactionDict = dict()
+        ProfitDict = dict()
+        symbols = list()
+        for port in Port:
+            PortDict[port['symbol']] = port
+            symbols.append(port['symbol'])
+        for transaction in Transactions:
+            TransactionDict[transaction['symbol']] = transaction
+        for symbol in symbols:
+            if symbol not in ProfitDict.keys():
+                ProfitDict[symbol] = {'symbol': symbol, 'profit': 0}
+            else:
+                ProfitDict[symbol] = ProfitDict[symbol]
         res = []
-        Ports = self.PortDB.find()
-        for coin in Ports:
-            symbol = coin['symbol']
-            res.append(self.getTradeData(symbol))
+        for symbol in symbols:
+            res_dict = dict()
+            for key in ['_id']:
+                if key in PortDict[symbol].keys():
+                    del PortDict[symbol][key]
+                if key in TransactionDict[symbol].keys():
+                    del TransactionDict[symbol][key]
+                if key in ProfitDict[symbol].keys():
+                    del ProfitDict[symbol][key]
+            res_dict['port'] = PortDict[symbol]
+            res_dict['transactions'] = TransactionDict[symbol]
+            res_dict['profit'] = ProfitDict[symbol]
+            res_dict['symbol'] = symbol
+            res.append(res_dict)
         if (len(res) == 0):
             res = [None]
         return {"trade_data": res}
