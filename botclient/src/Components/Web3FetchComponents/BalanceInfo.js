@@ -34,11 +34,8 @@ class BalanceInfo extends React.Component {
     return (
       <React.Fragment>
         <div
-          className="row mt-3 ml-2 mr-2"
+          className={"row mt-3 ml-2 mr-2 " + styles.superCenter}
           style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
             height: "100px",
             color: value.text,
             backgroundColor: value.card,
@@ -46,6 +43,21 @@ class BalanceInfo extends React.Component {
             border: "2px solid gold",
           }}
         >
+          <div>
+            {this.state.available && this.state.ready && (
+              <p
+                style={{
+                  position: "fixed",
+                  transform: "translate(5%,90%)",
+                  fontSize: "10px",
+                  marginBottom: "0px",
+                  opacity: "0.5",
+                }}
+              >
+                Account : {this.state.Address}
+              </p>
+            )}
+          </div>
           {this.state.ready && this.state.available && (
             <React.Fragment>
               <div className={"col-2 " + styles.sueprCenter}>
@@ -70,7 +82,6 @@ class BalanceInfo extends React.Component {
               </div>
             </React.Fragment>
           )}
-
           {!this.state.ready && this.state.available && (
             <h4 style={{ color: value.text }}>
               Fetching... <CoinLogo logo={this.props.logo} />

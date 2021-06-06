@@ -34,8 +34,6 @@ const Prices = (props) => {
     setManage(true);
   };
 
-  store.dispatch(fetchCoinList);
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);

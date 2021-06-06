@@ -3,6 +3,7 @@ import Router from "./Routers/Main";
 import Navbar from "./Components/Navbar";
 import { ThemeContext, themes } from "./Contexts/Theme";
 import store from "./store/store";
+import { fetchCoinList } from "./store/Reducers/CoinListReducers";
 
 import { Provider } from "react-redux";
 
@@ -23,6 +24,8 @@ function App() {
   }
 
   const [theme, setTheme] = useState(existingTheme);
+
+  store.dispatch(fetchCoinList);
 
   const toggleTheme = () => {
     setTheme(theme === themes.dark ? themes.light : themes.dark);
