@@ -1,5 +1,9 @@
 from selenium import webdriver
 import os
+
+from flask import request
+from Coin.coin import Coin
+
 os.environ['MOZ_HEADLESS'] = '1'
 
 def getLogo(abbr):
@@ -32,3 +36,10 @@ def getLogo(abbr):
                     return res
     except:
         return ""
+
+def getLogoFunc():
+    request.get_data()
+    symbol = request.args.get('symbol')
+    coin = Coin(symbol)
+    logo = getLogo(coin.abbr)
+    return {'logo': logo}

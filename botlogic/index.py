@@ -5,6 +5,7 @@ from Functions.CheckIfExist import CheckIfExistFunc
 from Functions.WatchList import AddCoinToWatchList, RemoveCoinFromWatchList, getWatchList
 from Functions.getBalance.pancake import PancakeFunc
 from Functions.AddLogoToDatabase import AddLogoFunc
+from Functions.getlogo import getLogoFunc
 
 
 app = flask.Flask(__name__)
@@ -72,6 +73,11 @@ def CheckIfExist():
 @cross_origin()
 def addLogo():
     return AddLogoFunc()
+
+@app.route('/coin/logo', methods=['GET'])
+@cross_origin()
+def getLogo():
+    return getLogoFunc()
 
 # Balance
 @app.route('/balance/pancake', methods=['GET'])

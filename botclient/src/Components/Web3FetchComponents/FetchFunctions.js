@@ -30,7 +30,13 @@ const FetchFunctions = {
     },
   },
   DOT: {
-    initialize: async (component) => FetchFunctions.KSM.initialize(component),
+    initialize: async (component) => {
+      const wsProvider = new WsProvider("wss://rpc.polkadot.io");
+      const the_api = await ApiPromise.create({ provider: wsProvider });
+      component.setState({ api: the_api }, () =>
+        FetchFunctions.DOT.fetchBalance(component)
+      );
+    },
     fetchBalance: async (component) =>
       FetchFunctions.KSM.fetchBalance(component),
     ConvertBalance: (balance) => FetchFunctions.KSM.ConvertBalance(balance),

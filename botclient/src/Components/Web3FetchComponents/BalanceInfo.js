@@ -2,6 +2,7 @@ import React from "react";
 import FetchFunctions from "./FetchFunctions";
 import { themes, ThemeContext } from "../../Contexts/Theme";
 import styles from "./BalanceInfo.module.css";
+import CoinLogo from "../CoinImg/CoinLogo";
 
 class BalanceInfo extends React.Component {
   constructor(props) {
@@ -13,11 +14,19 @@ class BalanceInfo extends React.Component {
       Address: this.props.address,
       datetime: null,
       stake_balance: null,
+      available: true,
     };
   }
 
   componentDidMount() {
-    setInterval(() => FetchFunctions[this.props.symbol].initialize(this), 5000);
+    if (FetchFunctions[this.props.symbol]) {
+      setInterval(
+        () => FetchFunctions[this.props.symbol].initialize(this),
+        5000
+      );
+    } else {
+      this.setState({ available: false });
+    }
   }
 
   render() {
@@ -37,11 +46,11 @@ class BalanceInfo extends React.Component {
             border: "2px solid gold",
           }}
         >
-          {this.state.ready && (
+          {this.state.ready && this.state.available && (
             <React.Fragment>
               <div className={"col-2 " + styles.sueprCenter}>
                 <p style={{ textAlign: "center", marginBottom: "0px" }}>
-                  asset: {this.props.symbol}
+                  asset: <CoinLogo logo={this.props.logo} /> {this.props.symbol}
                 </p>
               </div>
               <div className={"col " + styles.sueprCenter}>
@@ -62,8 +71,17 @@ class BalanceInfo extends React.Component {
             </React.Fragment>
           )}
 
-          {!this.state.ready && (
-            <h4 style={{ color: value.text }}>Fetching...</h4>
+          {!this.state.ready && this.state.available && (
+            <h4 style={{ color: value.text }}>
+              Fetching... <CoinLogo logo={this.props.logo} />
+            </h4>
+          )}
+
+          {!this.state.available && (
+            <h5 style={{ color: value.text }}>
+              No Data For Asset <CoinLogo logo={this.props.logo} />{" "}
+              {this.props.symbol} Yet
+            </h5>
           )}
         </div>
       </React.Fragment>

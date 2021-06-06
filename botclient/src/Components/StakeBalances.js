@@ -7,10 +7,32 @@ const StakeBalances = () => {
       <BalanceInfo
         symbol="KSM"
         address="E3FRzURvdjbmKEUupyvQFAckwWeTHXGSepzfsQ3JoPbjF4b"
+        logo="https://s2.coinmarketcap.com/static/img/coins/64x64/5034.png"
       />
       <BalanceInfo
         symbol="DOT"
         address="15knng9JywX9EKFThL2oN8fCk8xmFKktHzAvgcnQky3HSXfm"
+        logo="https://s2.coinmarketcap.com/static/img/coins/64x64/6636.png"
+      />
+      <BalanceInfo
+        symbol="ADA"
+        address=""
+        logo="https://s2.coinmarketcap.com/static/img/coins/64x64/2010.png"
+      />
+      <BalanceInfo
+        symbol="SOL"
+        address=""
+        logo="https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"
+      />
+      <BalanceInfo
+        symbol="CAKE"
+        address=""
+        logo="https://s2.coinmarketcap.com/static/img/coins/64x64/7186.png"
+      />
+      <BalanceInfo
+        symbol="PCX"
+        address=""
+        logo="https://s2.coinmarketcap.com/static/img/coins/64x64/4200.png"
       />
     </React.Fragment>
   );
