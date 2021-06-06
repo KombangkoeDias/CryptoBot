@@ -20,6 +20,15 @@ const CoinService = {
     });
     return respond.data;
   },
+  getPrice: async (symbol, exchange) => {
+    const respond = await axios.get(priceURL + "/coin/price", {
+      params: {
+        symbol: symbol,
+        exchange: exchange,
+      },
+    });
+    return respond.data.price;
+  },
   checkIfExist: async (symbol, exchange) => {
     const respond = await axios.post(serverURL + "/coin/checkIfExist", {
       symbol: symbol,

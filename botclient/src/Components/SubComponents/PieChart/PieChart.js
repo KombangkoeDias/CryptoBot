@@ -33,11 +33,15 @@ class PieChart extends Component {
           )
         );
     }
+    if (this.props.CoinList.length == 0) {
+      loaded = false;
+    }
     this.setState({ loaded: loaded, port: port.toFixed(2) });
     setTimeout(() => this.update(), 1000);
   }
   componentDidMount() {
     this.update();
+    setTimeout(() => this.setState({ loaded: true }), 5000);
   }
   render() {
     let value = this.context;
@@ -109,6 +113,9 @@ class PieChart extends Component {
               <span className="sr-only">Loading...</span>
             </div>
           </div>
+        )}
+        {this.state.loaded && this.props.CoinList.length === 0 && (
+          <h3>No Coin in Real Port yet</h3>
         )}
         {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
       </div>

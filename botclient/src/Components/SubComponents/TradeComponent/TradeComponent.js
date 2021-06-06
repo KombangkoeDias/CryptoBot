@@ -21,6 +21,8 @@ const BuyComponent = (props) => {
   const [bounce, setBounce] = useState(false);
   const [price, setPrice] = useState("");
 
+  const [priceNow, setPriceNow] = useState(0);
+
   const [errorMessage, setErrorMessage] = useState("");
 
   const [symbolOk, setSymbolOk] = useState(true);
@@ -50,6 +52,21 @@ const BuyComponent = (props) => {
       setExist(null);
     }
   }, [symbol, pair, exchange]);
+
+  useEffect(() => {
+    //console.log("exist change to " + exist);
+    if (exist) {
+      getPriceNow();
+    } else {
+      setPriceNow(0);
+    }
+  }, [exist]);
+
+  const getPriceNow = async () => {
+    let this_symbol = CreateSymbol();
+    let this_price = await CoinService.getPrice(this_symbol, exchange);
+    setPriceNow(this_price);
+  };
 
   const ValidateInput = () => {
     if (symbol === "") {
@@ -307,13 +324,24 @@ const BuyComponent = (props) => {
             {exist !== null && (
               <div>
                 {symbol !== "" && exchange !== "" && pair != "" && (
-                  <p
-                    className={bounce ? styles.bounce : ""}
-                    style={{ color: exist ? "lightgreen" : "darkred" }}
-                  >
-                    {" "}
-                    {exist ? "Symbol Existed!" : "Symbol Not Existed!"}
-                  </p>
+                  <React.Fragment>
+                    <p
+                      className={bounce ? styles.bounce : ""}
+                      style={{ color: exist ? "lightgreen" : "darkred" }}
+                    >
+                      {" "}
+                      {exist ? "Symbol Existed!" : "Symbol Not Existed!"}
+                      {exist && priceNow !== 0 && (
+                        <span>
+                          {" "}
+                          Price now is at {priceNow} {pair} per 1 {symbol}
+                        </span>
+                      )}
+                      {exist && priceNow === 0 && (
+                        <span> Fetching Price...</span>
+                      )}
+                    </p>
+                  </React.Fragment>
                 )}
               </div>
             )}
