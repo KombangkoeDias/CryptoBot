@@ -20,9 +20,10 @@ class BalanceInfo extends React.Component {
 
   componentDidMount() {
     if (FetchFunctions[this.props.symbol]) {
+      FetchFunctions[this.props.symbol].initialize(this);
       setInterval(
         () => FetchFunctions[this.props.symbol].initialize(this),
-        5000
+        15000
       );
     } else {
       this.setState({ available: false });
