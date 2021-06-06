@@ -3,10 +3,7 @@ import Router from "./Routers/Main";
 import Navbar from "./Components/Navbar";
 import { ThemeContext, themes } from "./Contexts/Theme";
 import store from "./store/store";
-import {
-  fetchCoinList,
-  fetchRealPortData,
-} from "./store/Reducers/CoinListReducers";
+
 import { Provider } from "react-redux";
 
 function App() {
@@ -35,8 +32,6 @@ function App() {
       localStorage.setItem("theme", "dark");
     }
   };
-
-  store.dispatch(fetchCoinList);
 
   return (
     <div style={{ backgroundColor: theme.background, height: "100vh" }}>

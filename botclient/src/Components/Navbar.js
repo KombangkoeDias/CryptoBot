@@ -36,6 +36,10 @@ const Navbar = (props) => {
       background: pathState === "bot_port" ? colorGradient : "transparent",
       boxShadow: pathState === "bot_port" ? boxShadow : "none",
     },
+    stake_balance: {
+      background: pathState === "stake_balance" ? colorGradient : "transparent",
+      boxShadow: pathState === "stake_balance" ? boxShadow : "none",
+    },
   };
 
   return (
@@ -82,6 +86,14 @@ const Navbar = (props) => {
           >
             <a className="nav-link" href="/bot_port">
               Bot Port
+            </a>
+          </li>
+          <li
+            className={"nav-item active mr-2 " + styles.linkItem}
+            style={linkStyle.stake_balance}
+          >
+            <a className="nav-link" href="/stake_balance">
+              Stake Balances
             </a>
           </li>
         </ul>

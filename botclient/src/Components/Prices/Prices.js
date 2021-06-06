@@ -9,6 +9,8 @@ import { ThemeContext, themes } from "../../Contexts/Theme";
 import { connect } from "react-redux";
 import MapStateToProps from "../../Constants/MapStateToProps";
 import ManageComponent from "../../Components/SubComponents/TradeComponent/TradeComponent";
+import store from "../../store/store";
+import { fetchCoinList } from "../../store/Reducers/CoinListReducers";
 
 const Prices = (props) => {
   // function addNewCoin() {
@@ -31,6 +33,8 @@ const Prices = (props) => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     setManage(true);
   };
+
+  store.dispatch(fetchCoinList);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
