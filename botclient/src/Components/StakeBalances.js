@@ -26,7 +26,7 @@ const StakeBalances = () => {
       />
       <BalanceInfo
         symbol="CAKE"
-        address=""
+        address="0x079A7EEf35B1651d409986567FC8A928fC459eb8"
         logo="https://s2.coinmarketcap.com/static/img/coins/64x64/7186.png"
       />
       <BalanceInfo
