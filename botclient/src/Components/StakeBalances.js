@@ -34,11 +34,11 @@ const StakeBalances = () => {
         address="0x079A7EEf35B1651d409986567FC8A928fC459eb8"
         logo="https://s2.coinmarketcap.com/static/img/coins/64x64/7186.png"
       />
-      <BalanceInfo
+      {/* <BalanceInfo
         symbol="PCX"
         address="5QbVA5vLo33ZjL4kgvigRBcd5Dak7ZkGr2dFrR8Xb1uSrEmk"
         logo="https://s2.coinmarketcap.com/static/img/coins/64x64/4200.png"
-      />
+      /> */}
     </React.Fragment>
   );
 };
