@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BalanceInfo from "./Web3FetchComponents/BalanceInfo";
 
 const StakeBalances = () => {
+  useEffect(() => {
+    setInterval(() => {
+      window.location.reload();
+    }, 60 * 20 * 1000);
+  }, []);
   return (
     <React.Fragment>
       <BalanceInfo
@@ -16,12 +21,12 @@ const StakeBalances = () => {
       />
       <BalanceInfo
         symbol="ADA"
-        address=""
+        address="stake1uxz00jr2h6rs60tzt2m9wpqmrxwv8hf7rsqyt99m45p4s6qcnd6j8"
         logo="https://s2.coinmarketcap.com/static/img/coins/64x64/2010.png"
       />
       <BalanceInfo
         symbol="SOL"
-        address=""
+        address="3CvLeYdstYqDGH3zUcZDH4bjoUHQRhy4k4sjkQPproVC"
         logo="https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"
       />
       <BalanceInfo
@@ -31,7 +36,7 @@ const StakeBalances = () => {
       />
       <BalanceInfo
         symbol="PCX"
-        address=""
+        address="5QbVA5vLo33ZjL4kgvigRBcd5Dak7ZkGr2dFrR8Xb1uSrEmk"
         logo="https://s2.coinmarketcap.com/static/img/coins/64x64/4200.png"
       />
     </React.Fragment>

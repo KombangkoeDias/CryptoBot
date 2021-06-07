@@ -15,6 +15,7 @@ class BalanceInfo extends React.Component {
       datetime: null,
       stake_balance: null,
       available: true,
+      reward: null,
     };
   }
 
@@ -30,6 +31,18 @@ class BalanceInfo extends React.Component {
     }
   }
 
+  getColor() {
+    const mapping = {
+      DOT: "#e50c7b",
+      KSM: "#7c003e",
+      CAKE: "#d1884f",
+      PCX: "gold",
+      ADA: "#385cb8",
+      SOL: "#c139f4",
+    };
+    return mapping[this.props.symbol];
+  }
+
   render() {
     const value = this.context;
     return (
@@ -41,7 +54,7 @@ class BalanceInfo extends React.Component {
             color: value.text,
             backgroundColor: value.card,
             borderRadius: "20px",
-            border: "2px solid gold",
+            border: "2px solid " + this.getColor(),
           }}
         >
           <div>
@@ -74,6 +87,11 @@ class BalanceInfo extends React.Component {
               <div className={"col " + styles.sueprCenter}>
                 <p style={{ textAlign: "center", marginBottom: "0px" }}>
                   stake balance: {this.state.stake_balance} {this.props.symbol}
+                </p>
+              </div>
+              <div className={"col " + styles.sueprCenter}>
+                <p style={{ textAlign: "center", marginBottom: "0px" }}>
+                  reward: {this.state.reward} {this.props.symbol}
                 </p>
               </div>
               <div className={"col " + styles.sueprCenter}>
