@@ -13,6 +13,7 @@
     "watchlist-starter": "cd botlogic && source venv/bin/activate && cd scripts && python3 watchlistmaker.py",
     "deploy-client": "git subtree push --prefix botclient botclient main",
     "deploy-server": "git subtree push --prefix botlogic botlogic main",
+    "deploy-model": "git subtree push --prefix botmodel botmodel main",
     "docker-push": "chmod 755 ./dockerpush.sh && ./dockerpush.sh",
     "bot-trade": "cd bottrade && source venv/bin/activate && python3 index.py"
   },
