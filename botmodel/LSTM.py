@@ -7,6 +7,7 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
+from flask import request
 
 url = "https://drive.google.com/uc?id=1-70a-DgvkirsWhetfFwKoZSex7Octb0F"
 
@@ -40,8 +41,14 @@ def calculateChange(df):
   return df
 
 def predict(symbol, retro):
-  model = keras.models.load_model(f'models/{symbol}.h5')
+  model = keras.models.load_model(f'models/models/{symbol}.h5')
   data = getData(symbol, '1d', retro)
   data = calculateChange(data.drop(columns=['Closetime', 'Absolute Volume']))
   data = np.array(data).reshape((1,retro,data.shape[1]))
   return model.predict(data)[0][0]
+
+def LSTMFunc():
+  request.get_data()
+  symbol = request.args.get('symbol')
+  prediction = predict(symbol, 14)
+  return {"prediction": str(prediction) + "%"}
